@@ -1,12 +1,15 @@
 import type { SiteRoute } from "@/app/_content/site";
+import { pageSections } from "@/app/_content/ecosystem";
 import { routes, site } from "@/app/_content/site";
-import { Button, Card, CtaSection, LinkCard, SectionHeading } from "@/app/_components/ui";
+import { Badge, Button, Card, CtaSection, LinkCard, SectionHeading } from "@/app/_components/ui";
 
 type FoundationPageProps = {
   route: SiteRoute;
 };
 
 export function FoundationPage({ route }: FoundationPageProps) {
+  const structuredSections = pageSections[route.contentKey] ?? [];
+
   return (
     <main>
       <section className="section" aria-labelledby="page-title">
@@ -24,6 +27,27 @@ export function FoundationPage({ route }: FoundationPageProps) {
           </div>
         </div>
       </section>
+
+      {structuredSections.map((section) => (
+        <section className="section-tight" aria-label={section.title} key={section.title}>
+          <div className="container">
+            <SectionHeading eyebrow={section.eyebrow} title={section.title} description={section.description} />
+            {section.items ? (
+              <div className="grid grid-3" style={{ marginTop: 28 }}>
+                {section.items.map((item) => (
+                  <Card key={item.title} interactive={Boolean(item.href)}>
+                    <div className="card-stack">
+                      {item.label ? <Badge tone="blue">{item.label}</Badge> : null}
+                      <h3 className="heading-md">{item.title}</h3>
+                      <p className="body-copy">{item.description}</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ))}
 
       <section className="section-tight" aria-labelledby="planned-sections">
         <div className="container">

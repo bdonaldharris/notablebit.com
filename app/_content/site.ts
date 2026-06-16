@@ -4,6 +4,7 @@ export type SiteRoute = {
   eyebrow: string;
   title: string;
   description: string;
+  contentKey: string;
   sections: string[];
   primaryCta: string;
 };
@@ -24,6 +25,7 @@ export const routes: SiteRoute[] = [
   {
     href: "/studio",
     label: "Studio",
+    contentKey: "studio",
     eyebrow: "Studio model",
     title: "A studio for practical technology, product clarity, and builder infrastructure.",
     description:
@@ -34,6 +36,7 @@ export const routes: SiteRoute[] = [
   {
     href: "/products",
     label: "Products",
+    contentKey: "products",
     eyebrow: "Products and platforms",
     title: "Products and platforms built from real builder workflows.",
     description:
@@ -44,6 +47,7 @@ export const routes: SiteRoute[] = [
   {
     href: "/consulting",
     label: "Consulting",
+    contentKey: "consulting",
     eyebrow: "Strategic services",
     title: "Strategic technology guidance for builders, founders, and organizations.",
     description:
@@ -60,6 +64,7 @@ export const routes: SiteRoute[] = [
   {
     href: "/media",
     label: "Media",
+    contentKey: "media",
     eyebrow: "Media and community",
     title: "Media that documents builders, ideas, and the future of Black tech.",
     description:
@@ -70,6 +75,7 @@ export const routes: SiteRoute[] = [
   {
     href: "/about",
     label: "About",
+    contentKey: "about",
     eyebrow: "Origin and mission",
     title: "Building technology with clarity, context, and ownership in mind.",
     description:
@@ -80,6 +86,7 @@ export const routes: SiteRoute[] = [
   {
     href: "/contact",
     label: "Contact",
+    contentKey: "contact",
     eyebrow: "Inquiries",
     title: "Start a conversation with NotableBIT.",
     description:
@@ -92,6 +99,7 @@ export const routes: SiteRoute[] = [
 export const homeRoute: SiteRoute = {
   href: "/",
   label: "Home",
+  contentKey: "home",
   eyebrow: "Founder-led technology studio",
   title: "Building products, platforms, and systems for the AI era.",
   description:
