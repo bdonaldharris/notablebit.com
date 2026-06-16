@@ -599,6 +599,48 @@ textarea {
   width: 9px;
 }
 
+.studio-band {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: minmax(0, 0.72fr) minmax(320px, 1fr);
+}
+
+.process-list {
+  display: grid;
+  gap: 16px;
+}
+
+.process-item {
+  align-items: start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: auto 1fr;
+}
+
+.process-number {
+  color: var(--amber);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.process-item .body-copy {
+  margin-top: 10px;
+}
+
+.studio-model {
+  align-items: center;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+}
+
+.model-stack {
+  display: grid;
+  gap: 14px;
+}
+
 .cta-panel {
   align-items: center;
   background:
@@ -674,7 +716,9 @@ textarea.input {
   .cta-panel,
   .form-grid,
   .page-hero-grid,
-  .product-feature {
+  .product-feature,
+  .studio-band,
+  .studio-model {
     grid-template-columns: 1fr;
   }
 
