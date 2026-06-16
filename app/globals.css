@@ -693,6 +693,23 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.contact-grid {
+  align-items: start;
+  display: grid;
+  gap: 36px;
+  grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1fr);
+}
+
+.integration-note {
+  border-left: 2px solid var(--amber);
+  margin-top: 24px;
+  padding-left: 14px;
+}
+
+.form-grid .button {
+  margin-top: 18px;
+}
+
 .founder-panel {
   align-items: center;
   background:
@@ -785,7 +802,8 @@ textarea.input {
   .founder-panel,
   .media-feature,
   .consulting-deliverables,
-  .about-story {
+  .about-story,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
