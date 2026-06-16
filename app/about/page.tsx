@@ -6,7 +6,7 @@ import { createMetadata } from "@/app/_lib/metadata";
 const route = routeByHref.get("/about")!;
 
 export const metadata: Metadata = createMetadata({
-  title: "About | NotableBIT",
+  title: "About",
   description: route.description,
   path: route.href,
 });

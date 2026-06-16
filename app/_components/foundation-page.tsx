@@ -8,7 +8,7 @@ type FoundationPageProps = {
 
 export function FoundationPage({ route }: FoundationPageProps) {
   return (
-    <main className="site-shell">
+    <main>
       <section className="section" aria-labelledby="page-title">
         <div className="container">
           <p className="eyebrow">{route.eyebrow}</p>

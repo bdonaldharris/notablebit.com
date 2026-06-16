@@ -4,7 +4,7 @@ import { homeRoute } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "NotableBIT | Founder-Led Technology Studio",
+  title: "Founder-Led Technology Studio",
   description: homeRoute.description,
   path: homeRoute.href,
 });
