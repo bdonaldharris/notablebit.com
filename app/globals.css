@@ -641,6 +641,27 @@ textarea {
   gap: 14px;
 }
 
+.ecosystem-grid .link-card:nth-child(1) {
+  min-height: 270px;
+}
+
+.split-band,
+.founder-panel {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.founder-panel {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgb(0 102 255 / 0.14), transparent 44%),
+    rgb(10 17 40 / 0.54);
+  border: 1px solid rgb(179 197 255 / 0.14);
+  border-radius: var(--radius-md);
+  padding: clamp(28px, 5vw, 48px);
+}
+
 .cta-panel {
   align-items: center;
   background:
@@ -718,7 +739,9 @@ textarea.input {
   .page-hero-grid,
   .product-feature,
   .studio-band,
-  .studio-model {
+  .studio-model,
+  .split-band,
+  .founder-panel {
     grid-template-columns: 1fr;
   }
 
