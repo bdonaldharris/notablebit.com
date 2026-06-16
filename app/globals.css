@@ -676,6 +676,17 @@ textarea {
   top: 24px;
 }
 
+.consulting-grid .card:first-child {
+  grid-column: span 2;
+}
+
+.consulting-deliverables {
+  align-items: start;
+  display: grid;
+  gap: 36px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1fr);
+}
+
 .founder-panel {
   align-items: center;
   background:
@@ -766,8 +777,13 @@ textarea.input {
   .studio-model,
   .split-band,
   .founder-panel,
-  .media-feature {
+  .media-feature,
+  .consulting-deliverables {
     grid-template-columns: 1fr;
+  }
+
+  .consulting-grid .card:first-child {
+    grid-column: auto;
   }
 
   .hero-orbit {
