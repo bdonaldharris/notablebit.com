@@ -55,15 +55,26 @@ export default function ContactPage() {
             </h2>
             <p className="lede">
               Share enough context to understand the fit: the work, the organization, the timeline, and what kind of decision or collaboration is
-              needed.
+              needed. Every inquiry is read personally.
             </p>
             <p className="body-copy integration-note">
-              Submission handling is pending an approved backend or form service. The UI is ready for integration.
+              Prefer email? Reach the studio directly at{" "}
+              <a className="inline-link" href="mailto:hello@notablebit.com">
+                hello@notablebit.com
+              </a>
+              .
             </p>
           </div>
 
           <Card>
-            <form className="form-grid" id="inquiry-form" aria-describedby="form-status">
+            <form
+              className="form-grid"
+              id="inquiry-form"
+              aria-describedby="form-status"
+              action="mailto:hello@notablebit.com"
+              method="post"
+              encType="text/plain"
+            >
               <div className="field">
                 <label className="label" htmlFor="name">
                   Name *
@@ -124,9 +135,9 @@ export default function ContactPage() {
 
               <div className="field-full">
                 <p className="body-copy" id="form-status">
-                  Required fields are marked with an asterisk. Submission will be enabled when a form destination is approved.
+                  Required fields are marked with an asterisk. Sending opens your email client with the details ready to review.
                 </p>
-                <button className="button button-primary button-disabled" type="button" aria-disabled="true">
+                <button className="button button-primary" type="submit">
                   Send Inquiry
                 </button>
               </div>

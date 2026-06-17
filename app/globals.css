@@ -8,12 +8,18 @@
   --border: rgb(179 197 255 / 0.16);
   --border-strong: rgb(0 102 255 / 0.48);
   --text: #f5f7ff;
-  --muted: #c2c6d8;
+  --muted: #c5c8d6;
   --subtle: #8f96ad;
   --blue: #0066ff;
   --blue-soft: #b3c5ff;
   --violet: #7c3aed;
-  --amber: #fbbc00;
+  /* Warm institutional gold — excellence and durable value, not generic yellow. */
+  --amber: #e7ad3c;
+  --amber-soft: #f6d79a;
+  /* Restrained cultural accents, used sparingly. */
+  --burgundy: #7c2436;
+  --cream: #f1e7d2;
+  --green: #2f7d57;
   --danger: #ff7a70;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -32,7 +38,9 @@ body {
   margin: 0;
   background:
     radial-gradient(circle at top left, rgb(0 102 255 / 0.18), transparent 34rem),
-    radial-gradient(circle at 80% 10%, rgb(124 58 237 / 0.16), transparent 30rem),
+    radial-gradient(circle at 80% 8%, rgb(124 58 237 / 0.15), transparent 30rem),
+    radial-gradient(circle at 6% 82%, rgb(231 173 60 / 0.08), transparent 32rem),
+    radial-gradient(circle at 94% 94%, rgb(124 36 54 / 0.1), transparent 30rem),
     linear-gradient(180deg, #05070d 0%, #0a0e1a 48%, #05070d 100%);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
@@ -89,6 +97,19 @@ textarea {
   position: fixed;
 }
 
+/* Faint textile-inspired weave — cultural texture under the tech grid, kept
+   barely perceptible so it reads as warmth and pattern, never decoration. */
+.site-shell::after {
+  background-image:
+    repeating-linear-gradient(45deg, rgb(231 173 60 / 0.035) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(-45deg, rgb(179 197 255 / 0.03) 0 1px, transparent 1px 22px);
+  content: "";
+  inset: 0;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 78%);
+  pointer-events: none;
+  position: fixed;
+}
+
 .container {
   margin: 0 auto;
   max-width: var(--container);
@@ -123,6 +144,18 @@ textarea {
   z-index: 20;
 }
 
+/* Thin institutional banner line — gold to blue, the studio's signal colors. */
+.site-header::after {
+  background: linear-gradient(90deg, var(--amber), var(--blue) 38%, transparent 72%);
+  bottom: -1px;
+  content: "";
+  height: 1px;
+  left: 0;
+  opacity: 0.6;
+  position: absolute;
+  right: 0;
+}
+
 .header-inner {
   align-items: center;
   display: grid;
@@ -139,10 +172,12 @@ textarea {
 
 .brand-mark {
   align-items: center;
-  background: linear-gradient(135deg, var(--blue), var(--violet));
-  border: 1px solid rgb(255 255 255 / 0.2);
+  background: linear-gradient(135deg, var(--blue), var(--violet) 64%, var(--burgundy));
+  border: 1px solid rgb(231 173 60 / 0.45);
   border-radius: var(--radius-sm);
-  box-shadow: 0 0 28px rgb(0 102 255 / 0.24);
+  box-shadow:
+    0 0 28px rgb(0 102 255 / 0.24),
+    inset 0 0 0 1px rgb(255 255 255 / 0.06);
   color: #ffffff;
   display: inline-flex;
   font-family: "Courier New", Courier, monospace;
@@ -189,6 +224,33 @@ textarea {
 
 .desktop-nav a:hover,
 .footer-links a:hover {
+  color: var(--text);
+}
+
+.desktop-nav a {
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.desktop-nav a::after {
+  background: var(--amber);
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.desktop-nav a[aria-current="page"] {
   color: var(--text);
 }
 
@@ -250,7 +312,34 @@ textarea {
 
 .site-footer {
   border-top: 1px solid rgb(179 197 255 / 0.12);
-  padding: 56px 0;
+  padding: 56px 0 44px;
+  position: relative;
+}
+
+.site-footer::before {
+  background: linear-gradient(90deg, var(--amber), var(--blue) 40%, var(--burgundy) 80%, transparent);
+  content: "";
+  height: 2px;
+  left: 0;
+  opacity: 0.7;
+  position: absolute;
+  right: 0;
+  top: -1px;
+}
+
+.footer-closing {
+  border-top: 1px solid rgb(179 197 255 / 0.1);
+  color: var(--subtle);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  margin-top: 44px;
+  padding-top: 24px;
+}
+
+.footer-closing strong {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .footer-grid {
@@ -267,12 +356,22 @@ textarea {
 }
 
 .footer-heading {
+  align-items: center;
   color: var(--text);
+  display: inline-flex;
   font-family: "Courier New", Courier, monospace;
   font-size: 0.82rem;
+  gap: 10px;
   letter-spacing: 0.1em;
   margin: 0 0 18px;
   text-transform: uppercase;
+}
+
+.footer-heading::before {
+  background: var(--amber);
+  content: "";
+  height: 2px;
+  width: 18px;
 }
 
 .footer-links {
@@ -289,13 +388,26 @@ textarea {
 }
 
 .eyebrow {
+  align-items: center;
   color: var(--amber);
+  display: inline-flex;
   font-family: "Courier New", Courier, monospace;
   font-size: 0.75rem;
   font-weight: 700;
+  gap: 12px;
   letter-spacing: 0.12em;
   margin: 0 0 16px;
   text-transform: uppercase;
+}
+
+/* HBCU-style institutional label bar — a small crest tick before each kicker. */
+.eyebrow::before {
+  background: linear-gradient(90deg, var(--amber), rgb(231 173 60 / 0));
+  content: "";
+  display: inline-block;
+  flex: none;
+  height: 2px;
+  width: 26px;
 }
 
 .display {
@@ -445,11 +557,11 @@ textarea {
 }
 
 .card::after {
-  background: linear-gradient(90deg, transparent, rgb(0 102 255 / 0.44), transparent);
+  background: linear-gradient(90deg, rgb(231 173 60 / 0.5), rgb(0 102 255 / 0.44), transparent);
   content: "";
   height: 1px;
   left: 18px;
-  opacity: 0.42;
+  opacity: 0.5;
   position: absolute;
   right: 18px;
   top: 0;
@@ -516,47 +628,117 @@ textarea {
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
 }
 
+/* Ecosystem signal ring — concentric community rings with a slow signal sweep
+   and a warm gold core. Reads as network/constellation, not a SaaS planet. */
 .hero-orbit {
   aspect-ratio: 1;
   border-radius: 50%;
+  isolation: isolate;
   position: relative;
+}
+
+.hero-orbit::before {
+  animation: orbit-sweep 16s linear infinite;
+  background: conic-gradient(from 0deg, transparent 0deg, rgb(0 102 255 / 0.18) 36deg, transparent 78deg);
+  border-radius: 50%;
+  content: "";
+  inset: 6%;
+  mask-image: radial-gradient(circle, transparent 30%, black 31%);
+  position: absolute;
 }
 
 .orbit-ring {
   border: 1px solid rgb(179 197 255 / 0.16);
   border-radius: 50%;
-  inset: 12%;
+  inset: 6%;
   position: absolute;
 }
 
 .orbit-ring-two {
-  inset: 28%;
+  border-color: rgb(179 197 255 / 0.13);
+  inset: 24%;
+}
+
+.orbit-ring-three {
+  border-color: rgb(231 173 60 / 0.22);
+  border-style: dashed;
+  inset: 42%;
+}
+
+.orbit-core {
+  background: radial-gradient(circle, var(--amber-soft), var(--amber) 60%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 36px rgb(231 173 60 / 0.5);
+  height: 16px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+}
+
+.orbit-core::after {
+  animation: orbit-pulse 3.6s ease-out infinite;
+  border: 1px solid rgb(231 173 60 / 0.5);
+  border-radius: 50%;
+  content: "";
+  inset: -6px;
+  position: absolute;
 }
 
 .orbit-node {
   background: var(--blue);
   border: 4px solid rgb(179 197 255 / 0.18);
   border-radius: 50%;
-  box-shadow: 0 0 32px rgb(0 102 255 / 0.44);
-  height: 18px;
+  box-shadow: 0 0 28px rgb(0 102 255 / 0.44);
+  height: 16px;
   position: absolute;
-  width: 18px;
+  width: 16px;
 }
 
 .orbit-node-one {
-  right: 20%;
-  top: 16%;
+  right: 18%;
+  top: 14%;
 }
 
 .orbit-node-two {
-  bottom: 18%;
-  left: 28%;
+  bottom: 16%;
+  left: 22%;
 }
 
 .orbit-node-three {
+  background: var(--violet);
+  box-shadow: 0 0 28px rgb(124 58 237 / 0.46);
+  left: 12%;
+  top: 44%;
+}
+
+.orbit-node-four {
   background: var(--amber);
-  right: 38%;
-  top: 48%;
+  box-shadow: 0 0 28px rgb(231 173 60 / 0.46);
+  bottom: 30%;
+  right: 24%;
+}
+
+@keyframes orbit-sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
 }
 
 .product-feature {
@@ -663,17 +845,23 @@ textarea {
   min-height: 320px;
 }
 
+/* Waveform / signal strip — liner-note energy for the media surface. */
 .media-card::before {
   background:
-    linear-gradient(90deg, rgb(251 188 0 / 0.5), transparent),
-    linear-gradient(90deg, rgb(0 102 255 / 0.45), transparent);
-  border-radius: 999px;
+    repeating-linear-gradient(
+      90deg,
+      rgb(231 173 60 / 0.55) 0 2px,
+      transparent 2px 4px,
+      rgb(0 102 255 / 0.5) 4px 6px,
+      transparent 6px 9px
+    );
   content: "";
-  height: 4px;
+  height: 22px;
   left: 28px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 92%);
   position: absolute;
   right: 28px;
-  top: 24px;
+  top: 22px;
 }
 
 .consulting-grid .card:first-child {
@@ -706,6 +894,17 @@ textarea {
   padding-left: 14px;
 }
 
+.inline-link {
+  color: var(--blue-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.inline-link:hover {
+  color: var(--text);
+}
+
 .form-grid .button {
   margin-top: 18px;
 }
@@ -724,13 +923,24 @@ textarea {
   align-items: center;
   background:
     radial-gradient(circle at 8% 20%, rgb(0 102 255 / 0.22), transparent 26rem),
+    radial-gradient(circle at 96% 90%, rgb(124 36 54 / 0.2), transparent 24rem),
     linear-gradient(135deg, rgb(10 17 40 / 0.96), rgb(18 13 33 / 0.94));
   border: 1px solid rgb(179 197 255 / 0.18);
   border-radius: var(--radius-md);
   display: grid;
   gap: 28px;
   grid-template-columns: 1.2fr auto;
+  overflow: hidden;
   padding: clamp(28px, 5vw, 48px);
+  position: relative;
+}
+
+.cta-panel::before {
+  background: linear-gradient(180deg, var(--amber), var(--burgundy));
+  content: "";
+  inset: 0 auto 0 0;
+  position: absolute;
+  width: 3px;
 }
 
 .form-grid {
