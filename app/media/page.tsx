@@ -23,7 +23,7 @@ export default function MediaPage() {
         title={route.title}
         description={route.description}
         primaryHref="https://bitvoices.network"
-        primaryLabel="Explore BIT Voices"
+        primaryLabel="Explore BitVoices"
         secondaryHref="https://bdonaldharris.com"
         secondaryLabel="Speaking Context"
       />
@@ -37,7 +37,7 @@ export default function MediaPage() {
             </h2>
             <p className="lede">{podcast.description}</p>
             <p className="body-copy" style={{ marginTop: 18 }}>
-              Formerly known as The Notable & Black in Tech Podcast, BIT Voices now sits inside a broader platform and media network for Black
+              Formerly known as The Notable & Black in Tech Podcast, BitVoices now sits inside a broader platform and media network for Black
               tech visibility, connection, and ownership.
             </p>
           </div>

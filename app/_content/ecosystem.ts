@@ -66,7 +66,7 @@ export const services: ContentItem[] = [
 
 export const mediaChannels: ContentItem[] = [
   {
-    title: "BIT Voices Podcast",
+    title: "BitVoices Podcast",
     description:
       "Conversations with Black technologists, founders, engineers, builders, and leaders shaping technology, AI, entrepreneurship, and community.",
     href: "/media",
@@ -132,7 +132,7 @@ export const pageSections: Record<string, PageSection[]> = {
       items: [
         { title: products[0].title, description: products[0].description, label: products[0].status, href: products[0].href },
         { title: products[1].title, description: products[1].description, label: products[1].status, href: products[1].href },
-        { title: "BIT Voices Podcast", description: mediaChannels[0].description, href: "/media" },
+        { title: "BitVoices Podcast", description: mediaChannels[0].description, href: "/media" },
         { title: "Strategic Technology Services", description: services[0].description, href: "/consulting" },
       ],
     },

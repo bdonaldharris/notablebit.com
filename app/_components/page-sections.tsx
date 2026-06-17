@@ -40,9 +40,12 @@ export function PageHero({
         <div className="hero-orbit" aria-hidden="true">
           <span className="orbit-ring orbit-ring-one" />
           <span className="orbit-ring orbit-ring-two" />
+          <span className="orbit-ring orbit-ring-three" />
+          <span className="orbit-core" />
           <span className="orbit-node orbit-node-one" />
           <span className="orbit-node orbit-node-two" />
           <span className="orbit-node orbit-node-three" />
+          <span className="orbit-node orbit-node-four" />
         </div>
       </div>
     </section>

@@ -68,9 +68,9 @@ export const routes: SiteRoute[] = [
     eyebrow: "Media and community",
     title: "Media that documents builders, ideas, and the future of Black tech.",
     description:
-      "BIT Voices, community storytelling, and conversations that amplify Black technologists, founders, engineers, builders, and leaders.",
-    sections: ["BIT Voices Podcast", "Community Storytelling", "Speaking / Conversations"],
-    primaryCta: "Explore BIT Voices",
+      "BitVoices, community storytelling, and conversations that amplify Black technologists, founders, engineers, builders, and leaders.",
+    sections: ["BitVoices Podcast", "Community Storytelling", "Speaking / Conversations"],
+    primaryCta: "Explore BitVoices",
   },
   {
     href: "/about",

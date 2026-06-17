@@ -37,7 +37,7 @@ export default function Home() {
           <div className="grid grid-2 ecosystem-grid" style={{ marginTop: 28 }}>
             <LinkCard href="/products" label={hindSite.status} title={hindSite.title} description={hindSite.description} />
             <LinkCard href="https://bitvoices.network" label={bitVoices.status} title={bitVoices.title} description={bitVoices.description} />
-            <LinkCard href="/media" label="Media" title="BIT Voices Podcast" description={mediaChannels[0].description} />
+            <LinkCard href="/media" label="Media" title="BitVoices Podcast" description={mediaChannels[0].description} />
             <LinkCard href="/consulting" label="Services" title="Strategic Technology Services" description={services[0].description} />
           </div>
         </div>
@@ -118,12 +118,12 @@ export default function Home() {
               <Badge>Media & Community</Badge>
               <h2 className="heading-lg">Media and community are part of the infrastructure.</h2>
               <p className="body-copy">
-                Through BIT Voices and related initiatives, NotableBIT helps amplify Black technologists, founders, builders, and leaders whose
+                Through BitVoices and related initiatives, NotableBIT helps amplify Black technologists, founders, builders, and leaders whose
                 work deserves visibility, context, and ownership.
               </p>
               <div className="button-row">
                 <Button href="/media" variant="secondary">
-                  Explore BIT Voices
+                  Explore BitVoices
                 </Button>
               </div>
             </div>
