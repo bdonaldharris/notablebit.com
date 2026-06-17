@@ -167,45 +167,12 @@ textarea {
 .brand {
   align-items: center;
   display: inline-flex;
-  gap: 12px;
 }
 
-.brand-mark {
-  align-items: center;
-  background: linear-gradient(135deg, var(--blue), var(--violet) 64%, var(--burgundy));
-  border: 1px solid rgb(231 173 60 / 0.45);
-  border-radius: var(--radius-sm);
-  box-shadow:
-    0 0 28px rgb(0 102 255 / 0.24),
-    inset 0 0 0 1px rgb(255 255 255 / 0.06);
-  color: #ffffff;
-  display: inline-flex;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.84rem;
-  font-weight: 800;
-  height: 38px;
-  justify-content: center;
-  width: 38px;
-}
-
-.brand-name,
-.brand-line {
+.brand-logo {
   display: block;
-}
-
-.brand-name {
-  color: var(--text);
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.brand-line {
-  color: var(--subtle);
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  margin-top: 2px;
-  text-transform: uppercase;
+  height: 66px;
+  width: auto;
 }
 
 .desktop-nav {
@@ -312,7 +279,7 @@ textarea {
 
 .site-footer {
   border-top: 1px solid rgb(179 197 255 / 0.12);
-  padding: 56px 0 44px;
+  padding: 24px 0 16px;
   position: relative;
 }
 
@@ -327,56 +294,141 @@ textarea {
   top: -1px;
 }
 
-.footer-closing {
+.footer-bottom {
+  align-items: center;
   border-top: 1px solid rgb(179 197 255 / 0.1);
-  color: var(--subtle);
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  margin-top: 44px;
-  padding-top: 24px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin: 18px 0 0;
+  padding-top: 12px;
 }
 
-.footer-closing strong {
-  color: var(--muted);
-  font-weight: 700;
+.footer-copyright {
+  color: var(--subtle);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin: 0;
+}
+
+.footer-brand-logo {
+  display: block;
+  height: auto;
+  width: clamp(120px, 16vw, 210px);
+}
+
+.footer-sections {
+  display: grid;
+  gap: 12px;
+}
+
+.footer-eco {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  justify-content: center;
+}
+
+.eco-logo-link {
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  opacity: 0.92;
+  overflow: hidden;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.eco-logo-link:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.eco-logo {
+  display: block;
+  height: 46px;
+  width: auto;
+}
+
+/* Per-logo optical balancing across the icon-style ecosystem marks: the BDH
+   monogram is full-height letterforms (reads larger), while the icon badges
+   carry their own internal padding, so they sit slightly taller. */
+.eco-logo-bdh {
+  height: 38px;
+}
+
+.eco-logo-podcast {
+  height: 48px;
+}
+
+.eco-logo-bitvoices {
+  height: 50px;
+}
+
+.eco-logo-hindsite {
+  height: 50px;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-socials a {
+  align-items: center;
+  color: var(--subtle);
+  display: inline-flex;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.footer-socials a:hover {
+  color: var(--amber);
+  transform: translateY(-1px);
+}
+
+.footer-socials svg {
+  height: 20px;
+  width: 20px;
 }
 
 .footer-grid {
+  align-items: center;
   display: grid;
-  gap: 40px;
-  grid-template-columns: 1.4fr 0.8fr 0.8fr;
+  gap: 20px 32px;
+  grid-template-columns: 1fr 1fr 2fr;
+}
+
+.footer-brand {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-copy-col {
+  display: flex;
+  justify-content: center;
 }
 
 .footer-copy {
   color: var(--muted);
   line-height: 1.7;
-  margin: 20px 0 0;
-  max-width: 620px;
-}
-
-.footer-heading {
-  align-items: center;
-  color: var(--text);
-  display: inline-flex;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.82rem;
-  gap: 10px;
-  letter-spacing: 0.1em;
-  margin: 0 0 18px;
-  text-transform: uppercase;
-}
-
-.footer-heading::before {
-  background: var(--amber);
-  content: "";
-  height: 2px;
-  width: 18px;
+  margin: 0;
+  max-width: 360px;
+  text-align: center;
 }
 
 .footer-links {
-  display: grid;
-  gap: 12px;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  justify-content: center;
 }
 
 .section {
@@ -1044,5 +1096,11 @@ textarea.input {
 
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
   }
 }
