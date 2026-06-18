@@ -1047,6 +1047,818 @@ textarea.input {
   resize: vertical;
 }
 
+/* ==========================================================================
+   Home redesign — mission-first front door.
+   The page reads as a lineage: podcast → mission → ecosystem of vehicles.
+   Warmth comes from cream/amber/burgundy accents used sparingly against the
+   premium dark base, plus editorial pacing instead of uniform card grids.
+
+   Second pass: a warmer cultural layer — archival/textile texture, controlled
+   oxblood + royal-purple warmth, an institutional label system, a signal
+   artifact hero, and liner-note editorial structure. Culture as rhythm,
+   worldview, and texture — never pasted-on decoration.
+   ========================================================================== */
+
+/* Page texture — faint diagonal rhythm + archival grain + low radial warmth.
+   Scoped to Home via .home-main; isolation keeps the negative-z layer local so
+   it never falls behind the global site-shell background. */
+.home-main {
+  isolation: isolate;
+  position: relative;
+}
+
+.home-main::before {
+  background-image:
+    repeating-linear-gradient(24deg, rgb(231 173 60 / 0.022) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(-24deg, rgb(179 197 255 / 0.018) 0 1px, transparent 1px 34px),
+    radial-gradient(circle at 82% 4%, rgb(124 58 237 / 0.08), transparent 42%),
+    radial-gradient(circle at 8% 52%, rgb(124 36 54 / 0.07), transparent 40%),
+    radial-gradient(circle at 96% 90%, rgb(231 173 60 / 0.05), transparent 38%);
+  content: "";
+  inset: 0;
+  mask-image: linear-gradient(180deg, black, black 90%, transparent);
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Institutional label — modern Black-tech institution, not a college crest.
+   Program-style bracket marks + a small gold crest dot, warmer letter-spacing. */
+.home-main .eyebrow.eyebrow-inst {
+  color: var(--amber-soft);
+  letter-spacing: 0.18em;
+}
+
+.eyebrow-inst::after {
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(231 173 60 / 0.6);
+  content: "";
+  flex: none;
+  height: 4px;
+  margin-left: 2px;
+  width: 4px;
+}
+
+.home-hero {
+  overflow: hidden;
+  padding-top: 104px;
+  position: relative;
+}
+
+/* Royal-purple depth behind the hero — creative authority, warmer than blue. */
+.home-hero::before {
+  background: radial-gradient(circle at 88% 28%, rgb(124 58 237 / 0.18), transparent 46%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.home-hero-grid {
+  align-items: center;
+  display: grid;
+  gap: 56px;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+}
+
+.home-hero-copy .lede {
+  max-width: 640px;
+}
+
+/* Mission-leading headline: the second clause carries the warm institutional
+   gold so "make that work visible" lands as the emphasis. */
+.display-accent {
+  color: var(--amber-soft);
+}
+
+/* Signal artifact — the podcast signal framed as a recorded, archived object:
+   liner-note header, a console "stage" with a vinyl-groove glow, timestamps,
+   and a lineage caption. Reads as Black media lineage, not a SaaS chart. */
+.signal-artifact {
+  background:
+    linear-gradient(160deg, rgb(255 255 255 / 0.05), transparent 46%),
+    linear-gradient(180deg, rgb(18 13 26 / 0.86), rgb(9 12 22 / 0.92));
+  border: 1px solid rgb(231 173 60 / 0.22);
+  border-radius: var(--radius-md);
+  margin: 0;
+  overflow: hidden;
+  padding: 18px;
+  position: relative;
+}
+
+.signal-artifact::after {
+  background: linear-gradient(90deg, var(--amber), var(--blue) 46%, var(--violet) 88%, transparent);
+  content: "";
+  height: 2px;
+  left: 0;
+  opacity: 0.7;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.signal-head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.signal-tag {
+  background: rgb(231 173 60 / 0.14);
+  border: 1px solid rgb(231 173 60 / 0.4);
+  border-radius: var(--radius-sm);
+  color: var(--amber-soft);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 5px 9px;
+  text-transform: uppercase;
+}
+
+.signal-track {
+  color: var(--cream);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  opacity: 0.82;
+  text-transform: uppercase;
+}
+
+.signal-stage {
+  border-radius: var(--radius-sm);
+  isolation: isolate;
+  overflow: hidden;
+  padding: 26px 16px 14px;
+  position: relative;
+}
+
+/* Vinyl-groove / radio-wave texture behind the waveform. */
+.signal-stage::before {
+  background:
+    repeating-radial-gradient(circle at 50% 120%, rgb(231 173 60 / 0.07) 0 1px, transparent 1px 16px),
+    radial-gradient(ellipse at 50% 60%, rgb(124 58 237 / 0.16), transparent 68%);
+  content: "";
+  inset: 0;
+  mask-image: radial-gradient(ellipse at 50% 80%, black, transparent 88%);
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.signal-wave {
+  align-items: flex-end;
+  display: flex;
+  gap: 4px;
+  height: 220px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.signal-bar {
+  animation: signal-pulse 2.8s ease-in-out infinite;
+  background: linear-gradient(180deg, var(--amber) 0%, var(--blue) 100%);
+  border-radius: 999px;
+  flex: 1 1 0;
+  max-width: 9px;
+  min-height: 6px;
+  opacity: 0.92;
+  transform-origin: bottom;
+}
+
+.signal-baseline {
+  background: linear-gradient(90deg, transparent, rgb(231 173 60 / 0.55) 20%, rgb(0 102 255 / 0.5) 80%, transparent);
+  height: 1px;
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.signal-ticks {
+  color: var(--subtle);
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.66rem;
+  justify-content: space-between;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.signal-onair {
+  color: var(--danger);
+  letter-spacing: 0.12em;
+}
+
+.signal-flow {
+  color: var(--amber-soft);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  margin: 16px 0 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.72);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* Anchor band — a cultural thesis / liner-note pull quote, framed by thin
+   oxblood→gold rules so it reads as a statement people remember. */
+.anchor-band {
+  padding: 60px 0;
+  position: relative;
+}
+
+.anchor-band::before,
+.anchor-band::after {
+  background: linear-gradient(90deg, transparent, rgb(124 36 54 / 0.7) 30%, rgb(231 173 60 / 0.7) 70%, transparent);
+  content: "";
+  height: 1px;
+  left: 24px;
+  position: absolute;
+  right: 24px;
+}
+
+.anchor-band::before {
+  top: 0;
+}
+
+.anchor-band::after {
+  bottom: 0;
+}
+
+.anchor-inner {
+  text-align: center;
+}
+
+.anchor-label {
+  color: var(--amber);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+.anchor-line {
+  color: var(--cream);
+  font-size: clamp(1.7rem, 4.4vw, 2.95rem);
+  font-weight: 760;
+  line-height: 1.18;
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.anchor-line-warm {
+  color: var(--amber-soft);
+}
+
+/* Origin — liner notes / Black editorial media history. The emotional key:
+   a program note (left) beside documented evidence of the mission (right). */
+.origin {
+  position: relative;
+}
+
+.origin::before {
+  background: radial-gradient(circle at 6% 20%, rgb(124 36 54 / 0.1), transparent 40%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.origin-grid {
+  display: grid;
+  gap: 48px;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+}
+
+.origin-lead {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+
+.origin-kicker {
+  color: var(--cream);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 20px 0 0;
+  max-width: 320px;
+  opacity: 0.78;
+}
+
+/* Documented evidence — ruled margin like an editorial column. */
+.origin-note {
+  border-left: 1px solid rgb(231 173 60 / 0.28);
+  padding-left: clamp(20px, 3vw, 36px);
+}
+
+.origin-quote {
+  border: none;
+  color: var(--amber-soft);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 720;
+  line-height: 1.32;
+  margin: 24px 0 0;
+  padding: 0;
+  position: relative;
+}
+
+.origin-quote::before {
+  color: rgb(231 173 60 / 0.5);
+  content: "“";
+  font-size: 2.4em;
+  left: -0.1em;
+  line-height: 1;
+  position: absolute;
+  top: -0.32em;
+}
+
+.liner-lines {
+  border-left: 2px solid var(--burgundy);
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 4px 0 4px 20px;
+}
+
+.liner-lines li {
+  color: var(--cream);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.origin-evidence {
+  color: var(--blue-soft);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  margin: 26px 0 0;
+  text-transform: uppercase;
+}
+
+/* Mission — manifesto statement plus restrained mission lines. */
+.mission-grid {
+  display: grid;
+  gap: 48px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.mission-lines {
+  align-self: center;
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mission-lines li {
+  border-top: 1px solid rgb(179 197 255 / 0.14);
+  color: var(--text);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.45;
+  padding: 18px 0;
+}
+
+.mission-lines li:last-child {
+  border-bottom: 1px solid rgb(179 197 255 / 0.14);
+}
+
+/* Ecosystem — lineage map. The spine grows from a single warm root down
+   through the vehicles; the podcast/BitVoices is marked as the first branch. */
+.eco-section {
+  position: relative;
+}
+
+.eco-section::before {
+  background:
+    radial-gradient(circle at 4% 60%, rgb(124 36 54 / 0.1), transparent 36%),
+    radial-gradient(circle at 50% 0%, rgb(231 173 60 / 0.06), transparent 30%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.eco-core {
+  max-width: 760px;
+}
+
+.eco-map {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+}
+
+.eco-node {
+  align-items: start;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 124px minmax(0, 1fr);
+}
+
+.eco-fn {
+  color: var(--amber);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding-top: 24px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.eco-vehicle {
+  border-left: 1px solid rgb(179 197 255 / 0.2);
+  padding: 24px 0 24px 28px;
+  position: relative;
+}
+
+/* Node dot on the spine — blue signal node for each vehicle. */
+.eco-vehicle::before {
+  background: var(--blue);
+  border: 3px solid var(--background);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgb(0 102 255 / 0.5);
+  content: "";
+  height: 13px;
+  left: -7px;
+  position: absolute;
+  top: 26px;
+  width: 13px;
+}
+
+.eco-vehicle .body-copy {
+  margin-top: 8px;
+}
+
+/* The mission origin sits at the top of the spine with a warm gold marker. */
+.eco-node-origin .eco-fn {
+  color: var(--cream);
+}
+
+.eco-node-origin .eco-vehicle {
+  border-left-color: rgb(231 173 60 / 0.4);
+}
+
+.eco-node-origin .eco-vehicle::before {
+  background: radial-gradient(circle, var(--amber-soft), var(--amber) 65%);
+  box-shadow: 0 0 26px rgb(231 173 60 / 0.6);
+  height: 17px;
+  left: -9px;
+  width: 17px;
+}
+
+.eco-vehicle-link {
+  transition: color 160ms ease;
+}
+
+.eco-vehicle-link:hover {
+  color: var(--amber-soft);
+}
+
+/* First vehicle — the podcast branch carries a warmer node and a liner-note
+   marker so it reads as the origin branch, not one item among many. */
+.eco-node-first .eco-fn {
+  color: var(--amber-soft);
+}
+
+.eco-node-first .eco-vehicle::before {
+  background: radial-gradient(circle, var(--amber-soft), var(--amber) 65%);
+  box-shadow: 0 0 22px rgb(231 173 60 / 0.55);
+}
+
+.eco-first-mark {
+  background: rgb(231 173 60 / 0.12);
+  border: 1px solid rgb(231 173 60 / 0.42);
+  border-radius: var(--radius-sm);
+  color: var(--amber-soft);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-left: 12px;
+  padding: 3px 7px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Outcomes — call-and-response. A muted refusal answered by a bright build,
+   each pair on a ruled line. Community cadence, not a motivational poster. */
+.outcomes-title {
+  margin-top: 6px;
+}
+
+.outcome-list {
+  margin: 36px 0 0;
+}
+
+.outcome-pair {
+  align-items: baseline;
+  border-top: 1px solid rgb(179 197 255 / 0.12);
+  display: grid;
+  gap: 8px 36px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  padding: 20px 0;
+}
+
+.outcome-less {
+  color: var(--subtle);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.outcome-more {
+  color: var(--text);
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-weight: 760;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+  position: relative;
+  padding-left: 26px;
+}
+
+/* Connective arrow — the response carries a warm gold lead-in. */
+.outcome-more::before {
+  color: var(--amber);
+  content: "→";
+  left: 0;
+  position: absolute;
+}
+
+.transform-row {
+  color: var(--blue-soft);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  line-height: 1.9;
+  margin: 32px 0 0;
+  max-width: 760px;
+}
+
+/* Entry points — doors into the work, styled like a curated tracklist:
+   numbered, dual-verb route labels, warm gold signal on hover. */
+.entry-list {
+  border-top: 1px solid rgb(179 197 255 / 0.14);
+  margin-top: 36px;
+}
+
+.entry-row {
+  align-items: center;
+  border-bottom: 1px solid rgb(179 197 255 / 0.14);
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 2.4rem 168px minmax(0, 1fr) auto;
+  padding: 22px 8px;
+  position: relative;
+  transition:
+    background-color 160ms ease,
+    padding-left 160ms ease;
+}
+
+.entry-row:hover {
+  background: linear-gradient(90deg, rgb(231 173 60 / 0.06), transparent 60%);
+  padding-left: 16px;
+}
+
+/* Gold edge marker that appears on hover — the door opening. */
+.entry-row::before {
+  background: linear-gradient(180deg, var(--amber), var(--burgundy));
+  bottom: 14px;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 14px;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+  width: 2px;
+}
+
+.entry-row:hover::before {
+  transform: scaleY(1);
+}
+
+.entry-index {
+  color: var(--subtle);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.entry-row:hover .entry-index {
+  color: var(--amber);
+}
+
+.entry-label {
+  color: var(--amber);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.entry-body .body-copy {
+  margin-top: 6px;
+}
+
+.entry-link::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.entry-arrow {
+  color: var(--subtle);
+  font-size: 1.4rem;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.entry-row:hover .entry-arrow {
+  color: var(--amber);
+  transform: translateX(4px);
+}
+
+/* Founder's note — authorship and warmth, a signature, not a bio. */
+.founder-note {
+  border-left: 2px solid var(--amber);
+  margin: 0 auto;
+  max-width: 760px;
+  padding-left: clamp(20px, 4vw, 40px);
+}
+
+.founder-note-quote {
+  border: none;
+  color: var(--cream);
+  font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+.founder-note-sign {
+  color: var(--amber);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  margin-top: 18px;
+  text-transform: uppercase;
+}
+
+/* Closing — warm invitation band. */
+.closing-band {
+  background:
+    radial-gradient(circle at 10% 18%, rgb(124 36 54 / 0.26), transparent 24rem),
+    radial-gradient(circle at 92% 88%, rgb(0 102 255 / 0.2), transparent 26rem),
+    linear-gradient(135deg, rgb(18 13 22 / 0.96), rgb(10 17 40 / 0.94));
+  border: 1px solid rgb(179 197 255 / 0.16);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: clamp(32px, 6vw, 64px);
+  position: relative;
+  text-align: center;
+}
+
+.closing-band::before {
+  background: linear-gradient(90deg, var(--amber), var(--burgundy) 60%, transparent);
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.closing-band .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closing-eyebrow {
+  justify-content: center;
+}
+
+.closing-band .button-row {
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .home-hero-grid,
+  .origin-grid,
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    padding-top: 64px;
+  }
+
+  .origin-lead {
+    position: static;
+  }
+
+  .signal-wave {
+    height: 180px;
+  }
+
+  .eco-node {
+    gap: 0 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .eco-fn {
+    padding-top: 0;
+    text-align: left;
+  }
+
+  .eco-vehicle {
+    border-left: none;
+    padding: 8px 0 28px 18px;
+  }
+
+  .eco-vehicle::before {
+    left: -6px;
+    top: 8px;
+  }
+
+  .eco-map {
+    border-left: 1px solid rgb(179 197 255 / 0.2);
+    padding-left: 14px;
+  }
+
+  .eco-fn {
+    padding-left: 18px;
+  }
+
+  .outcome-pair {
+    gap: 6px 18px;
+    grid-template-columns: 1fr;
+  }
+
+  .outcome-more {
+    padding-left: 22px;
+  }
+
+  .origin-note {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .origin-kicker {
+    max-width: none;
+  }
+
+  .entry-row {
+    column-gap: 14px;
+    grid-template-columns: auto 1fr;
+    row-gap: 4px;
+  }
+
+  .entry-body {
+    grid-column: 1 / -1;
+  }
+
+  .entry-arrow {
+    display: none;
+  }
+
+  .signal-track {
+    flex-basis: 100%;
+  }
+}
+
 @media (max-width: 860px) {
   .section {
     padding: 64px 0;
