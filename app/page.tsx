@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import bitvoicesPodcastLogo from "@/assets/originals/bitvoices-podcast-logo.png";
+import heroAtmosphereImage from "@/assets/originals/first_podcast_set.jpeg";
 import { Button } from "@/app/_components/ui";
 import { homeRoute } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
@@ -10,78 +13,69 @@ export const metadata: Metadata = createMetadata({
   path: homeRoute.href,
 });
 
-// Waveform bar heights (0–100). Hand-tuned so it reads as voice/signal, not a
-// uniform equalizer — the podcast was the first vehicle.
-const SIGNAL_BARS = [
-  18, 34, 26, 52, 70, 44, 88, 60, 100, 72, 54, 82, 38, 64, 92, 48, 30, 58, 76, 40, 66, 24, 50, 84, 36, 62, 28, 46,
-];
-
-type Vehicle = {
-  fn: string;
-  name: string;
-  href: string;
-  description: string;
-  external?: boolean;
-  first?: boolean;
+type Artifact = {
+  label: string;
+  title: string;
+  detail?: string;
 };
 
-const vehicles: Vehicle[] = [
+const podcastArtifacts: Artifact[] = [
   {
-    fn: "Visibility",
-    name: "BitVoices",
+    label: "Origin Vehicle",
+    title: "The podcast",
+    detail: "The first public vehicle for the mission.",
+  },
+  {
+    label: "Archive Function",
+    title: "Document the builders",
+    detail: "Process, leadership, ambition, ownership.",
+  },
+  {
+    label: "Expansion Cue",
+    title: "Beyond media",
+    detail: "Stories became products, strategy, and infrastructure.",
+  },
+];
+
+type MissionOutput = {
+  source: string;
+  becomes: string;
+  vehicle: string;
+  href: string;
+  slot: "voice" | "memory" | "clarity" | "studio";
+  external?: boolean;
+};
+
+const missionOutputs: MissionOutput[] = [
+  {
+    source: "Voice",
+    becomes: "Visibility",
+    vehicle: "BitVoices",
     href: "https://bitvoices.network",
+    slot: "voice",
     external: true,
-    first: true,
-    description: "The podcast and its network — the first vehicle, amplifying Black technologists through conversations, stories, and public signal.",
   },
   {
-    fn: "Signal",
-    name: "Media & Speaking",
-    href: "/media",
-    description: "Turns builder experience and lived conviction into public thought leadership.",
-  },
-  {
-    fn: "Memory",
-    name: "HindSite",
+    source: "Builder Work",
+    becomes: "Memory",
+    vehicle: "HindSite",
     href: "/products",
-    description: "Helps builders preserve the context, reflection, and story behind the work.",
+    slot: "memory",
   },
   {
-    fn: "Clarity",
-    name: "Studio Advisory",
+    source: "Strategy",
+    becomes: "Clarity",
+    vehicle: "Advisory",
     href: "/consulting",
-    description: "Moves founders and teams from scattered effort to practical, execution-minded judgment.",
+    slot: "clarity",
   },
   {
-    fn: "Infrastructure",
-    name: "NotableBIT Studio",
+    source: "Products",
+    becomes: "Infrastructure",
+    vehicle: "NotableBIT Studio",
     href: "/studio",
-    description: "The founder-led home holding the products, platforms, media, and strategic systems together.",
+    slot: "studio",
   },
-  {
-    fn: "Perspective",
-    name: "B Donald Harris",
-    href: "https://bdonaldharris.com",
-    external: true,
-    description: "The operator view shaped by engineering, leadership, ministry, media, and ecosystem work.",
-  },
-];
-
-const missionLines = [
-  "Black technologists should not feel isolated.",
-  "Their work should not disappear into silence.",
-  "Black youth should see themselves building, leading, and owning technology.",
-  "Visibility should lead to connection, opportunity, and ownership.",
-];
-
-// Call-and-response: what the work refuses to let happen → what it builds instead.
-const outcomes = [
-  { less: "Less invisible work.", more: "More documented signal." },
-  { less: "Less isolation.", more: "More connection." },
-  { less: "Less scattered effort.", more: "More owned infrastructure." },
-  { less: "Less waiting to be discovered.", more: "More builders being seen." },
-  { less: "Less distance from the field.", more: "More youth seeing themselves in it." },
-  { less: "Less innovation without ownership.", more: "More wealth-building rooted in community." },
 ];
 
 type EntryPoint = {
@@ -94,278 +88,197 @@ type EntryPoint = {
 
 const entryPoints: EntryPoint[] = [
   {
-    label: "Listen / Watch",
-    title: "BitVoices conversations",
-    description: "Conversations amplifying Black technologists, founders, and builders.",
+    label: "Listen",
+    title: "Start with BitVoices",
+    description: "The voice archive that started the work.",
     href: "/media",
   },
   {
-    label: "Build / Remember",
-    title: "HindSite & product work",
-    description: "Products shaped by real builder needs, memory, and reflection.",
+    label: "Build",
+    title: "Explore HindSite and product work",
+    description: "Builder-memory systems from the studio.",
     href: "/products",
   },
   {
-    label: "Clarify / Execute",
-    title: "Studio advisory",
-    description: "Strategic advisory, product clarity, and AI-era execution.",
+    label: "Clarify",
+    title: "Work with the studio",
+    description: "Product, AI workflow, and strategy support.",
     href: "/consulting",
-  },
-  {
-    label: "Speak / Collaborate",
-    title: "Media & partnerships",
-    description: "Speaking, media, and community-centered initiatives.",
-    href: "/contact",
   },
   {
     label: "Connect",
     title: "Start a conversation",
-    description: "For aligned consulting, products, or ecosystem work.",
+    description: "Partnerships, speaking, advisory, and ecosystem inquiries.",
     href: "/contact",
   },
 ];
 
-function vehicleLink(vehicle: Vehicle | EntryPoint, className: string) {
-  if ("external" in vehicle && vehicle.external) {
+function artifactLink(item: MissionOutput | EntryPoint, className: string) {
+  if (item.external) {
     return (
-      <a className={className} href={vehicle.href} rel="noopener noreferrer" target="_blank">
-        {"name" in vehicle ? vehicle.name : vehicle.title}
+      <a className={className} href={item.href} rel="noopener noreferrer" target="_blank">
+        {"vehicle" in item ? item.vehicle : item.title}
       </a>
     );
   }
+
   return (
-    <Link className={className} href={vehicle.href}>
-      {"name" in vehicle ? vehicle.name : vehicle.title}
+    <Link className={className} href={item.href}>
+      {"vehicle" in item ? item.vehicle : item.title}
     </Link>
   );
 }
 
 export default function Home() {
   return (
-    <main className="home-main">
-      {/* 1. HERO — mission first, not services first */}
+    <main className="home-main home-type-editorial-modern">
       <section className="section home-hero" aria-labelledby="page-title">
+        <Image
+          aria-hidden="true"
+          alt=""
+          className="home-hero-atmosphere"
+          fill
+          priority
+          sizes="100vw"
+          src={heroAtmosphereImage}
+        />
         <div className="container home-hero-grid">
           <div className="home-hero-copy">
-            <p className="eyebrow eyebrow-inst">Black Builder Visibility</p>
             <h1 className="display" id="page-title">
-              Black technologists are building the future.
-              <span className="display-accent"> NotableBIT exists to make that work visible.</span>
+              <span className="display-declaration">Black technologists are building the future.</span>
             </h1>
             <p className="lede">
-              What began with a podcast and a mission to amplify Black technologists has grown into a Black-founded
-              technology studio building media, products, platforms, and strategic systems for the AI era.
+              What began as a podcast to amplify Black technologists has grown into a Black-founded studio building
+              media, products, platforms, and strategic systems for the AI era.
             </p>
             <div className="button-row">
               <Button href="#ecosystem">Explore the Ecosystem</Button>
-              <Button href="/contact" variant="secondary">
-                Start a Conversation
+              <Button href="/media" variant="secondary">
+                Start With Voice
               </Button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Signal artifact — the podcast signal as a recorded, archived object,
-              not a generic SaaS chart. */}
-          <figure className="signal-artifact" aria-hidden="true">
-            <figcaption className="signal-head">
-              <span className="signal-tag">First Vehicle</span>
-              <span className="signal-track">Podcast Signal · Black Tech Voices</span>
-            </figcaption>
-            <div className="signal-stage">
-              <div className="signal-wave">
-                {SIGNAL_BARS.map((height, index) => (
-                  <span key={index} className="signal-bar" style={{ height: `${height}%`, animationDelay: `${index * 70}ms` }} />
-                ))}
-              </div>
-              <div className="signal-baseline" />
-              <div className="signal-ticks">
-                <span>00:00</span>
-                <span className="signal-onair">● On Air</span>
-                <span>∞</span>
-              </div>
+      <section className="section-tight voice-origin" aria-label="Podcast origin archive">
+        <div className="container voice-grid">
+          <div className="podcast-archive" aria-label="Podcast origin artifacts">
+            <figure className="podcast-cover">
+              <Image
+                className="podcast-cover-image"
+                src={bitvoicesPodcastLogo}
+                alt="BitVoices podcast logo"
+                placeholder="blur"
+                sizes="(max-width: 860px) 70vw, 280px"
+              />
+              <figcaption>
+                <span>First vehicle</span>
+                <strong>Podcast origin</strong>
+              </figcaption>
+            </figure>
+            <div className="podcast-ledger">
+              {podcastArtifacts.map((artifact) => (
+                <article className="podcast-ledger-item" key={artifact.title}>
+                  <p className="artifact-label">{artifact.label}</p>
+                  <h3 className="heading-md">{artifact.title}</h3>
+                  <p className="body-copy">{artifact.detail}</p>
+                </article>
+              ))}
             </div>
-            <p className="signal-flow">Conversation → Signal → Infrastructure</p>
-          </figure>
-        </div>
-      </section>
-
-      {/* Anchor line — the cultural throughline of the page */}
-      <section className="anchor-band" aria-label="The throughline">
-        <div className="container anchor-inner">
-          <p className="anchor-label">The Throughline</p>
-          <p className="anchor-line">
-            The podcast was the first vehicle. <span className="anchor-line-warm">The mission was always bigger.</span>
-          </p>
-        </div>
-      </section>
-
-      {/* 2. ORIGIN — the microphone came first (liner notes) */}
-      <section className="section-tight origin" aria-labelledby="origin-title">
-        <div className="container origin-grid">
-          <div className="origin-lead">
-            <p className="eyebrow eyebrow-inst">Origin Note</p>
-            <h2 className="heading-xl" id="origin-title">
-              It started with a microphone.
-            </h2>
-            <p className="origin-kicker">A program note on where the work began — and what it was always for.</p>
-          </div>
-          <div className="origin-note">
-            <p className="lede">
-              The first vehicle was the podcast — conversations with Black technologists, builders, founders, engineers,
-              and leaders whose work deserved to be seen and heard.
-            </p>
-            <blockquote className="origin-quote">Visibility is not vanity. Visibility is infrastructure.</blockquote>
-            <ul className="liner-lines">
-              <li>The podcast gave the mission a voice.</li>
-              <li>The stories revealed the need for more than media.</li>
-              <li>The work expanded. The burden stayed the same.</li>
-            </ul>
-            <p className="origin-evidence">Recorded conversations · Builder stories · Public signal</p>
           </div>
         </div>
       </section>
 
-      {/* 3. MISSION — the original vision still leads */}
-      <section className="section-tight mission" aria-labelledby="mission-title">
-        <div className="container mission-grid">
-          <div className="mission-statement">
-            <p className="eyebrow eyebrow-inst">Mission Standard</p>
-            <h2 className="heading-xl" id="mission-title">
-              The original vision still leads.
-            </h2>
-            <p className="lede">
-              NotableBIT exists to celebrate, amplify, and give visibility to Black technologists — so the people
-              building the future are seen while they build it.
-            </p>
-          </div>
-          <ul className="mission-lines">
-            {missionLines.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 4. ECOSYSTEM — one mission, multiple vehicles (lineage map) */}
-      <section id="ecosystem" className="section eco-section" aria-labelledby="eco-title">
+      <section className="section-tight mission-archive" aria-label="Mission statement">
         <div className="container">
-          <div className="eco-core">
-            <p className="eyebrow eyebrow-inst">Ecosystem Map</p>
-            <h2 className="heading-xl" id="eco-title">
-              One mission. Multiple vehicles.
+          <div className="mission-card">
+            <p>
+              Black technologists should be seen, remembered, and connected to the future they are already building.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ecosystem" className="section ecosystem-archive" aria-labelledby="ecosystem-title">
+        <div className="container">
+          <div className="ecosystem-intro">
+            <h2 className="heading-xl" id="ecosystem-title">
+              Outputs from the same mission.
             </h2>
             <p className="lede">
-              Everything NotableBIT builds traces back to the same root: make Black technologists visible, supported,
-              and positioned to own what they create.
+              The ecosystem is not disconnected ventures — it is one visibility mission meeting real builder needs.
             </p>
           </div>
 
-          <ol className="eco-map">
-            <li className="eco-node eco-node-origin">
-              <span className="eco-fn">Root</span>
-              <div className="eco-vehicle">
-                <h3 className="heading-md">Celebrate, amplify, and make Black technologists visible.</h3>
-                <p className="body-copy">The constant thread. Every vehicle below is one way of carrying it.</p>
-              </div>
-            </li>
-            {vehicles.map((vehicle) => (
-              <li key={vehicle.name} className={`eco-node${vehicle.first ? " eco-node-first" : ""}`}>
-                <span className="eco-fn">{vehicle.fn}</span>
-                <div className="eco-vehicle">
-                  <h3 className="heading-md">
-                    {vehicleLink(vehicle, "eco-vehicle-link")}
-                    {vehicle.first ? <span className="eco-first-mark">First Vehicle</span> : null}
-                  </h3>
-                  <p className="body-copy">{vehicle.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* 5. WHAT THIS PRODUCES — call-and-response outcomes */}
-      <section className="section-tight outcomes" aria-labelledby="outcomes-title">
-        <div className="container">
-          <p className="eyebrow eyebrow-inst">Outcomes of the Work</p>
-          <h2 className="heading-xl outcomes-title" id="outcomes-title">
-            What the work is building toward.
-          </h2>
-          <dl className="outcome-list">
-            {outcomes.map((outcome) => (
-              <div key={outcome.more} className="outcome-pair">
-                <dt className="outcome-less">{outcome.less}</dt>
-                <dd className="outcome-more">{outcome.more}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="transform-row">
-            A conversation becomes signal. A workflow becomes memory. A builder becomes visible. Visibility becomes
-            opportunity.
-          </p>
-        </div>
-      </section>
-
-      {/* 6. ENTRY POINTS — doors into the ecosystem */}
-      <section className="section-tight entry" aria-labelledby="entry-title">
-        <div className="container">
-          <p className="eyebrow eyebrow-inst">Entry Points</p>
-          <h2 className="heading-xl" id="entry-title">
-            Where to enter the work.
-          </h2>
-          <div className="entry-list">
-            {entryPoints.map((entry, index) => (
-              <article key={entry.title} className="entry-row">
-                <span className="entry-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="entry-label">{entry.label}</span>
-                <div className="entry-body">
-                  <h3 className="heading-md">{vehicleLink(entry, "entry-link")}</h3>
-                  <p className="body-copy">{entry.description}</p>
-                </div>
-                <span className="entry-arrow" aria-hidden="true">
-                  →
-                </span>
+          <div className="ecosystem-diagram">
+            <div className="ecosystem-core">
+              <strong>Visibility</strong>
+              <span>Mission</span>
+            </div>
+            {missionOutputs.map((output) => (
+              <article className={`ecosystem-output ecosystem-output-${output.slot}`} key={output.vehicle}>
+                <h3 className="heading-md">{artifactLink(output, "ecosystem-output-link")}</h3>
+                <p className="ecosystem-function">
+                  {output.source} <span aria-hidden="true">·</span> {output.becomes}
+                </p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Founder's note — authorship and warmth, not a bio */}
-      <section className="section-tight founder-note-section" aria-label="Founder's note">
+      <section className="section-tight founder-field" aria-label="Founder note">
         <div className="container">
-          <figure className="founder-note">
-            <p className="eyebrow eyebrow-inst">Founder&rsquo;s Note</p>
-            <blockquote className="founder-note-quote">
+          <figure className="founder-note-card">
+            <blockquote>
               This work began with conversations. It is still about people, memory, visibility, and ownership.
             </blockquote>
-            <figcaption className="founder-note-sign">B Donald Harris — Founder, NotableBIT</figcaption>
+            <figcaption>B Donald Harris, Founder, NotableBIT</figcaption>
           </figure>
         </div>
       </section>
 
-      {/* 7. CLOSING — invitation, not sales banner */}
-      <section className="section-tight closing" aria-labelledby="closing-title">
+      <section className="section-tight entry-archive" aria-labelledby="entry-title">
         <div className="container">
-          <div className="closing-band">
-            <p className="eyebrow eyebrow-inst closing-eyebrow">Studio Invitation</p>
-            <h2 className="heading-lg" id="closing-title">
-              The mission has more than one vehicle now.
+          <div className="entry-heading">
+            <h2 className="heading-xl" id="entry-title">
+              Where to enter the ecosystem.
             </h2>
-            <p className="lede">
-              Whether through a conversation, a product, a strategy session, or a platform, NotableBIT is still building
-              toward the same future: Black technologists seen, supported, connected, and positioned to create lasting
-              value.
-            </p>
-            <div className="button-row">
-              <Button href="/contact">Start a Conversation</Button>
-              <Button href="/products" variant="secondary">
-                Explore Products
-              </Button>
-            </div>
           </div>
+          <ol className="entry-list">
+            {entryPoints.map((entry, index) => {
+              const rowContent = (
+                <>
+                  <span className="entry-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="entry-label">{entry.label}</span>
+                  <span className="entry-body">
+                    <span className="entry-title heading-md">{entry.title}</span>
+                    <span className="entry-desc body-copy">{entry.description}</span>
+                  </span>
+                  <span className="entry-cue" aria-hidden="true">
+                    Enter <span className="entry-cue-arrow">&rarr;</span>
+                  </span>
+                </>
+              );
+
+              return (
+                <li className="entry-item" key={entry.title}>
+                  {entry.external ? (
+                    <a className="entry-row" href={entry.href} rel="noopener noreferrer" target="_blank">
+                      {rowContent}
+                    </a>
+                  ) : (
+                    <Link className="entry-row" href={entry.href}>
+                      {rowContent}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
     </main>
