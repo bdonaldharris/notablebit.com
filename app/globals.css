@@ -24,6 +24,20 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --container: 1180px;
+  /* Shared page rhythm: adjacent sections own one gap instead of stacking
+     top and bottom padding from two separate wrappers. */
+  --section-gap-tight: clamp(28px, 3.5vw, 48px);
+  --section-gap-standard: clamp(40px, 5vw, 72px);
+  --section-gap-loose: clamp(56px, 7vw, 96px);
+  /* Typography system — promoted from the Home page so the entire site shares
+     one editorial / technical / founder-led voice. Display + body share a warm
+     humanist sans; heroes and standout statements lean on an editorial serif;
+     labels, eyebrows, buttons, and metadata use a refined monospace. */
+  --font-body: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-hero: Georgia, "Times New Roman", Times, serif;
+  --font-editorial: Georgia, "Times New Roman", Times, serif;
+  --font-meta: "SFMono-Regular", "Cascadia Mono", "Aptos Mono", "Liberation Mono", "Courier New", Courier, monospace;
 }
 
 * {
@@ -49,7 +63,7 @@ body {
     radial-gradient(circle at 94% 94%, rgb(124 36 54 / 0.1), transparent 30rem),
     linear-gradient(180deg, #05070d 0%, #0a0e1a 48%, #05070d 100%);
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }
 
 a {
@@ -249,7 +263,7 @@ textarea {
   border-radius: var(--radius-sm);
   color: var(--text);
   cursor: pointer;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -315,7 +329,7 @@ textarea {
 
 .footer-copyright {
   color: var(--subtle);
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -448,13 +462,32 @@ textarea {
   padding: 56px 0;
 }
 
+/* Token-driven section rhythm for new and migrated page sections. Legacy
+   `.section` utilities remain available while pages move to this model. */
+.page-section {
+  --page-section-gap: var(--section-gap-standard);
+  padding-block: 0;
+}
+
+.page-section.section-gap-tight {
+  --page-section-gap: var(--section-gap-tight);
+}
+
+.page-section.section-gap-loose {
+  --page-section-gap: var(--section-gap-loose);
+}
+
+.page-section + .page-section {
+  margin-top: var(--page-section-gap);
+}
+
 .eyebrow {
   align-items: center;
-  color: var(--amber);
+  color: var(--amber-soft);
   display: inline-flex;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: var(--font-meta);
+  font-size: 0.74rem;
+  font-weight: 680;
   gap: 12px;
   letter-spacing: 0.12em;
   margin: 0 0 16px;
@@ -473,58 +506,65 @@ textarea {
 
 .display {
   color: var(--text);
-  font-size: clamp(2.5rem, 8vw, 4.875rem);
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 0.98;
-  margin: 0;
-  max-width: 980px;
-}
-
-.heading-xl {
-  color: var(--text);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
+  font-family: var(--font-hero);
+  font-size: clamp(2.5rem, 6vw, 3.76rem);
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.05;
   margin: 0;
+  max-width: 860px;
+  text-wrap: balance;
+}
+
+.heading-xl {
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.36rem);
+  font-weight: 740;
+  letter-spacing: 0;
+  line-height: 1.13;
+  margin: 0;
+  text-wrap: balance;
 }
 
 .heading-lg {
-  color: var(--text);
-  font-size: clamp(1.65rem, 4vw, 2.6rem);
-  font-weight: 760;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.04rem);
+  font-weight: 740;
   letter-spacing: 0;
-  line-height: 1.12;
+  line-height: 1.13;
   margin: 0;
+  text-wrap: balance;
 }
 
 .heading-md {
-  color: var(--text);
-  font-size: 1.18rem;
-  font-weight: 760;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 740;
   letter-spacing: 0;
-  line-height: 1.32;
+  line-height: 1.26;
   margin: 0;
 }
 
 .lede {
-  color: var(--muted);
-  font-size: clamp(1.04rem, 2vw, 1.28rem);
-  line-height: 1.7;
+  color: rgb(245 247 255 / 0.88);
+  font-size: clamp(1.02rem, 1.8vw, 1.22rem);
+  line-height: 1.65;
   margin: 24px 0 0;
   max-width: 780px;
 }
 
 .body-copy {
   color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.98rem;
+  line-height: 1.6;
   margin: 0;
 }
 
 .technical {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   letter-spacing: 0.04em;
 }
 
@@ -540,11 +580,11 @@ textarea {
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   display: inline-flex;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.82rem;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
   font-weight: 700;
   justify-content: center;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   min-height: 44px;
   padding: 12px 18px;
   text-transform: uppercase;
@@ -646,7 +686,7 @@ textarea {
   border-radius: var(--radius-sm);
   color: #ffe09a;
   display: inline-flex;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -687,6 +727,518 @@ textarea {
   display: grid;
   gap: 48px;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+}
+
+/* Studio hero — page-specific immersive composition modeled on the Home hero:
+   the workstation photo becomes the atmospheric canvas filling the section, with
+   layered scrims keeping the editorial text block readable over it. */
+.studio-hero {
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-top: 100px;
+  position: relative;
+}
+
+/* Legibility scrim (dark on the left, easing right) + premium color washes. */
+.studio-hero::before {
+  background:
+    linear-gradient(90deg, rgb(5 7 13 / 0.92) 0%, rgb(5 7 13 / 0.82) 42%, rgb(5 7 13 / 0.52) 72%, rgb(7 11 20 / 0.7) 100%),
+    radial-gradient(circle at 16% 16%, rgb(0 102 255 / 0.18), transparent 40%),
+    radial-gradient(circle at 84% 84%, rgb(124 58 237 / 0.16), transparent 44%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Bottom fade so the image dissolves into the page background. */
+.studio-hero::after {
+  background: linear-gradient(180deg, transparent 0%, rgb(5 7 13 / 0.72) 58%, var(--background) 100%);
+  bottom: -1px;
+  content: "";
+  height: 180px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}
+
+.studio-hero-atmosphere {
+  filter: saturate(0.9) contrast(1.05) brightness(0.64);
+  object-fit: cover;
+  object-position: 62% 52%;
+  opacity: 0.6;
+  transform: scale(1.02);
+  z-index: -2;
+}
+
+.studio-hero-grid {
+  display: block;
+  max-width: 1100px;
+  position: relative;
+  z-index: 1;
+}
+
+.studio-hero-copy {
+  max-width: 760px;
+}
+
+/* Studio principles — a composed workboard of notes placed before the work. */
+.studio-principles-section {
+  /* The third note translates down 18px on desktop; this compensation keeps
+     the tokenized gap measured from the visible note edge. */
+  padding-bottom: 18px;
+}
+
+.studio-hero + .studio-principles-section {
+  margin-top: var(--section-gap-tight);
+}
+
+.studio-principles-header {
+  max-width: 820px;
+}
+
+.studio-principles-notes {
+  background:
+    radial-gradient(circle at 14% 20%, rgb(231 173 60 / 0.09), transparent 25rem),
+    linear-gradient(135deg, rgb(255 255 255 / 0.035), transparent 48%),
+    rgb(7 11 20 / 0.72);
+  border-bottom: 1px solid rgb(231 173 60 / 0.2);
+  border-top: 1px solid rgb(231 173 60 / 0.2);
+  display: grid;
+  gap: clamp(18px, 2.8vw, 34px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 42px clamp(18px, 3vw, 36px) 48px;
+  position: relative;
+}
+
+.studio-principles-notes::before {
+  background: linear-gradient(90deg, transparent, rgb(231 173 60 / 0.36), transparent);
+  content: "";
+  height: 1px;
+  left: 8%;
+  position: absolute;
+  right: 8%;
+  top: 18px;
+}
+
+.studio-principle-note {
+  background:
+    repeating-linear-gradient(0deg, rgb(82 58 24 / 0.025) 0 1px, transparent 1px 4px),
+    linear-gradient(145deg, #f6edd9 0%, #eaddbd 100%);
+  border: 1px solid rgb(132 98 43 / 0.42);
+  box-shadow:
+    0 20px 44px rgb(0 0 0 / 0.28),
+    0 2px 4px rgb(0 0 0 / 0.2),
+    inset 0 1px rgb(255 255 255 / 0.72);
+  color: #272014;
+  min-height: 270px;
+  padding: 34px clamp(22px, 2.4vw, 32px) 30px;
+  position: relative;
+}
+
+.studio-principle-note::before {
+  background: linear-gradient(90deg, #9a6a25, #d2a449 58%, #9a6a25);
+  content: "";
+  height: 2px;
+  left: 28px;
+  opacity: 0.7;
+  position: absolute;
+  right: 28px;
+  top: 20px;
+}
+
+.studio-principle-note:nth-child(1) {
+  transform: rotate(-0.7deg) translateY(12px);
+}
+
+.studio-principle-note:nth-child(2) {
+  transform: rotate(0.6deg);
+}
+
+.studio-principle-note:nth-child(3) {
+  transform: rotate(-0.35deg) translateY(18px);
+}
+
+.studio-principle-note-number {
+  color: #76501d;
+  display: block;
+  font-family: var(--font-meta);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 30px;
+}
+
+.studio-principle-note-title {
+  color: #272014;
+  font-family: var(--font-editorial);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.studio-principle-note-body {
+  color: #5b4a32;
+  font-size: 0.96rem;
+  line-height: 1.62;
+  margin: 18px 0 0;
+}
+
+/* Studio method — a technical workflow board with a deliberate stepped path. */
+.studio-method-section {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.studio-method-header {
+  max-width: 1120px;
+}
+
+.studio-method-header .body-copy {
+  font-size: clamp(1rem, 1.8vw, 1.16rem);
+  margin-top: 18px;
+  max-width: none;
+  white-space: nowrap;
+}
+
+.studio-method-canvas {
+  background:
+    linear-gradient(rgb(179 197 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(179 197 255 / 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 14% 12%, rgb(0 102 255 / 0.12), transparent 26rem),
+    radial-gradient(circle at 88% 82%, rgb(231 173 60 / 0.08), transparent 24rem),
+    linear-gradient(145deg, rgb(10 17 40 / 0.94), rgb(5 8 16 / 0.98));
+  background-size: 32px 32px, 32px 32px, auto, auto, auto;
+  border: 1px solid rgb(179 197 255 / 0.18);
+  border-radius: var(--radius-md);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.035),
+    inset 0 0 72px rgb(0 102 255 / 0.04),
+    0 28px 64px rgb(0 0 0 / 0.2);
+  margin-top: 38px;
+  overflow: hidden;
+  padding: 36px;
+  position: relative;
+}
+
+.studio-method-canvas::before {
+  background: linear-gradient(90deg, rgb(0 102 255 / 0.55), rgb(231 173 60 / 0.42), transparent 72%);
+  content: "";
+  height: 1px;
+  left: 36px;
+  position: absolute;
+  right: 36px;
+  top: 18px;
+}
+
+.studio-method-flow {
+  list-style: none;
+  margin: 0;
+  min-height: 604px;
+  padding: 0;
+  position: relative;
+}
+
+.studio-method-node {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.055), transparent 46%),
+    linear-gradient(180deg, rgb(11 20 43 / 0.98), rgb(7 11 23 / 0.99));
+  border: 1px solid rgb(116 151 236 / 0.34);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 18px 42px rgb(0 0 0 / 0.3),
+    inset 0 1px rgb(255 255 255 / 0.045);
+  min-height: 220px;
+  padding: 26px 24px;
+  position: absolute;
+  width: clamp(210px, 22vw, 252px);
+  z-index: 1;
+}
+
+.studio-method-node::before {
+  background: linear-gradient(180deg, var(--blue-soft), var(--blue));
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgb(0 102 255 / 0.3);
+  content: "";
+  height: 42px;
+  left: -1px;
+  position: absolute;
+  top: 24px;
+  width: 2px;
+}
+
+.studio-method-node:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+
+.studio-method-node:nth-child(2) {
+  left: 26%;
+  top: 128px;
+}
+
+.studio-method-node:nth-child(3) {
+  left: 52%;
+  top: 256px;
+}
+
+.studio-method-node:nth-child(4) {
+  border-color: rgb(231 173 60 / 0.34);
+  right: 0;
+  top: 384px;
+}
+
+.studio-method-node:nth-child(4)::before {
+  background: linear-gradient(180deg, var(--amber-soft), var(--amber));
+  box-shadow: 0 0 18px rgb(231 173 60 / 0.25);
+}
+
+.studio-method-node-number {
+  color: var(--blue-soft);
+  display: block;
+  font-family: var(--font-meta);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
+}
+
+.studio-method-node:nth-child(4) .studio-method-node-number {
+  color: var(--amber-soft);
+}
+
+.studio-method-node-title {
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 740;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.studio-method-node-body {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.58;
+  margin: 14px 0 0;
+}
+
+.studio-method-connector {
+  background: linear-gradient(90deg, rgb(112 147 235 / 0.72), rgb(231 173 60 / 0.62));
+  box-shadow: 0 0 12px rgb(0 102 255 / 0.16);
+  height: 1px;
+  left: calc(100% + 8px);
+  position: absolute;
+  top: 70%;
+  transform: rotate(52deg);
+  transform-origin: left center;
+  width: clamp(52px, 5.4vw, 72px);
+}
+
+.studio-method-connector::after {
+  border-right: 1px solid rgb(231 173 60 / 0.84);
+  border-top: 1px solid rgb(231 173 60 / 0.84);
+  content: "";
+  height: 7px;
+  position: absolute;
+  right: 0;
+  top: -3px;
+  transform: rotate(45deg);
+  width: 7px;
+}
+
+/* Studio disciplines — one builder console, structured as readable output. */
+.studio-disciplines-header {
+  max-width: 1120px;
+}
+
+.studio-disciplines-intro {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.16rem);
+  line-height: 1.6;
+  margin: 18px 0 0;
+  white-space: nowrap;
+}
+
+.studio-console {
+  background:
+    radial-gradient(circle at 10% 0%, rgb(0 102 255 / 0.11), transparent 24rem),
+    radial-gradient(circle at 92% 100%, rgb(231 173 60 / 0.07), transparent 22rem),
+    linear-gradient(145deg, rgb(10 17 40 / 0.97), rgb(5 8 16 / 0.99));
+  border: 1px solid rgb(179 197 255 / 0.2);
+  border-radius: var(--radius-md);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.04),
+    inset 0 0 64px rgb(0 102 255 / 0.035),
+    0 26px 58px rgb(0 0 0 / 0.22);
+  margin-top: 36px;
+  overflow: hidden;
+}
+
+.studio-console-header {
+  align-items: center;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.012));
+  border-bottom: 1px solid rgb(179 197 255 / 0.14);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto 1fr auto;
+  min-height: 48px;
+  padding: 10px 18px;
+}
+
+.studio-console-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.studio-console-controls span {
+  background: rgb(179 197 255 / 0.44);
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+}
+
+.studio-console-controls span:nth-child(2) {
+  background: rgb(0 102 255 / 0.68);
+}
+
+.studio-console-controls span:nth-child(3) {
+  background: rgb(231 173 60 / 0.72);
+}
+
+.studio-console-label,
+.studio-console-status,
+.studio-console-command,
+.studio-console-number,
+.studio-console-prompt {
+  font-family: var(--font-meta);
+}
+
+.studio-console-label {
+  color: rgb(245 247 255 / 0.78);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+}
+
+.studio-console-status {
+  color: var(--subtle);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.studio-console-body {
+  background: #030405;
+  box-shadow: inset 0 0 48px rgb(255 255 255 / 0.012);
+  color: #8fdc95;
+  font-family: var(--font-meta);
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.studio-console-command {
+  color: #8fdc95;
+  font-size: 0.82rem;
+  letter-spacing: 0.035em;
+  margin: 0;
+}
+
+.studio-console-command > span,
+.studio-console-prompt > span:first-child {
+  color: rgb(143 220 149 / 0.62);
+  margin-right: 8px;
+}
+
+.studio-console-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.studio-console-entry {
+  color: #8fdc95;
+  padding: 0;
+}
+
+.studio-console-entry + .studio-console-entry {
+  margin-top: 20px;
+}
+
+.studio-console-number {
+  color: rgb(143 220 149 / 0.78);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-right: 10px;
+}
+
+.studio-console-title {
+  color: #9be7a1;
+  display: inline;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.studio-console-description {
+  color: rgb(143 220 149 / 0.62);
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin: 6px 0 0;
+  padding-left: 5.2ch;
+}
+
+.studio-console-prompt {
+  align-items: center;
+  color: #8fdc95;
+  display: flex;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  margin: 24px 0 0;
+}
+
+.studio-console-cursor {
+  align-self: flex-end;
+  animation: studio-console-blink 1.2s step-end infinite;
+  background: #9be7a1;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgb(143 220 149 / 0.18);
+  display: inline-block;
+  height: 2px;
+  margin-bottom: 0.14em;
+  margin-left: 0;
+  width: 0.8em;
+}
+
+@keyframes studio-console-blink {
+  0%,
+  48% {
+    opacity: 1;
+  }
+  49%,
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-console-cursor {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 /* Ecosystem signal ring — concentric community rings with a slow signal sweep
@@ -823,7 +1375,7 @@ textarea {
 
 .trace-list span {
   color: var(--muted);
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   font-size: 0.84rem;
   letter-spacing: 0.04em;
   position: relative;
@@ -862,7 +1414,7 @@ textarea {
 
 .process-number {
   color: var(--amber);
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   font-size: 0.86rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -872,16 +1424,162 @@ textarea {
   margin-top: 10px;
 }
 
-.studio-model {
-  align-items: center;
-  display: grid;
-  gap: 40px;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+/* Studio operating model — four connected modes, presented as one board. */
+.studio-model-header {
+  max-width: 1120px;
 }
 
-.model-stack {
+.studio-model-copy {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.65vw, 1.12rem);
+  line-height: 1.62;
+  margin: 18px 0 0;
+  max-width: 1120px;
+}
+
+.studio-model-grid {
   display: grid;
-  gap: 14px;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 36px;
+  padding-top: 20px;
+  position: relative;
+}
+
+.studio-model-grid::before {
+  background: linear-gradient(90deg, rgb(0 102 255 / 0.36), rgb(231 173 60 / 0.34), rgb(0 102 255 / 0.28));
+  content: "";
+  height: 1px;
+  left: 24px;
+  position: absolute;
+  right: 24px;
+  top: 0;
+}
+
+.studio-model-card {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.045), transparent 48%),
+    rgb(8 13 27 / 0.94);
+  border: 1px solid rgb(179 197 255 / 0.18);
+  border-radius: var(--radius-md);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.035),
+    0 18px 38px rgb(0 0 0 / 0.2);
+  min-height: 190px;
+  padding: 28px 24px 26px;
+  position: relative;
+}
+
+.studio-model-card::before {
+  background: rgb(116 151 236 / 0.44);
+  content: "";
+  height: 20px;
+  left: 24px;
+  position: absolute;
+  top: -21px;
+  width: 1px;
+}
+
+.studio-model-card::after {
+  background: linear-gradient(90deg, rgb(0 102 255 / 0.65), transparent 72%);
+  content: "";
+  height: 2px;
+  left: 22px;
+  position: absolute;
+  right: 22px;
+  top: 0;
+}
+
+.studio-model-card:nth-child(even)::before {
+  background: rgb(231 173 60 / 0.44);
+}
+
+.studio-model-card:nth-child(even)::after {
+  background: linear-gradient(90deg, rgb(231 173 60 / 0.62), transparent 72%);
+}
+
+.studio-model-card-index {
+  color: var(--subtle);
+  display: block;
+  font-family: var(--font-meta);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+}
+
+.studio-model-card-title {
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 740;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.studio-model-card-body {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.58;
+  margin: 14px 0 0;
+}
+
+.studio-cta-section {
+  padding-bottom: var(--section-gap-tight);
+}
+
+.studio-cta-panel {
+  background:
+    radial-gradient(circle at 50% 0%, rgb(0 102 255 / 0.12), transparent 22rem),
+    radial-gradient(circle at 50% 100%, rgb(231 173 60 / 0.07), transparent 20rem),
+    linear-gradient(145deg, rgb(10 17 40 / 0.94), rgb(6 9 18 / 0.98));
+  border: 1px solid rgb(179 197 255 / 0.2);
+  border-radius: var(--radius-md);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.04),
+    0 24px 54px rgb(0 0 0 / 0.22);
+  margin-inline: auto;
+  max-width: 800px;
+  overflow: hidden;
+  padding: clamp(34px, 5vw, 56px);
+  position: relative;
+  text-align: center;
+}
+
+.studio-cta-panel::before {
+  background: linear-gradient(90deg, transparent, rgb(231 173 60 / 0.52), rgb(0 102 255 / 0.48), transparent);
+  content: "";
+  height: 1px;
+  left: 12%;
+  position: absolute;
+  right: 12%;
+  top: 0;
+}
+
+.studio-cta-heading {
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 740;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.studio-cta-copy {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 18px auto 0;
+  max-width: 560px;
+}
+
+.studio-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 28px;
 }
 
 .ecosystem-grid .link-card:nth-child(1) {
@@ -1021,7 +1719,7 @@ textarea {
 
 .label {
   color: var(--text);
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-meta);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -2157,6 +2855,72 @@ textarea.input {
   }
 }
 
+@media (max-width: 1080px) {
+  .studio-disciplines-intro {
+    white-space: normal;
+  }
+
+  .studio-model-grid {
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-top: 0;
+  }
+
+  .studio-model-grid::before,
+  .studio-model-card::before {
+    display: none;
+  }
+
+  .studio-method-header .body-copy {
+    white-space: normal;
+  }
+
+  .studio-method-canvas {
+    margin-top: 30px;
+    padding: 28px 22px;
+  }
+
+  .studio-method-canvas::before {
+    left: 22px;
+    right: 22px;
+  }
+
+  .studio-method-flow {
+    display: grid;
+    gap: 34px;
+    min-height: 0;
+  }
+
+  .studio-method-node,
+  .studio-method-node:nth-child(1),
+  .studio-method-node:nth-child(2),
+  .studio-method-node:nth-child(3),
+  .studio-method-node:nth-child(4) {
+    left: auto;
+    min-height: 0;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .studio-method-connector {
+    background: linear-gradient(180deg, rgb(112 147 235 / 0.72), rgb(231 173 60 / 0.62));
+    height: 26px;
+    left: 30px;
+    top: calc(100% + 5px);
+    transform: none;
+    width: 1px;
+  }
+
+  .studio-method-connector::after {
+    bottom: 0;
+    right: -3px;
+    top: auto;
+    transform: rotate(135deg);
+  }
+}
+
 @media (max-width: 860px) {
   .section {
     padding: 64px 0;
@@ -2169,7 +2933,6 @@ textarea.input {
   .page-hero-grid,
   .product-feature,
   .studio-band,
-  .studio-model,
   .split-band,
   .founder-panel,
   .media-feature,
@@ -2181,6 +2944,52 @@ textarea.input {
 
   .consulting-grid .card:first-child {
     grid-column: auto;
+  }
+
+  /* Keep the Studio hero text-first and readable: soften the background image
+     further and raise the focal point so it sits behind the headline. */
+  .studio-hero {
+    padding-bottom: 0;
+    padding-top: 84px;
+  }
+
+  .studio-hero-atmosphere {
+    object-position: 60% 42%;
+    opacity: 0.42;
+  }
+
+  .studio-principles-section {
+    padding-bottom: 0;
+  }
+
+  .studio-hero + .studio-principles-section {
+    margin-top: clamp(24px, 5vw, 36px);
+  }
+
+  .studio-principles-notes {
+    gap: 18px;
+    grid-template-columns: 1fr;
+    padding: 36px 18px;
+  }
+
+  .studio-principle-note,
+  .studio-principle-note:nth-child(1),
+  .studio-principle-note:nth-child(2),
+  .studio-principle-note:nth-child(3) {
+    min-height: 0;
+    transform: none;
+  }
+
+  .studio-console-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .studio-console-status {
+    display: none;
+  }
+
+  .studio-console-body {
+    padding: 24px 18px;
   }
 
   .hero-orbit {
@@ -2212,5 +3021,27 @@ textarea.input {
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .studio-model-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-model-card {
+    min-height: 0;
+  }
+
+  .studio-cta-panel {
+    padding: 32px 22px;
+  }
+
+  .studio-cta-actions {
+    flex-direction: column;
+  }
+
+  .studio-cta-actions .button {
+    width: 100%;
   }
 }

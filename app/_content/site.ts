@@ -30,7 +30,7 @@ export const routes: SiteRoute[] = [
     title: "A studio for practical technology, product clarity, and builder infrastructure.",
     description:
       "How NotableBIT thinks, builds, focuses, and operates across internal products, advisory work, partnerships, and media/community initiatives.",
-    sections: ["How We Think", "How We Build", "Where We Focus", "Studio Model", "CTA"],
+    sections: ["Our Operating Principles", "How We Build", "Where We Focus", "Studio Model", "CTA"],
     primaryCta: "Work with the Studio",
   },
   {

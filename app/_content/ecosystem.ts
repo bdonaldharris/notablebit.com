@@ -147,7 +147,7 @@ export const pageSections: Record<string, PageSection[]> = {
   studio: [
     {
       eyebrow: "Thinking",
-      title: "How We Think",
+      title: "Our Operating Principles",
       description: "Context before automation. Strategy before code. Systems before scattered effort.",
       items: [
         { title: "Context before automation", description: "Automation only helps when the work, goals, constraints, and review loops are understood." },
@@ -157,13 +157,13 @@ export const pageSections: Record<string, PageSection[]> = {
     },
     {
       eyebrow: "Building",
-      title: "How We Build",
-      description: "Product discovery, workflow mapping, spec-driven execution, and iterative delivery.",
+      title: "The Studio Method",
+      description: "NotableBIT has a standard: understand the context, map the work, define the handoff, and keep ownership clear.",
       items: [
-        { title: "Product discovery", description: "Clarify the real audience, workflow, and decision before shaping the build." },
-        { title: "Workflow mapping", description: "Model how people move from idea to execution before choosing implementation details." },
+        { title: "Product discovery", description: "Clarify the audience, workflow, constraints, and decisions before shaping the build." },
+        { title: "Workflow mapping", description: "Model how the work moves from idea to execution before choosing implementation details." },
         { title: "Spec-driven execution", description: "Turn decisions into artifacts that humans and AI agents can both use responsibly." },
-        { title: "Human accountability", description: "AI assistance supports the work; it does not replace review, ownership, or judgment." },
+        { title: "Human accountability", description: "Keep review, ownership, and judgment in the loop from first decision to final delivery." },
       ],
     },
   ],
