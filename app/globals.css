@@ -31,6 +31,12 @@
 }
 
 html {
+  /* Paint the page base on the root so the overscroll/canvas area is dark
+     navy (matching the body gradient's endpoints) instead of default white. */
+  background-color: #05070d;
+  /* Suppress the elastic rubber-band bounce on the vertical axis so the
+     header/footer stay anchored (desktop browsers; iOS falls back to A). */
+  overscroll-behavior-y: none;
   scroll-behavior: smooth;
 }
 
@@ -1084,8 +1090,8 @@ textarea.input {
   --home-statement-weight: 700;
   --home-statement-letter-spacing: 0;
   background:
-    linear-gradient(180deg, rgb(5 7 13 / 0.28), rgb(8 8 8 / 0.9) 18%, rgb(8 9 13 / 0.96) 100%),
-    #080808;
+    linear-gradient(180deg, rgb(5 7 13 / 0.28), rgb(7 11 20 / 0.9) 18%, rgb(7 11 20 / 0.96) 100%),
+    #070b14;
   font-family: var(--home-body);
   isolation: isolate;
   position: relative;
@@ -1214,7 +1220,7 @@ textarea.input {
 
 .home-main .home-hero::before {
   background:
-    linear-gradient(90deg, rgb(5 6 10 / 0.85) 0%, rgb(5 6 10 / 0.78) 38%, rgb(7 7 11 / 0.58) 72%, rgb(8 8 8 / 0.76) 100%),
+    linear-gradient(90deg, rgb(5 7 13 / 0.85) 0%, rgb(5 7 13 / 0.78) 38%, rgb(7 11 20 / 0.58) 72%, rgb(7 11 20 / 0.76) 100%),
     radial-gradient(circle at 18% 16%, rgb(241 231 210 / 0.13), transparent 32%),
     radial-gradient(circle at 72% 18%, rgb(86 60 142 / 0.16), transparent 44%),
     radial-gradient(circle at 62% 88%, rgb(124 36 54 / 0.2), transparent 42%);
@@ -1226,7 +1232,7 @@ textarea.input {
 }
 
 .home-main .home-hero::after {
-  background: linear-gradient(180deg, transparent 0%, rgb(8 8 8 / 0.72) 58%, #080808 100%);
+  background: linear-gradient(180deg, transparent 0%, rgb(7 11 20 / 0.72) 58%, #070b14 100%);
   bottom: -1px;
   content: "";
   height: 180px;
