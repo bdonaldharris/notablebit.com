@@ -2369,21 +2369,20 @@ a.platform-card:focus-visible {
 
 .consulting-artifacts-proof {
   background:
-    linear-gradient(rgb(179 197 255 / 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(179 197 255 / 0.022) 1px, transparent 1px),
-    radial-gradient(circle at 14% 10%, rgb(0 102 255 / 0.11), transparent 24rem),
-    radial-gradient(circle at 88% 92%, rgb(231 173 60 / 0.08), transparent 22rem),
-    linear-gradient(145deg, rgb(14 24 45 / 1), rgb(7 12 24 / 1));
+    linear-gradient(rgb(179 197 255 / 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(179 197 255 / 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 14% 10%, rgb(0 102 255 / 0.08), transparent 24rem),
+    radial-gradient(circle at 88% 92%, rgb(231 173 60 / 0.055), transparent 22rem),
+    linear-gradient(145deg, #1b1f29 0%, #10141d 100%);
   background-size: 34px 34px, 34px 34px, auto, auto, auto;
-  border: 1px solid rgb(179 197 255 / 0.24);
+  border: 1px solid rgb(179 197 255 / 0.22);
   border-radius: var(--radius-md);
   box-shadow:
-    0 -6px 0 rgb(13 23 45 / 0.72),
-    0 -10px 0 rgb(7 12 24 / 0.62),
-    inset 0 1px rgb(255 255 255 / 0.05),
-    inset 10px 0 0 rgb(0 102 255 / 0.08),
-    inset 14px 0 0 rgb(231 173 60 / 0.045),
-    0 30px 72px rgb(0 0 0 / 0.32);
+    -6px -5px 0 #171b24,
+    -10px -9px 0 #10141d,
+    -14px -13px 0 rgb(7 10 16 / 0.88),
+    inset 0 1px rgb(255 255 255 / 0.045),
+    0 30px 72px rgb(0 0 0 / 0.34);
   margin: clamp(34px, 5vw, 52px) auto 0;
   max-width: 1100px;
   isolation: isolate;
@@ -2401,20 +2400,6 @@ a.platform-card:focus-visible {
   right: 0;
   top: 0;
   z-index: 3;
-}
-
-.consulting-artifacts-proof::after {
-  background: linear-gradient(180deg, rgb(231 173 60 / 0.38), rgb(0 102 255 / 0.24));
-  border-radius: 2px 0 0 2px;
-  bottom: 18px;
-  box-shadow: -4px 0 0 rgb(7 12 24 / 0.72);
-  content: "";
-  left: -8px;
-  pointer-events: none;
-  position: absolute;
-  top: 10px;
-  width: 8px;
-  z-index: -1;
 }
 
 .consulting-artifacts-proof-label {
@@ -2435,7 +2420,7 @@ a.platform-card:focus-visible {
 }
 
 .consulting-artifact-statement {
-  background: linear-gradient(90deg, rgb(255 255 255 / 0.018), transparent 72%);
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.025), transparent 78%);
   display: grid;
   gap: clamp(28px, 4.5vw, 52px);
   grid-template-columns: minmax(240px, 0.38fr) minmax(0, 1fr);
@@ -2443,12 +2428,8 @@ a.platform-card:focus-visible {
   padding: clamp(28px, 4.5vw, 42px) 18px;
 }
 
-.consulting-artifact-statement:first-child {
-  padding-top: 0;
-}
-
 .consulting-artifact-statement + .consulting-artifact-statement {
-  border-top: 1px solid rgb(179 197 255 / 0.18);
+  border-top: 1px solid rgb(245 247 255 / 0.13);
 }
 
 .consulting-artifact-statement h3 {
@@ -2471,7 +2452,7 @@ a.platform-card:focus-visible {
 
 .consulting-artifact-statement p {
   align-self: center;
-  color: rgb(245 247 255 / 0.84);
+  color: rgb(245 247 255 / 0.86);
   font-size: clamp(1rem, 1.55vw, 1.12rem);
   line-height: 1.66;
   margin: 0;
@@ -2479,29 +2460,29 @@ a.platform-card:focus-visible {
 }
 
 .consulting-artifacts-proof-note {
-  aspect-ratio: 1.15 / 1;
   background:
     repeating-linear-gradient(0deg, rgb(91 74 50 / 0.035) 0 1px, transparent 1px 5px),
     linear-gradient(145deg, #f1e2bf 0%, #dec692 100%);
   border: 1px solid rgb(132 98 43 / 0.38);
   border-radius: var(--radius-sm);
   box-shadow:
-    0 16px 34px rgb(0 0 0 / 0.28),
+    0 14px 28px rgb(0 0 0 / 0.26),
     inset 0 1px rgb(255 255 255 / 0.58);
   color: #2f2416;
-  display: grid;
+  display: block;
   font-family: var(--font-editorial);
-  font-size: clamp(0.96rem, 1.35vw, 1.08rem);
-  font-weight: 700;
-  line-height: 1.34;
-  margin: clamp(20px, 3vw, 30px) -12px -18px auto;
-  max-width: 300px;
-  padding: 20px;
-  place-items: center;
+  font-size: clamp(0.86rem, 1vw, 0.96rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: clamp(14px, 2vw, 20px) clamp(48px, 5.5vw, 78px) 0 auto;
+  max-width: 195px;
+  min-height: 0;
+  padding: 16px 15px 18px;
   position: relative;
   text-align: center;
-  transform: translate(clamp(28px, 3.6vw, 52px), clamp(20px, 3vw, 44px)) rotate(-0.8deg);
-  width: min(100%, 300px);
+  transform: rotate(-0.8deg);
+  width: clamp(155px, 16vw, 195px);
   z-index: 4;
 }
 
@@ -2509,36 +2490,55 @@ a.platform-card:focus-visible {
   .consulting-artifacts-header .heading-xl {
     white-space: nowrap;
   }
+
+  .consulting-closing-panel .heading-lg {
+    white-space: nowrap;
+  }
 }
 
 .consulting-closing-panel {
-  align-items: center;
   background:
-    radial-gradient(circle at 10% 20%, rgb(0 102 255 / 0.17), transparent 28rem),
-    radial-gradient(circle at 94% 100%, rgb(231 173 60 / 0.1), transparent 22rem),
-    rgb(8 12 22 / 0.94);
-  border: 1px solid var(--consulting-rule);
+    radial-gradient(circle at 14% 16%, rgb(0 102 255 / 0.16), transparent 28rem),
+    radial-gradient(circle at 90% 100%, rgb(231 173 60 / 0.1), transparent 22rem),
+    linear-gradient(145deg, rgb(10 17 35 / 0.98), rgb(5 8 16 / 1));
+  border: 1px solid rgb(179 197 255 / 0.22);
   border-radius: var(--radius-md);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.045),
+    0 28px 72px rgb(0 0 0 / 0.34),
+    0 0 0 1px rgb(0 102 255 / 0.035);
   display: grid;
-  gap: 36px;
-  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0;
+  grid-template-columns: 1fr;
+  margin-inline: auto;
+  max-width: 880px;
   overflow: hidden;
-  padding: clamp(34px, 5vw, 54px);
+  padding: clamp(28px, 4vw, 42px);
   position: relative;
+  text-align: center;
 }
 
 .consulting-closing-panel::before {
-  background: linear-gradient(180deg, var(--amber), var(--blue));
+  background: linear-gradient(90deg, var(--amber), var(--blue) 44%, transparent 82%);
   content: "";
-  inset: 0 auto 0 0;
+  height: 2px;
+  inset: 0 0 auto;
   position: absolute;
-  width: 3px;
+  width: auto;
+}
+
+.consulting-closing-panel .heading-lg {
+  margin-inline: auto;
+  max-width: 760px;
+  text-align: center;
 }
 
 .consulting-closing-panel .lede {
   font-size: 1rem;
-  margin-top: 16px;
-  max-width: 700px;
+  line-height: 1.6;
+  margin: 12px auto 0;
+  max-width: 680px;
+  text-align: center;
 }
 
 .consulting-closing-actions {
@@ -2547,6 +2547,7 @@ a.platform-card:focus-visible {
   flex-wrap: wrap;
   gap: 14px;
   justify-content: flex-end;
+  margin-top: clamp(20px, 3vw, 26px);
 }
 
 .consulting-closing-actions .button-secondary {
@@ -2636,7 +2637,7 @@ a.platform-card:focus-visible {
   }
 
   .consulting-closing-actions {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 }
 
@@ -2746,14 +2747,11 @@ a.platform-card:focus-visible {
   }
 
   .consulting-artifacts-proof {
+    box-shadow:
+      -4px -4px 0 #171b24,
+      inset 0 1px rgb(255 255 255 / 0.045),
+      0 24px 52px rgb(0 0 0 / 0.28);
     padding: 28px 20px;
-  }
-
-  .consulting-artifacts-proof::after {
-    bottom: 12px;
-    left: -5px;
-    top: 8px;
-    width: 5px;
   }
 
   .consulting-artifact-statement {
@@ -2768,10 +2766,12 @@ a.platform-card:focus-visible {
   }
 
   .consulting-artifacts-proof-note {
-    aspect-ratio: auto;
-    margin: 24px 0 0;
+    display: block;
+    font-style: italic;
+    margin: 22px 0 0;
     max-width: none;
     min-height: 0;
+    padding: 16px 18px;
     text-align: left;
     transform: none;
     width: 100%;
@@ -2779,11 +2779,13 @@ a.platform-card:focus-visible {
 
   .consulting-closing-panel {
     padding: 32px 22px;
+    text-align: center;
   }
 
   .consulting-closing-actions {
     align-items: stretch;
     flex-direction: column;
+    justify-content: center;
   }
 
   .consulting-closing-actions .button {
