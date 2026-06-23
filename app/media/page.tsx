@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/app/_components/page-sections";
-import { Badge, Card, CtaSection, SectionHeading } from "@/app/_components/ui";
-import { mediaChannels } from "@/app/_content/ecosystem";
+import Image from "next/image";
+import { Button } from "@/app/_components/ui";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
+import { PodcastShorts } from "@/app/media/podcast-shorts";
 
 const route = routeByHref.get("/media")!;
 
@@ -13,76 +13,109 @@ export const metadata: Metadata = createMetadata({
   path: route.href,
 });
 
+const mediaPaths = [
+  {
+    title: "BIT Voices Podcast",
+    description:
+      "Conversations with Black technologists, founders, engineers, builders, and leaders shaping technology, AI, entrepreneurship, and community.",
+  },
+  {
+    title: "Community Storytelling",
+    description: "Stories that make emerging ideas, overlooked work, builder journeys, and ecosystem lessons visible.",
+  },
+  {
+    title: "Speaking / Conversations",
+    description:
+      "Founder-led talks, interviews, panels, and public thought routed through B Donald Harris when deeper context belongs there.",
+  },
+] as const;
+
 export default function MediaPage() {
-  const [podcast, storytelling, speaking] = mediaChannels;
-
   return (
-    <main>
-      <PageHero
-        eyebrow={route.eyebrow}
-        title={route.title}
-        description={route.description}
-        primaryHref="https://bitvoices.network"
-        primaryLabel="Explore BitVoices"
-        secondaryHref="https://bdonaldharris.com"
-        secondaryLabel="Speaking Context"
-      />
+    <main className="media-page">
+      <section className="page-section media-hero" aria-labelledby="page-title">
+        <Image
+          aria-hidden="true"
+          alt=""
+          className="media-hero-atmosphere"
+          fill
+          priority
+          sizes="100vw"
+          src="/assets/originals/media-hero.jpeg"
+        />
+        <div className="container media-hero-grid">
+          <div className="media-hero-copy">
+            <h1 className="display" id="page-title">
+              Media that documents builders, ideas, and the future of Black tech.
+            </h1>
+            <p className="lede">
+              Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology,
+              AI, entrepreneurship, and community.
+            </p>
+            <div className="button-row">
+              <Button href="https://bitvoices.network">Explore BitVoices</Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <section className="section-tight" aria-labelledby="podcast-title">
-        <div className="container media-feature">
-          <div>
-            <p className="eyebrow">Podcast</p>
+      <section className="page-section" aria-labelledby="podcast-title">
+        <div className="container podcast-showcase">
+          <div className="podcast-showcase-copy">
             <h2 className="heading-xl" id="podcast-title">
-              {podcast.title}
+              BIT Voices Podcast
             </h2>
-            <p className="lede">{podcast.description}</p>
-            <p className="body-copy" style={{ marginTop: 18 }}>
-              Formerly known as The Notable & Black in Tech Podcast, BitVoices now sits inside a broader platform and media network for Black
-              tech visibility, connection, and ownership.
+            <p className="lede">
+              Conversations with Black technologists, founders, engineers, builders, and leaders shaping technology, AI, entrepreneurship, and
+              community.
             </p>
           </div>
-          <Card className="media-card">
-            <div className="card-stack">
-              <Badge>Editorial</Badge>
-              <h3 className="heading-md">Conversations with builders shaping what comes next.</h3>
-              <p className="body-copy">
-                The podcast supports the company ecosystem by documenting builders, ideas, leadership, entrepreneurship, AI, and community.
-              </p>
-            </div>
-          </Card>
+          <PodcastShorts />
+          <p className="body-copy podcast-showcase-context">
+            Formerly The Notable &amp; Black in Tech Podcast, BIT Voices Podcast now sits inside the broader NotableBIT media and community ecosystem.
+          </p>
         </div>
       </section>
 
-      <section className="section-tight" aria-label="Media paths">
+      <section
+        className="page-section media-infrastructure-section media-closing-section"
+        aria-labelledby="media-infrastructure-title"
+      >
         <div className="container">
-          <SectionHeading
-            eyebrow="Story infrastructure"
-            title="Media that serves the ecosystem."
-            description="NotableBIT treats media as a way to document work, create context, and amplify builders, not as a standalone content brand disconnected from products and strategy."
-          />
-          <div className="grid grid-3" style={{ marginTop: 28 }}>
-            {[podcast, storytelling, speaking].map((item) => (
-              <Card key={item.title} interactive={Boolean(item.href)}>
-                <div className="card-stack">
-                  <Badge tone="blue">Media Path</Badge>
-                  <h3 className="heading-md">{item.title}</h3>
-                  <p className="body-copy">{item.description}</p>
-                </div>
-              </Card>
-            ))}
+          <div className="media-infrastructure-header">
+            <h2 className="heading-xl" id="media-infrastructure-title">
+              Media that serves the ecosystem.
+            </h2>
+            <p className="body-copy">
+              NotableBIT treats media as infrastructure: a way to document work, create context, amplify builders, and connect ideas across
+              products, community, and strategy.
+            </p>
+          </div>
+
+          <div className="media-infrastructure-panel">
+            <div className="media-infrastructure-paths">
+              {mediaPaths.map((path, index) => (
+                <article className="media-infrastructure-path" key={path.title}>
+                  <span className="media-infrastructure-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="heading-md">{path.title}</h3>
+                  <p className="body-copy">{path.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="media-infrastructure-actions">
+              <div className="button-row">
+                <Button href="/contact">Start a Media Conversation</Button>
+                <Button href="https://bitvoices.network" variant="secondary">
+                  Visit BitVoices
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      <CtaSection
-        eyebrow="Conversations"
-        title="Have a builder story, sponsor idea, or ecosystem conversation?"
-        description="Route podcast, sponsorship, speaking, and community storytelling inquiries through a clear NotableBIT conversation."
-        primaryHref="/contact"
-        primaryLabel="Start a Media Conversation"
-        secondaryHref="https://bitvoices.network"
-        secondaryLabel="Visit BitVoices"
-      />
     </main>
   );
 }

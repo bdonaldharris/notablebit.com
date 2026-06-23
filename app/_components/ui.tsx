@@ -70,6 +70,7 @@ export function LinkCard({ description, href, label, title }: LinkCardProps) {
 }
 
 type CtaSectionProps = {
+  className?: string;
   eyebrow?: string;
   title: string;
   description: string;
@@ -80,6 +81,7 @@ type CtaSectionProps = {
 };
 
 export function CtaSection({
+  className = "",
   description,
   eyebrow,
   primaryHref,
@@ -89,7 +91,7 @@ export function CtaSection({
   title,
 }: CtaSectionProps) {
   return (
-    <section className="section-tight" aria-labelledby="cta-title">
+    <section className={className || "section-tight"} aria-labelledby="cta-title">
       <div className="container">
         <div className="cta-panel">
           <div>
