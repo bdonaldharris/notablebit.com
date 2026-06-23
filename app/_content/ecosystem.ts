@@ -16,7 +16,7 @@ export const products = [
   {
     title: "HindSite",
     status: "Alpha / Waitlist / Active Build",
-    href: "/products",
+    href: "https://hindsite.pro",
     description:
       "Workflow intelligence for builders. HindSite captures development traces, reconstructs timelines, supports reflection, and helps builders turn their work into useful artifacts.",
   },

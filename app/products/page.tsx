@@ -45,7 +45,7 @@ export default function ProductsPage() {
             </h1>
             <p className="lede">{route.description}</p>
             <div className="button-row">
-              <Button href="/contact">Join the HindSite Waitlist</Button>
+              <Button href="https://hindsite.pro">Join the HindSite Waitlist</Button>
               <Button href="https://bitvoices.network" variant="secondary">
                 Visit BitVoices
               </Button>
@@ -77,7 +77,7 @@ export default function ProductsPage() {
                 ))}
               </ol>
               <div className="button-row products-feature-actions">
-                <Button href="/contact">Join Waitlist</Button>
+                <Button href="https://hindsite.pro">Join Waitlist</Button>
                 <Button href="/contact" variant="secondary">
                   Discuss Builder Workflows
                 </Button>
@@ -124,7 +124,7 @@ export default function ProductsPage() {
               </div>
             </a>
 
-            <Link className="platform-card" href="/contact">
+            <Link className="platform-card" href="https://hindsite.pro">
               <div className="platform-card-media">
                 <Image
                   alt="HindSite product badge"

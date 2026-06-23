@@ -59,8 +59,9 @@ const missionOutputs: MissionOutput[] = [
     source: "Builder Work",
     becomes: "Memory",
     vehicle: "HindSite",
-    href: "/products",
+    href: "https://hindsite.pro",
     slot: "memory",
+    external: true,
   },
   {
     source: "Strategy",
@@ -97,7 +98,8 @@ const entryPoints: EntryPoint[] = [
     label: "Build",
     title: "Explore HindSite and product work",
     description: "Builder-memory systems from the studio.",
-    href: "/products",
+    href: "https://hindsite.pro",
+    external: true,
   },
   {
     label: "Clarify",
