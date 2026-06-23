@@ -3550,17 +3550,85 @@ a.platform-card:focus-visible {
   top: -20px;
 }
 
-.contact-grid {
-  align-items: start;
-  display: grid;
-  gap: 36px;
-  grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1fr);
+.contact-page {
+  padding-bottom: 0;
 }
 
-.integration-note {
-  border-left: 2px solid var(--amber);
-  margin-top: 24px;
-  padding-left: 14px;
+.contact-hero {
+  padding: clamp(68px, 8vw, 102px) 0 clamp(14px, 2.4vw, 30px);
+}
+
+.contact-hero-inner {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.contact-hero-title {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.08;
+  margin: 0;
+  max-width: 18ch;
+}
+
+@media (min-width: 900px) {
+  .contact-hero-title {
+    white-space: nowrap;
+  }
+}
+
+.contact-hero-copy {
+  margin-top: clamp(14px, 2.2vw, 20px);
+  max-width: 780px;
+}
+
+.contact-form-section {
+  padding: clamp(8px, 1.6vw, 16px) 0 clamp(52px, 7vw, 92px);
+}
+
+.contact-form-panel {
+  background:
+    radial-gradient(circle at 12% 14%, rgb(0 102 255 / 0.14), transparent 24rem),
+    radial-gradient(circle at 88% 100%, rgb(231 173 60 / 0.08), transparent 20rem),
+    linear-gradient(145deg, rgb(8 14 30 / 0.97), rgb(5 8 16 / 0.99));
+  border: 1px solid rgb(179 197 255 / 0.26);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.04),
+    0 28px 64px rgb(0 0 0 / 0.3);
+  margin-inline: auto;
+  max-width: 880px;
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.contact-form-intro {
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+.contact-form-title {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.7rem, 3vw, 2.08rem);
+  line-height: 1.18;
+  margin: 0;
+}
+
+.contact-form-email-fallback {
+  color: var(--subtle);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-top: 12px;
+}
+
+.contact-form-email-fallback .inline-link {
+  color: rgb(223 229 247 / 0.88);
+}
+
+.contact-form-panel .form-grid {
+  margin-top: 0;
+}
+
+.contact-form-panel #form-status {
+  color: var(--subtle);
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .inline-link {
@@ -3576,6 +3644,33 @@ a.platform-card:focus-visible {
 
 .form-grid .button {
   margin-top: 18px;
+}
+
+.contact-form-submit {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form-submit .button {
+  margin-top: 0;
+}
+
+.contact-form-status {
+  align-self: stretch;
+}
+
+.contact-form-status[data-state="pending"] {
+  color: rgb(179 197 255 / 0.95);
+}
+
+.contact-form-status[data-state="success"] {
+  color: rgb(150 221 181 / 0.96);
+}
+
+.contact-form-status[data-state="error"] {
+  color: rgb(255 170 162 / 0.96);
 }
 
 .about-founder-card {
@@ -5033,8 +5128,7 @@ textarea.input {
   .studio-band,
   .split-band,
   .founder-panel,
-  .about-story,
-  .contact-grid {
+  .about-story {
     grid-template-columns: 1fr;
   }
 
@@ -5293,6 +5387,22 @@ textarea.input {
   .hero-orbit {
     max-width: 320px;
   }
+  .contact-hero {
+    padding: clamp(54px, 10vw, 70px) 0 12px;
+  }
+
+  .contact-hero-inner {
+    max-width: 760px;
+  }
+
+  .contact-form-section {
+    padding-top: 8px;
+  }
+
+  .contact-form-panel {
+    max-width: 100%;
+    padding: clamp(24px, 4.8vw, 32px);
+  }
 
   .card {
     padding: 22px;
@@ -5341,6 +5451,42 @@ textarea.input {
 }
 
 @media (max-width: 640px) {
+  .contact-hero {
+    padding: clamp(48px, 12vw, 62px) 0 8px;
+  }
+
+  .contact-hero-title {
+    font-size: clamp(1.95rem, 8vw, 2.28rem);
+    max-width: 12ch;
+  }
+
+  .contact-hero-copy {
+    margin-top: 14px;
+  }
+
+  .contact-form-section {
+    padding-bottom: clamp(44px, 12vw, 62px);
+  }
+
+  .contact-form-panel {
+    padding: 20px 18px;
+  }
+
+  .contact-form-intro {
+    margin-bottom: 20px;
+  }
+
+  .contact-form-email-fallback {
+    font-size: 0.86rem;
+  }
+
+  .contact-form-submit {
+    align-items: stretch;
+  }
+
+  .contact-form-submit .button {
+    width: 100%;
+  }
   .about-hero {
     min-height: 700px;
     padding-bottom: 78px;
