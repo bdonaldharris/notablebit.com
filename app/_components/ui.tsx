@@ -1,5 +1,17 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
+const EXTERNAL_HTTP_PATTERN = /^https?:\/\//i;
+
+function isExternalHttpHref(href: string): boolean {
+  return EXTERNAL_HTTP_PATTERN.test(href);
+}
+
+function ensureSecureExternalRel(rel?: string): string {
+  const tokens = new Set((rel ?? "").split(/\s+/).filter(Boolean));
+  tokens.add("noopener");
+  tokens.add("noreferrer");
+  return Array.from(tokens).join(" ");
+}
 
 type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode;
@@ -8,8 +20,15 @@ type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 export function Button({ children, className = "", href, variant = "primary", ...props }: ButtonProps) {
+  const isExternal = isExternalHttpHref(href);
   return (
-    <Link className={`button button-${variant} ${className}`.trim()} href={href} {...props}>
+    <Link
+      className={`button button-${variant} ${className}`.trim()}
+      href={href}
+      {...props}
+      rel={isExternal ? ensureSecureExternalRel(props.rel) : props.rel}
+      target={isExternal ? "_blank" : props.target}
+    >
       {children}
     </Link>
   );
@@ -58,8 +77,14 @@ type LinkCardProps = {
 };
 
 export function LinkCard({ description, href, label, title }: LinkCardProps) {
+  const isExternal = isExternalHttpHref(href);
   return (
-    <Link className="card card-interactive link-card" href={href}>
+    <Link
+      className="card card-interactive link-card"
+      href={href}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      target={isExternal ? "_blank" : undefined}
+    >
       <div className="card-stack">
         {label ? <Badge tone="blue">{label}</Badge> : null}
         <h3 className="heading-md">{title}</h3>

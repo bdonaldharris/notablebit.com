@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/app/_components/ui";
 import { products } from "@/app/_content/ecosystem";
 import { routeByHref } from "@/app/_content/site";
@@ -124,7 +123,7 @@ export default function ProductsPage() {
               </div>
             </a>
 
-            <Link className="platform-card" href="https://hindsite.pro">
+            <a className="platform-card" href="https://hindsite.pro" rel="noopener noreferrer" target="_blank">
               <div className="platform-card-media">
                 <Image
                   alt="HindSite product badge"
@@ -144,7 +143,7 @@ export default function ProductsPage() {
                 </p>
                 <Image aria-hidden="true" alt="" className="platform-card-icon" src={hindSiteIcon} />
               </div>
-            </Link>
+            </a>
 
             <article className="platform-card">
               <div className="platform-card-media">

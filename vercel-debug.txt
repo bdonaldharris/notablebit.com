@@ -1,0 +1,766 @@
+Domain to test (e.g. example.com): 
+┌───────────────────────────────────────
+├─────── Fetching IP Addresses
+│
+│ notablebit.com IP range: 216.150.1.1, 216.150.1.65, 216.150.1.129, 216.150.1.193, 216.150.16.1, 216.150.16.65, 216.150.16.129, 216.150.16.193
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── STARTING
+│
+│ Domain to test: notablebit.com 
+│ Timestamp (UTC): Tue Jun 23 18:03:37 UTC 2026
+│ Timestamp (Local): Tue Jun 23 13:03:37 CDT 2026
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── IP Information 
+
+{
+  "ip": "172.110.140.5",
+  "city": "Tulsa",
+  "region": "Oklahoma",
+  "country": "US",
+  "loc": "36.1540,-95.9928",
+  "org": "AS63333 ONEOK",
+  "postal": "74103",
+  "timezone": "America/Chicago",
+  "readme": "https://ipinfo.io/missingauth"
+}
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.1.1 
+Checking headers via 216.150.1.1
+* Connecting to hostname: 216.150.1.1
+*   Trying 216.150.1.1:443...
+* Connected to 216.150.1.1 (216.150.1.1) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:39 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::xd54r-1782237819177-a9d6dec84e3a
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.1.1 left intact
+
+Checking ping to 216.150.1.1
+PING 216.150.1.1 (216.150.1.1): 56 data bytes
+64 bytes from 216.150.1.1: icmp_seq=0 ttl=244 time=12.885 ms
+64 bytes from 216.150.1.1: icmp_seq=1 ttl=244 time=16.068 ms
+64 bytes from 216.150.1.1: icmp_seq=2 ttl=244 time=39.039 ms
+64 bytes from 216.150.1.1: icmp_seq=3 ttl=244 time=89.060 ms
+
+--- 216.150.1.1 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 12.885/39.263/89.060/30.470 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.1.65 
+Checking headers via 216.150.1.65
+* Connecting to hostname: 216.150.1.65
+*   Trying 216.150.1.65:443...
+* Connected to 216.150.1.65 (216.150.1.65) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:43 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::pgn5l-1782237823010-6497fe312414
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.1.65 left intact
+
+Checking ping to 216.150.1.65
+PING 216.150.1.65 (216.150.1.65): 56 data bytes
+64 bytes from 216.150.1.65: icmp_seq=0 ttl=245 time=15.010 ms
+64 bytes from 216.150.1.65: icmp_seq=1 ttl=245 time=15.043 ms
+64 bytes from 216.150.1.65: icmp_seq=2 ttl=245 time=16.181 ms
+64 bytes from 216.150.1.65: icmp_seq=3 ttl=245 time=17.974 ms
+
+--- 216.150.1.65 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 15.010/16.052/17.974/1.206 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.1.129 
+Checking headers via 216.150.1.129
+* Connecting to hostname: 216.150.1.129
+*   Trying 216.150.1.129:443...
+* Connected to 216.150.1.129 (216.150.1.129) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:46 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::nn8p9-1782237826472-fe4669f456ca
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.1.129 left intact
+
+Checking ping to 216.150.1.129
+PING 216.150.1.129 (216.150.1.129): 56 data bytes
+64 bytes from 216.150.1.129: icmp_seq=0 ttl=244 time=15.459 ms
+64 bytes from 216.150.1.129: icmp_seq=1 ttl=244 time=19.200 ms
+64 bytes from 216.150.1.129: icmp_seq=2 ttl=244 time=25.932 ms
+64 bytes from 216.150.1.129: icmp_seq=3 ttl=244 time=73.971 ms
+
+--- 216.150.1.129 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 15.459/33.641/73.971/23.585 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.1.193 
+Checking headers via 216.150.1.193
+* Connecting to hostname: 216.150.1.193
+*   Trying 216.150.1.193:443...
+* Connected to 216.150.1.193 (216.150.1.193) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:49 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::zzxwq-1782237829874-ede6c7511743
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.1.193 left intact
+
+Checking ping to 216.150.1.193
+PING 216.150.1.193 (216.150.1.193): 56 data bytes
+64 bytes from 216.150.1.193: icmp_seq=0 ttl=244 time=23.792 ms
+64 bytes from 216.150.1.193: icmp_seq=1 ttl=244 time=22.477 ms
+64 bytes from 216.150.1.193: icmp_seq=2 ttl=244 time=12.578 ms
+64 bytes from 216.150.1.193: icmp_seq=3 ttl=244 time=12.305 ms
+
+--- 216.150.1.193 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 12.305/17.788/23.792/5.368 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.16.1 
+Checking headers via 216.150.16.1
+* Connecting to hostname: 216.150.16.1
+*   Trying 216.150.16.1:443...
+* Connected to 216.150.16.1 (216.150.16.1) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:53 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::jpsvn-1782237833167-c69e1a46fa18
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.16.1 left intact
+
+Checking ping to 216.150.16.1
+PING 216.150.16.1 (216.150.16.1): 56 data bytes
+64 bytes from 216.150.16.1: icmp_seq=0 ttl=245 time=13.929 ms
+64 bytes from 216.150.16.1: icmp_seq=1 ttl=245 time=103.060 ms
+64 bytes from 216.150.16.1: icmp_seq=2 ttl=245 time=94.211 ms
+64 bytes from 216.150.16.1: icmp_seq=3 ttl=245 time=14.785 ms
+
+--- 216.150.16.1 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 13.929/56.496/103.060/42.256 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.16.65 
+Checking headers via 216.150.16.65
+* Connecting to hostname: 216.150.16.65
+*   Trying 216.150.16.65:443...
+* Connected to 216.150.16.65 (216.150.16.65) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:56 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::zcl89-1782237836655-e91d61fb7f9c
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.16.65 left intact
+
+Checking ping to 216.150.16.65
+PING 216.150.16.65 (216.150.16.65): 56 data bytes
+64 bytes from 216.150.16.65: icmp_seq=0 ttl=245 time=13.527 ms
+64 bytes from 216.150.16.65: icmp_seq=1 ttl=245 time=13.279 ms
+64 bytes from 216.150.16.65: icmp_seq=2 ttl=245 time=16.023 ms
+64 bytes from 216.150.16.65: icmp_seq=3 ttl=245 time=14.851 ms
+
+--- 216.150.16.65 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 13.279/14.420/16.023/1.102 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.16.129 
+Checking headers via 216.150.16.129
+* Connecting to hostname: 216.150.16.129
+*   Trying 216.150.16.129:443...
+* Connected to 216.150.16.129 (216.150.16.129) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:03:59 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::8dgq6-1782237839950-126cc98cff0d
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.16.129 left intact
+
+Checking ping to 216.150.16.129
+PING 216.150.16.129 (216.150.16.129): 56 data bytes
+64 bytes from 216.150.16.129: icmp_seq=0 ttl=244 time=14.432 ms
+64 bytes from 216.150.16.129: icmp_seq=1 ttl=244 time=15.451 ms
+64 bytes from 216.150.16.129: icmp_seq=2 ttl=244 time=15.531 ms
+64 bytes from 216.150.16.129: icmp_seq=3 ttl=244 time=18.699 ms
+
+--- 216.150.16.129 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 14.432/16.028/18.699/1.602 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Testing 216.150.16.193 
+Checking headers via 216.150.16.193
+* Connecting to hostname: 216.150.16.193
+*   Trying 216.150.16.193:443...
+* Connected to 216.150.16.193 (216.150.16.193) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4092 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.notablebit.com
+*  start date: Jun 23 16:34:53 2026 GMT
+*  expire date: Sep 21 16:34:52 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 308 
+< cache-control: public, max-age=0, must-revalidate
+< content-type: text/plain
+< date: Tue, 23 Jun 2026 18:04:03 GMT
+< location: https://www.notablebit.com/
+< refresh: 0;url=https://www.notablebit.com/
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-vercel-id: cle1::dvhgb-1782237843305-22f03db8cbef
+< 
+{ [15 bytes data]
+* Connection #0 to host 216.150.16.193 left intact
+
+Checking ping to 216.150.16.193
+PING 216.150.16.193 (216.150.16.193): 56 data bytes
+64 bytes from 216.150.16.193: icmp_seq=0 ttl=244 time=12.831 ms
+64 bytes from 216.150.16.193: icmp_seq=1 ttl=244 time=13.968 ms
+64 bytes from 216.150.16.193: icmp_seq=2 ttl=244 time=15.023 ms
+64 bytes from 216.150.16.193: icmp_seq=3 ttl=244 time=16.540 ms
+
+--- 216.150.16.193 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 12.831/14.591/16.540/1.367 ms
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── dig notablebit.com 
+
+
+; <<>> DiG 9.10.6 <<>> notablebit.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 61044
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;notablebit.com.			IN	A
+
+;; ANSWER SECTION:
+notablebit.com.		2457	IN	A	162.241.253.201
+
+;; Query time: 6 msec
+;; SERVER: 192.168.32.50#53(192.168.32.50)
+;; WHEN: Tue Jun 23 13:04:06 CDT 2026
+;; MSG SIZE  rcvd: 59
+
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── dig notablebit.com via 8.8.8.8
+
+
+; <<>> DiG 9.10.6 <<>> notablebit.com @8.8.8.8
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49232
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;notablebit.com.			IN	A
+
+;; ANSWER SECTION:
+notablebit.com.		1800	IN	A	216.150.1.193
+notablebit.com.		1800	IN	A	216.150.16.193
+
+;; Query time: 26 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Tue Jun 23 13:04:06 CDT 2026
+;; MSG SIZE  rcvd: 75
+
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── dig notablebit.com via trace
+
+
+; <<>> DiG 9.10.6 <<>> notablebit.com +trace
+;; global options: +cmd
+.			1357	IN	NS	e.root-servers.net.
+.			1357	IN	NS	f.root-servers.net.
+.			1357	IN	NS	g.root-servers.net.
+.			1357	IN	NS	h.root-servers.net.
+.			1357	IN	NS	i.root-servers.net.
+.			1357	IN	NS	j.root-servers.net.
+.			1357	IN	NS	k.root-servers.net.
+.			1357	IN	NS	l.root-servers.net.
+.			1357	IN	NS	m.root-servers.net.
+.			1357	IN	NS	a.root-servers.net.
+.			1357	IN	NS	b.root-servers.net.
+.			1357	IN	NS	c.root-servers.net.
+.			1357	IN	NS	d.root-servers.net.
+;; Received 460 bytes from 192.168.32.50#53(192.168.32.50) in 5 ms
+
+com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	b.gtld-servers.net.
+com.			172800	IN	NS	g.gtld-servers.net.
+com.			172800	IN	NS	l.gtld-servers.net.
+com.			172800	IN	NS	m.gtld-servers.net.
+com.			172800	IN	NS	a.gtld-servers.net.
+com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			86400	IN	DS	19718 13 2 8ACBB0CD28F41250A80A491389424D341522D946B0DA0C0291F2D3D7 71D7805A
+com.			86400	IN	RRSIG	DS 8 1 86400 20260706170000 20260623160000 54393 . DTl4ADx3vbc7yougRJNFjH6IFKa3QRhfdlB8N9pRzKzMGjCsZJDdumr+ dFS03XZ71c21aVdwzl6wK8pu4I6C+6r+c5nw0QIBKv8u3BpfNdfPTyKj NQSRGDikxdSP7rPMT0toKpEQ8MKsYOK3x9UJYs8Yv/8Faf74TtNvrTC8 +/6G1AnoCtJyNfO5HMvTFfhmmhGuZG5fLXa+gytubN2zyLGGUdS+jSb3 TDO8IBjHsI7wOLNGL/zFe5fv8S/8VTVKxVb3aYmrn33SIfvjS3k9oiu3 byn6dylawgFy1enxKf2m9wt2BNG2anQTDm+1lo2XRQtEgyG8p8kjEskx gVXRLA==
+;; Received 1174 bytes from 202.12.27.33#53(m.root-servers.net) in 60 ms
+
+notablebit.com.		172800	IN	NS	ns1.vercel-dns.com.
+notablebit.com.		172800	IN	NS	ns2.vercel-dns.com.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 900 IN NSEC3 1 1 0 - CK0Q3UDG8CEKKAE7RUKPGCT1DVSSH8LL  NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 900 IN RRSIG NSEC3 13 2 900 20260627002625 20260619231625 27677 com. xBR5gQl1LLdvL132DUAfuFOBVShsNGQXbAv/4CbXzL5HtI+d6/VCWvWF W72fSNrBlfSUrMAtrwzNys58siqJbA==
+V6BBVTGDFS7FPSGBDF6802B05MR273JD.com. 900 IN NSEC3 1 1 0 - V6BC2PVTM9924HNI7J2SDKVEU35DAD92  NS DS RRSIG
+V6BBVTGDFS7FPSGBDF6802B05MR273JD.com. 900 IN RRSIG NSEC3 13 2 900 20260630164628 20260623153628 27677 com. uyq3inJegsl6E8dQDXf0O9bgrXZGQRo2qWODA8N+ML2CUAGHtCi72iY/ BTsQK8ZdLmT4hAgwlMknU5pbhXSk7A==
+;; Received 535 bytes from 192.31.80.30#53(d.gtld-servers.net) in 109 ms
+
+notablebit.com.		1800	IN	A	216.150.1.129
+notablebit.com.		1800	IN	A	216.150.1.193
+;; Received 75 bytes from 198.51.44.13#53(ns1.vercel-dns.com) in 163 ms
+
+└───────────────────────────────────────
+
+┌───────────────────────────────────────
+├─────── Output of notablebit.com
+
+* Host notablebit.com:443 was resolved.
+* IPv6: (none)
+* IPv4: 162.241.253.201
+*   Trying 162.241.253.201:443...
+* Connected to notablebit.com (162.241.253.201) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [319 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [4253 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [52 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [52 bytes data]
+* SSL connection using TLSv1.3 / AEAD-AES256-GCM-SHA384 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=cpcalendars.notablebit.com
+*  start date: Jun  2 02:43:06 2026 GMT
+*  expire date: Aug 31 02:43:05 2026 GMT
+*  issuer: C=US; O=Let's Encrypt; CN=YR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://notablebit.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: notablebit.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: notablebit.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 200 
+< date: Tue, 23 Jun 2026 18:04:10 GMT
+< server: nginx/1.29.8
+< content-type: text/html
+< content-length: 615
+< last-modified: Tue, 19 Aug 2025 14:31:11 GMT
+< vary: Accept-Encoding
+< host-header: c2hhcmVkLmJsdWVob3N0LmNvbQ==
+< x-server-cache: true
+< x-proxy-cache: HIT
+< accept-ranges: bytes
+< 
+{ [615 bytes data]
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotableBIT - Home</title>
+    <meta name="description" content="Celebrating Black excellence in technology while providing strategic digital solutions to growing businesses." />
+    <script type="module" crossorigin src="/assets/index-CTQrPq3K.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BckmldWO.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+* Connection #0 to host notablebit.com left intact
+
+└───────────────────────────────────────
+
+
+┌───────────────────────────────────────
+│ Time elapsed: 33 seconds
+│
+├─────── FINISHED
+└───────────────────────────────────────
+
+
+
+File can be found at /Users/bdonaldharris/repos/notablebit.com/vercel-debug.txt
+
