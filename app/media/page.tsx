@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/app/_components/ui";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
@@ -71,7 +72,17 @@ export default function MediaPage() {
             </p>
           </div>
           <PodcastShorts />
-          <p className="body-copy podcast-showcase-context">
+          <div className="media-podcast-actions">
+            <Link
+              className="media-podcast-link"
+              href="https://www.youtube.com/@notablebit"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Visit BIT Voices Podcast
+            </Link>
+          </div>
+          <p className="body-copy podcast-showcase-context media-podcast-note">
             Formerly The Notable &amp; Black in Tech Podcast, BIT Voices Podcast now sits inside the broader NotableBIT media and community ecosystem.
           </p>
         </div>

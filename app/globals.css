@@ -2221,6 +2221,58 @@ a.platform-card:focus-visible {
   max-width: 860px;
 }
 
+.media-podcast-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 22px;
+  max-width: 860px;
+}
+
+.media-podcast-link {
+  align-items: center;
+  background: rgb(255 255 255 / 0.02);
+  border: 1px solid rgb(179 197 255 / 0.26);
+  border-radius: var(--radius-sm);
+  color: rgb(223 229 247 / 0.92);
+  display: inline-flex;
+  font-family: var(--font-meta);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  min-height: 42px;
+  padding: 10px 14px;
+  text-transform: uppercase;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.media-podcast-link:hover {
+  border-color: rgb(179 197 255 / 0.5);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.media-podcast-link:focus-visible {
+  border-color: var(--blue-soft);
+  outline: 2px solid var(--blue-soft);
+  outline-offset: 3px;
+}
+
+@media (min-width: 1200px) {
+  .media-podcast-note {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1199px) {
+  .media-podcast-note {
+    white-space: normal;
+  }
+}
+
 .media-infrastructure-header {
   max-width: 900px;
 }
