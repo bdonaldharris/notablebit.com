@@ -5,6 +5,7 @@ import { Button } from "@/app/_components/ui";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 import { PodcastShorts } from "@/app/media/podcast-shorts";
+import styles from "@/app/media/media-refinements.module.css";
 
 const route = routeByHref.get("/media")!;
 
@@ -72,9 +73,9 @@ export default function MediaPage() {
             </p>
           </div>
           <PodcastShorts />
-          <div className="media-podcast-actions">
+          <div className={`media-podcast-actions ${styles.podcastActions}`}>
             <Link
-              className="media-podcast-link"
+              className={`media-podcast-link ${styles.podcastLink}`}
               href="https://www.youtube.com/@notablebit"
               rel="noopener noreferrer"
               target="_blank"
@@ -82,7 +83,7 @@ export default function MediaPage() {
               Visit BIT Voices Podcast
             </Link>
           </div>
-          <p className="body-copy podcast-showcase-context media-podcast-note">
+          <p className={`body-copy podcast-showcase-context media-podcast-note ${styles.podcastNote}`}>
             Formerly The Notable &amp; Black in Tech Podcast, BIT Voices Podcast now sits inside the broader NotableBIT media and community ecosystem.
           </p>
         </div>
