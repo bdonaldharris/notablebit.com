@@ -6,6 +6,7 @@ import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 import aboutHeroImage from "@/assets/originals/about-hero.png";
 import founderPortrait from "@/assets/originals/b-donald.jpeg";
+import styles from "@/app/about/about-refinements.module.css";
 
 const route = routeByHref.get("/about")!;
 
@@ -101,10 +102,10 @@ export default function AboutPage() {
       <section className="section-tight page-section about-founder-section" aria-labelledby="founder-title">
         <div className="container">
           <article className="about-founder-card">
-            <div className="about-founder-media">
+            <div className={`about-founder-media ${styles.founderMedia}`}>
               <Image
                 alt="B Donald Harris portrait"
-                className="about-founder-image"
+                className={`about-founder-image ${styles.founderImage}`}
                 fill
                 sizes="(max-width: 960px) 100vw, (max-width: 1180px) 44vw, 460px"
                 src={founderPortrait}
