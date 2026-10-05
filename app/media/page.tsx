@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 import { PodcastShorts } from "@/app/media/podcast-shorts";
@@ -35,31 +35,13 @@ const mediaPaths = [
 export default function MediaPage() {
   return (
     <main className="media-page">
-      <section className="page-section media-hero" aria-labelledby="page-title">
-        <Image
-          aria-hidden="true"
-          alt=""
-          className="media-hero-atmosphere"
-          fill
-          priority
-          sizes="100vw"
-          src="/assets/originals/media-hero.jpeg"
-        />
-        <div className="container media-hero-grid">
-          <div className="media-hero-copy">
-            <h1 className="display" id="page-title">
-              Media that documents builders, ideas, and the future of Black tech.
-            </h1>
-            <p className="lede">
-              Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology,
-              AI, entrepreneurship, and community.
-            </p>
-            <div className="button-row">
-              <Button href="https://bitvoices.network">Explore BitVoices</Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="media-hero"
+        image="/assets/originals/media-hero.jpeg"
+        lede="Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology, AI, entrepreneurship, and community."
+        primary={{ href: "https://bitvoices.network", label: "Explore BitVoices" }}
+        title="Media that documents builders, ideas, and the future of Black tech."
+      />
 
       <section className="page-section" aria-labelledby="podcast-title">
         <div className="container podcast-showcase">

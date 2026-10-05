@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 
@@ -54,32 +54,13 @@ const decisionZones = [
 export default function ConsultingPage() {
   return (
     <main className="consulting-page">
-      <section className="section consulting-hero" aria-labelledby="page-title">
-        <div className="consulting-hero-media">
-          <Image
-            alt="Strategic advisory workspace with decision maps, product planning notes, AI workflow diagrams, and technical architecture sketches."
-            className="consulting-hero-atmosphere"
-            fill
-            priority
-            sizes="100vw"
-            src="/assets/originals/consulting-hero.jpeg"
-          />
-        </div>
-        <div className="container consulting-hero-grid">
-          <div className="consulting-hero-copy">
-            <h1 className="display" id="page-title">
-              Where product, AI, and technology decisions become buildable paths.
-            </h1>
-            <p className="lede">
-              NotableBIT provides selective advisory for builders, founders, and organizations that need clarity before execution — from
-              product strategy and AI workflows to platform decisions, technical leadership, and implementation-ready plans.
-            </p>
-            <div className="button-row">
-              <Button href="/contact">Start a Consulting Conversation</Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="consulting-hero"
+        image="/assets/originals/consulting-hero.jpeg"
+        lede="NotableBIT provides selective advisory for builders, founders, and organizations that need clarity before execution, from product strategy and AI workflows to platform decisions, technical leadership, and implementation-ready plans."
+        primary={{ href: "/contact", label: "Start a Consulting Conversation" }}
+        title="Where product, AI, and technology decisions become buildable paths."
+      />
 
       <section className="section-tight page-section consulting-decisions" aria-labelledby="consulting-decisions-title">
         <div className="container">
@@ -88,7 +69,7 @@ export default function ConsultingPage() {
               Five decision zones. One clearer path forward.
             </h2>
             <p className="body-copy">
-              When the next move is unclear, NotableBIT helps locate the real decision and shape the path around it — across product direction,
+              When the next move is unclear, NotableBIT helps locate the real decision and shape the path around it, across product direction,
               AI workflows, technical leadership, software planning, and community platform strategy.
             </p>
           </div>

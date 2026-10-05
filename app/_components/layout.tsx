@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { routes } from "@/app/_content/site";
 import { Button } from "@/app/_components/ui";
 import logoWhite from "@/assets/originals/logo-white-text.png";
+import logoBlack from "@/assets/originals/logo-black-text.png";
 import bitvoicesLogo from "@/assets/originals/bitvoices-icon-logo.png";
 import bitvoicesPodcastLogo from "@/assets/originals/bitvoices-podcast-icon-logo.png";
 import hindsiteLogo from "@/assets/originals/hindsite-icon-logo.png";
@@ -80,14 +81,15 @@ const socials = [
   },
 ];
 
-export function Header() {
+export function Header({ overHero = true }: { overHero?: boolean }) {
   const pathname = usePathname();
+  const isLight = !overHero || pathname === "/contact";
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isLight ? "site-header-light" : "site-header-over-hero"}`}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="NotableBIT home">
-          <Image className="brand-logo" src={logoWhite} alt="NotableBIT" priority />
+          <Image className="brand-logo" src={isLight ? logoBlack : logoWhite} alt="NotableBIT" priority />
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
 import { pageSections } from "@/app/_content/ecosystem";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
@@ -33,31 +33,15 @@ export default function StudioPage() {
 
   return (
     <main>
-      <section className="section studio-hero" aria-labelledby="page-title">
-        <Image
-          aria-hidden="true"
-          alt=""
-          className="studio-hero-atmosphere"
-          fill
-          priority
-          sizes="100vw"
-          src={studioHeroImage}
-        />
-        <div className="container studio-hero-grid">
-          <div className="studio-hero-copy">
-            <h1 className="display" id="page-title">
-              {route.title}
-            </h1>
-            <p className="lede">{route.description}</p>
-            <div className="button-row">
-              <Button href="/contact">Work with the Studio</Button>
-              <Button href="/products" variant="secondary">
-                Explore Products
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="studio-hero"
+        image={studioHeroImage}
+        lede={route.description}
+        objectPosition="62% 52%"
+        primary={{ href: "/contact", label: "Work with the Studio" }}
+        secondary={{ href: "/products", label: "Explore Products" }}
+        title={route.title}
+      />
 
       <section className="section-tight page-section studio-principles-section" aria-labelledby="studio-principles-title">
         <div className="container">

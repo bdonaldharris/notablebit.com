@@ -48,34 +48,34 @@ type MissionOutput = {
 
 const missionOutputs: MissionOutput[] = [
   {
-    source: "Voice",
-    becomes: "Visibility",
-    vehicle: "BitVoices",
-    href: "https://bitvoices.network",
+    source: "Studio",
+    becomes: "Direction",
+    vehicle: "NotableBIT",
+    href: "/studio",
     slot: "voice",
+  },
+  {
+    source: "Podcast",
+    becomes: "Visibility",
+    vehicle: "BIT Voices Podcast",
+    href: "/media",
+    slot: "memory",
+  },
+  {
+    source: "Network",
+    becomes: "Connection",
+    vehicle: "BitVoices Network",
+    href: "https://bitvoices.network",
+    slot: "clarity",
     external: true,
   },
   {
-    source: "Builder Work",
+    source: "Product",
     becomes: "Memory",
     vehicle: "HindSite",
     href: "https://hindsite.pro",
-    slot: "memory",
-    external: true,
-  },
-  {
-    source: "Strategy",
-    becomes: "Clarity",
-    vehicle: "Advisory",
-    href: "/consulting",
-    slot: "clarity",
-  },
-  {
-    source: "Products",
-    becomes: "Infrastructure",
-    vehicle: "NotableBIT Studio",
-    href: "/studio",
     slot: "studio",
+    external: true,
   },
 ];
 
@@ -146,6 +146,7 @@ export default function Home() {
         />
         <div className="container home-hero-grid">
           <div className="home-hero-copy">
+            <p className="eyebrow">NotableBIT</p>
             <h1 className="display" id="page-title">
               <span className="display-declaration">Black technologists are building the future.</span>
             </h1>
@@ -209,7 +210,7 @@ export default function Home() {
               Outputs from the same mission.
             </h2>
             <p className="lede">
-              The ecosystem is not disconnected ventures — it is one visibility mission meeting real builder needs.
+              The ecosystem is not disconnected ventures. It is one visibility mission meeting real builder needs.
             </p>
           </div>
 
@@ -227,6 +228,24 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-tight home-journey" aria-labelledby="journey-title">
+        <div className="container">
+          <h2 className="heading-xl" id="journey-title">
+            From conversation to durable infrastructure.
+          </h2>
+          <ol className="home-journey-rail">
+            {["Listen", "Notice", "Name", "Connect", "Clarify", "Design", "Build", "Remember", "Share"].map((step, index) => (
+              <li key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+          <p className="body-copy">Every part of the ecosystem makes more room for Black builders to be seen, supported, and remembered.</p>
+          <Button href="/contact" variant="secondary">Start a conversation</Button>
         </div>
       </section>
 

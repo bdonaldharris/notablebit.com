@@ -127,7 +127,7 @@ export function PodcastShorts() {
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 src={`https://www.youtube.com/embed/${selectedShort.videoId}`}
-                title={`${selectedShort.title} — BIT Voices Podcast YouTube Short`}
+                title={`${selectedShort.title}, BIT Voices Podcast YouTube Short`}
               />
             </div>
           </section>

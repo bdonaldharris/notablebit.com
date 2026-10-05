@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
+import Image from "next/image";
 import { products } from "@/app/_content/ecosystem";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
@@ -27,31 +28,14 @@ export default function ProductsPage() {
 
   return (
     <main className="products-page">
-      <section className="section products-hero" aria-labelledby="page-title">
-        <Image
-          aria-hidden="true"
-          alt=""
-          className="products-hero-atmosphere"
-          fill
-          priority
-          sizes="100vw"
-          src={productsHeroImage}
-        />
-        <div className="container products-hero-grid">
-          <div className="products-hero-copy">
-            <h1 className="display" id="page-title">
-              {route.title}
-            </h1>
-            <p className="lede">{route.description}</p>
-            <div className="button-row">
-              <Button href="https://hindsite.pro">Join the HindSite Waitlist</Button>
-              <Button href="https://bitvoices.network" variant="secondary">
-                Visit BitVoices
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="products-hero"
+        image={productsHeroImage}
+        lede={route.description}
+        primary={{ href: "https://hindsite.pro", label: "Join the HindSite Waitlist" }}
+        secondary={{ href: "https://bitvoices.network", label: "Visit BitVoices" }}
+        title={route.title}
+      />
 
       <section className="section-tight products-feature-section" aria-labelledby="featured-product">
         <div className="container">
