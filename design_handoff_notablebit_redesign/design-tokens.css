@@ -1,0 +1,42 @@
+/* NotableBIT redesign tokens. Replaces the :root block in app/globals.css. */
+:root{
+  /* surfaces */
+  --nb-paper:#F4F1EA;        /* page background */
+  --nb-paper-band:#E9E5DA;   /* tinted full-width band (home "how the studio builds", about) */
+  --nb-paper-panel:#ECE8DD;  /* tinted bordered panels with 34/44px grid lines */
+  --nb-card:#FAF8F3;         /* cards, form panel, artifact sheet */
+  --nb-ink:#14161B;          /* text, dark hero, footer */
+  --nb-ink-2:#2E3139;        /* lede on light */
+  --nb-ink-3:#3A3D45;        /* body copy on light */
+  --nb-muted:#5A5D66;        /* captions, labels */
+  --nb-ink-header:#1F2430;   /* consulting zone card header */
+  /* on dark */
+  --nb-cream:#F4F1EA;
+  --nb-cream-2:#E8E4DA;      /* hero lede on dark */
+  --nb-cream-muted:#C9C5BC;  /* nav, footer text on dark */
+  /* brand (sampled from logo-white-text.png) */
+  --nb-red:#F9313C;
+  --nb-blue:#014DF9;
+  /* lines */
+  --nb-line:rgba(20,22,27,.2);
+  --nb-line-soft:rgba(20,22,27,.14);
+  --nb-rule:linear-gradient(90deg,var(--nb-red),var(--nb-blue) 50%,transparent 88%);
+  /* sticky notes / paper */
+  --nb-note:linear-gradient(145deg,#f4e5a8 0%,#e8cf7a 100%);
+  --nb-note-old:linear-gradient(145deg,#f6edd9 0%,#eaddbd 100%); /* studio principles */
+  /* terminal (studio disciplines) */
+  --nb-term-bg:#030405; --nb-term-fg:#8fdc95; --nb-term-title:#9be7a1;
+  /* type */
+  --nb-font-display:var(--font-newsreader),Newsreader,Georgia,serif;
+  --nb-font-body:var(--font-plex-sans),"IBM Plex Sans",Helvetica,Arial,sans-serif;
+  --nb-font-mono:var(--font-plex-mono),"IBM Plex Mono",ui-monospace,monospace;
+  /* radii, layout */
+  --nb-radius-pill:999px; --nb-radius-card:8px; --nb-radius-sheet:4px;
+  --nb-frame:1280px; --nb-gutter:56px; --nb-container:1180px; --nb-header-h:78px; --nb-logo-h:66px;
+  /* dark hero (default on all image-hero pages) */
+  --nb-hero-overlay-dark:linear-gradient(90deg,rgba(20,22,27,.92) 0%,rgba(20,22,27,.82) 42%,rgba(20,22,27,.52) 72%,rgba(20,22,27,.7) 100%);
+  --nb-hero-img-dark:saturate(.9) contrast(1.05) brightness(.64);  /* image opacity .6 */
+  /* light hero (optional variant) */
+  --nb-hero-overlay-light:linear-gradient(90deg,rgba(244,241,234,.97) 0%,rgba(244,241,234,.9) 42%,rgba(244,241,234,.6) 72%,rgba(244,241,234,.78) 100%);
+  --nb-hero-img-light:saturate(.9) contrast(1.02) brightness(1.08); /* image opacity .55 */
+}

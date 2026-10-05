@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9E7E2;font-family:"IBM Plex Sans",Helvetica,Arial,sans-serif;color:#14161B;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#014DF9}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<section style="padding:64px 64px 24px;display:flex;flex-direction:column;gap:28px;max-width:1500px">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5A5D66">notablebit.com · homepage · redesign suggestion</div>
+    <h1 style="font-family:Newsreader,Georgia,serif;font-weight:500;font-size:48px;line-height:1.05;margin:0;letter-spacing:-.01em">What I noticed in the current build</h1>
+  </div>
+  <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 40px;max-width:1400px">
+    <li style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #14161B;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">01 · globals.css :root, body, .site-shell</span><strong style="font-size:17px;font-weight:600">Too many colors and layers at once</strong><span style="font-size:15px;line-height:1.55;color:#3A3D45;text-wrap:pretty">There are 9 color tokens (blue, violet, amber, burgundy, cream, green…), 4 radial glows, a grid overlay and a woven texture behind every page. Your preferences ask for restraint and no visual interruption. The design-direction doc lists these as accents to use sparingly, but right now they all show up together.</span></li>
+    <li style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #14161B;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">02 · logo-white-text.png vs --blue</span><strong style="font-size:17px;font-weight:600">The site doesn't use the logo's colors</strong><span style="font-size:15px;line-height:1.55;color:#3A3D45;text-wrap:pretty">The logo mark is red <b>#F9313C</b> and blue <b>#014DF9</b>. The site uses <b>#0066FF</b>, and the red appears nowhere. The physical studio (white walls, red and blue on screen) is lighter and warmer than the site.</span></li>
+    <li style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #14161B;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">03 · .home-hero-copy .lede { margin-top: 204px }</span><strong style="font-size:17px;font-weight:600">Large empty gap in the hero</strong><span style="font-size:15px;line-height:1.55;color:#3A3D45;text-wrap:pretty">There's 204px of space between the headline and the line that explains it, so the reader loses the thread. Below the hero, the mission card, ecosystem core and founder band each have their own gradient panel at about the same visual weight, so nothing stands out as most important.</span></li>
+    <li style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #14161B;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">04 · page.tsx missionOutputs · layout.tsx ecosystemLogos</span><strong style="font-size:17px;font-weight:600">Ecosystem order and names are inconsistent</strong><span style="font-size:15px;line-height:1.55;color:#3A3D45;text-wrap:pretty">The diagram reads BitVoices → HindSite → Advisory → Studio, and the footer starts with B Donald Harris. Your established order is <b>NotableBIT | BIT Voices Podcast | BitVoices Network | HindSite</b>. Also, "Start with BitVoices" links to /media, which mixes up the podcast and the network.</span></li>
+    <li style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #14161B;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">05 · .home-type-* (5 lab classes)</span><strong style="font-size:17px;font-weight:600">The typeface decision is still open</strong><span style="font-size:15px;line-height:1.55;color:#3A3D45;text-wrap:pretty">Five type experiments are still in the CSS. The body font, Aptos, is a Microsoft font, so most Mac and phone visitors see a fallback font instead. Choosing one hosted font pair would make the site look the same for everyone.</span></li>
+    <li style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #14161B;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">06 · 08-notablebit.md</span><strong style="font-size:17px;font-weight:600">The homepage doesn't say what the studio does</strong><span style="font-size:15px;line-height:1.55;color:#3A3D45;text-wrap:pretty">Your own description of the work — idea → … → verified deployment, and helping people become better builders — doesn't appear on the homepage. <a href="#1b" style="color:#014DF9">1b</a> adds it as one band, written in your own words. It's new content, so tell me if you'd rather leave it out.</span></li>
+  </ol>
+</section>
+
+<section style="padding:40px 64px 96px;display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+
+<!-- ============ 1a CURRENT ============ -->
+<div id="1a" style="display:flex;flex-direction:column;gap:16px;width:1280px">
+  <div style="display:flex;gap:14px;align-items:baseline">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;background:#14161B;color:#F4F1EA;padding:4px 8px;border-radius:3px">1a</span>
+    <span style="font-size:20px;font-weight:600">Current homepage</span>
+    <span style="font-size:14px;color:#5A5D66">Rebuilt from page.tsx, layout.tsx and globals.css, as a baseline for comparison</span>
+  </div>
+  <div style="width:1280px;background:#070b14;color:#f5f7ff;font-family:Aptos,'Segoe UI','Helvetica Neue',Arial,sans-serif;border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(20,22,27,.25)">
+    <header style="background:rgba(5,7,13,.84);border-bottom:1px solid rgba(179,197,255,.12);position:relative">
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;min-height:78px">
+        <img src="./assets/logo-white-text.png" alt="NotableBIT" style="height:66px;width:auto;display:block">
+        <nav style="display:flex;gap:18px;justify-content:center;font-size:15px;color:#c5c8d6">
+          <sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#1a" style="padding-bottom:4px">{{ r }}</a></sc-for>
+        </nav>
+        <a href="#1a" style="background:#0066ff;color:#fff;font-family:'SFMono-Regular',Menlo,monospace;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:10px 14px;border-radius:4px;min-height:40px;display:inline-flex;align-items:center;box-shadow:0 0 32px rgba(0,102,255,.28)">Start a Conversation</a>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:-1px;height:1px;opacity:.6;background:linear-gradient(90deg,#e7ad3c,#0066ff 38%,transparent 72%)"></div>
+    </header>
+
+    <section style="position:relative;overflow:hidden;padding:46px 0 64px;isolation:isolate">
+      <img src="./assets/first_podcast_set.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 68%;opacity:.5;filter:saturate(.95) contrast(1.05) brightness(.86);z-index:-2">
+      <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,13,.85) 0%,rgba(5,7,13,.78) 38%,rgba(7,11,20,.58) 72%,rgba(7,11,20,.76) 100%),radial-gradient(circle at 18% 16%,rgba(241,231,210,.13),transparent 32%),radial-gradient(circle at 72% 18%,rgba(86,60,142,.16),transparent 44%),radial-gradient(circle at 62% 88%,rgba(124,36,54,.2),transparent 42%)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:-1px;height:180px;z-index:-1;background:linear-gradient(180deg,transparent 0%,rgba(7,11,20,.72) 58%,#070b14 100%)"></div>
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+        <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:60px;font-weight:700;line-height:1.05;margin:0;max-width:860px;text-wrap:balance">Black technologists are building the future.</h1>
+        <p style="color:rgba(241,231,210,.86);font-size:18.2px;line-height:1.68;margin:204px 0 0;max-width:790px">What began as a podcast to amplify Black technologists has grown into a Black-founded studio building media, products, platforms, and strategic systems for the AI era.</p>
+        <div style="display:flex;gap:12px;margin-top:26px">
+          <a href="#1a" style="background:#0066ff;color:#fff;font-family:'SFMono-Regular',Menlo,monospace;font-size:12.2px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;padding:12px 18px;border-radius:4px;min-height:44px;display:inline-flex;align-items:center;box-shadow:0 0 32px rgba(0,102,255,.28)">Explore the Ecosystem</a>
+          <a href="#1a" style="background:rgba(255,255,255,.03);border:1px solid rgba(179,197,255,.24);color:#f5f7ff;font-family:'SFMono-Regular',Menlo,monospace;font-size:12.2px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;padding:12px 18px;border-radius:4px;min-height:44px;display:inline-flex;align-items:center">Start With Voice</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:20px 0 40px">
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;align-items:center">
+        <figure style="margin:0;background:rgba(241,231,210,.06);border:1px solid rgba(241,231,210,.18);border-radius:8px;padding:14px">
+          <img src="./assets/bitvoices-podcast-logo.png" alt="BitVoices podcast logo" style="width:100%;display:block">
+          <figcaption style="border-top:1px solid rgba(241,231,210,.14);color:rgba(241,231,210,.62);display:grid;gap:5px;font-family:'SFMono-Regular',Menlo,monospace;font-size:11.5px;letter-spacing:.02em;padding-top:12px;margin-top:0;text-transform:uppercase"><span>First vehicle</span><strong style="color:#f1e7d2;font-size:13.8px">Podcast origin</strong></figcaption>
+        </figure>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+          <sc-for list="{{ ledger }}" as="l" hint-placeholder-count="3">
+            <article style="display:grid;row-gap:8px;padding:8px 24px;border-left:{{ l.border }}">
+              <p style="margin:0;font-family:'SFMono-Regular',Menlo,monospace;color:#f6d79a;font-size:12.2px;font-weight:680;letter-spacing:.02em;text-transform:uppercase">{{ l.label }}</p>
+              <h3 style="margin:0;color:#f1e7d2;font-size:17.3px;font-weight:740;line-height:1.26">{{ l.title }}</h3>
+              <p style="margin:0;color:rgba(241,231,210,.82);font-size:15.7px;line-height:1.58">{{ l.detail }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:34px 0">
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+        <div style="max-width:720px;margin:0 auto;padding:48px;text-align:center;border-radius:8px;background:linear-gradient(135deg,rgba(92,28,38,.22),rgba(15,23,42,.68));border:1px solid rgba(218,181,94,.22);box-shadow:inset 0 1px 0 rgba(245,199,111,.22),0 24px 70px rgba(0,0,0,.28)">
+          <p style="margin:0;color:#f1e7d2;font-family:Georgia,serif;font-size:24.8px;font-style:italic;font-weight:700;line-height:1.36">Black technologists should be seen, remembered, and connected to the future they are already building.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:48px 0 64px">
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+        <h2 style="margin:0;color:#f1e7d2;font-size:37.8px;font-weight:740;line-height:1.13">Outputs from the same mission.</h2>
+        <p style="margin:24px 0 0;color:rgba(245,247,255,.88);font-size:17.3px;line-height:1.64;max-width:780px">The ecosystem is not disconnected ventures — it is one visibility mission meeting real builder needs.</p>
+        <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:400px;margin-top:32px">
+          <div style="position:absolute;left:50%;top:18px;bottom:18px;width:1px;background:linear-gradient(to bottom,rgba(218,181,94,.16) 0 calc(50% - 80px),transparent calc(50% - 80px) calc(50% + 80px),rgba(218,181,94,.16) calc(50% + 80px) 100%)"></div>
+          <div style="position:absolute;top:50%;left:18px;right:18px;height:1px;background:linear-gradient(to right,rgba(218,181,94,.16) 0 calc(50% - 140px),transparent calc(50% - 140px) calc(50% + 140px),rgba(218,181,94,.16) calc(50% + 140px) 100%)"></div>
+          <sc-for list="{{ outputs }}" as="o" hint-placeholder-count="4">
+            <article style="display:grid;align-content:center;gap:9px;padding:32px 76px;text-align:center;position:relative;z-index:1">
+              <h3 style="margin:0;color:#f1e7d2;font-size:24px;font-weight:740">{{ o.vehicle }}</h3>
+              <p style="margin:0;color:rgba(241,231,210,.58);font-size:13px;font-weight:560">{{ o.fn }}</p>
+            </article>
+          </sc-for>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:252px;min-height:132px;padding:28px;display:grid;gap:7px;justify-content:center;align-items:center;text-align:center;border-radius:8px;z-index:2;background:linear-gradient(135deg,rgba(49,42,125,.72),rgba(92,28,38,.28));border:1px solid rgba(218,181,94,.28);box-shadow:0 24px 70px rgba(0,0,0,.28),inset 0 1px 0 rgba(245,199,111,.22)">
+            <strong style="color:#f1e7d2;font-size:27px;font-weight:760">Visibility</strong>
+            <span style="color:rgba(241,231,210,.62);font-size:13px;font-weight:620">Mission</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:34px 0;background:linear-gradient(135deg,rgba(92,28,38,.18),rgba(15,23,42,.52) 52%,rgba(8,10,18,.92));border-top:1px solid rgba(241,231,210,.1);border-bottom:1px solid rgba(241,231,210,.1)">
+      <figure style="max-width:780px;margin:0 auto;padding:0 44px 0 88px;position:relative">
+        <span style="position:absolute;left:34px;top:50%;transform:translateY(-50%);font-family:Georgia,serif;font-size:76px;line-height:1;color:rgba(218,181,94,.24)">“</span>
+        <blockquote style="margin:0;color:#f1e7d2;font-family:Georgia,serif;font-size:21.6px;font-style:italic;font-weight:700;line-height:1.36">This work began with conversations. It is still about people, memory, visibility, and ownership.</blockquote>
+        <figcaption style="margin-top:12px;color:#f6d79a;font-family:'SFMono-Regular',Menlo,monospace;font-size:12.5px;letter-spacing:.02em;text-transform:uppercase">B Donald Harris, Founder, NotableBIT</figcaption>
+      </figure>
+    </section>
+
+    <section style="padding:40px 0 24px">
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+        <h2 style="margin:0;color:#f1e7d2;font-size:37.8px;font-weight:740;line-height:1.13">Where to enter the ecosystem.</h2>
+        <ol style="list-style:none;margin:24px 0 0;padding:0;border-top:1px solid rgba(241,231,210,.2)">
+          <sc-for list="{{ entries }}" as="e" hint-placeholder-count="4">
+            <li style="border-bottom:1px solid rgba(241,231,210,.14)">
+              <a href="#1a" style="display:grid;grid-template-columns:48px 100px minmax(0,1fr) auto;column-gap:34px;align-items:center;padding:18px 0">
+                <span style="font-family:'SFMono-Regular',Menlo,monospace;color:rgba(241,231,210,.5);font-size:21px;font-weight:600">{{ e.n }}</span>
+                <span style="font-family:'SFMono-Regular',Menlo,monospace;color:#f6d79a;font-size:11.5px;font-weight:680;letter-spacing:.12em;text-transform:uppercase">{{ e.label }}</span>
+                <span style="display:block;max-width:520px"><span style="display:block;color:#f1e7d2;font-size:17.3px;font-weight:740">{{ e.title }}</span><span style="display:block;color:rgba(241,231,210,.6);font-size:15.2px;margin-top:5px">{{ e.desc }}</span></span>
+                <span style="font-family:'SFMono-Regular',Menlo,monospace;color:#f6d79a;opacity:.72;font-size:11.2px;letter-spacing:.16em;text-transform:uppercase">Enter →</span>
+              </a>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <footer style="background:#070b14;color:#f5f7ff;border-top:1px solid rgba(179,197,255,.12);padding:20px 56px 16px;display:flex;flex-direction:column;gap:12px;font-family:Aptos,'Segoe UI',Arial,sans-serif">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:32px;align-items:center;justify-items:center">
+        <img src="./assets/logo-white-text.png" alt="NotableBIT" style="width:280px;display:block;margin:-34px 0 -38px">
+        <p style="margin:0;max-width:340px;font-size:15px;line-height:1.6;text-align:center;color:#c5c8d6">A Black-founded technology studio building products, platforms, media, and strategic systems for builders moving with clarity, context, and ownership.</p>
+        <nav style="display:grid;grid-template-columns:repeat(2,auto);gap:10px 36px;font-size:15px;color:#c5c8d6"><a href="#1a">Home</a><sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#1a">{{ r }}</a></sc-for></nav>
+        <div style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:14px;align-items:center;justify-content:center">
+          <a href="https://bdonaldharris.com" aria-label="B Donald Harris"><img src="./assets/bdh-logo.png" alt="B Donald Harris" style="height:30px;border-radius:3px;display:block"></a>
+          <a href="https://www.youtube.com/@notablebit" aria-label="BIT Voices Podcast"><img src="./assets/bitvoices-podcast-icon-logo.png" alt="BIT Voices Podcast" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://bitvoices.network" aria-label="BitVoices Network"><img src="./assets/bitvoices-icon-logo.png" alt="BitVoices Network" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://hindsite.pro" aria-label="HindSite"><img src="./assets/hindsite-icon-logo.png" alt="HindSite" style="height:36px;border-radius:3px;display:block"></a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(179,197,255,.1);padding-top:14px">
+        <div style="display:flex;gap:18px;color:#c5c8d6"><sc-for list="{{ socials }}" as="s" hint-placeholder-count="6"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="{{ s }}"></path></svg></sc-for></div>
+        <p style="margin:0;color:#c5c8d6;font-family:'SFMono-Regular',Menlo,monospace;font-size:12px;letter-spacing:.06em">© 2026 NotableBIT. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ============ 1b LINER NOTES (light) ============ -->
+<div id="1b" style="display:flex;flex-direction:column;gap:16px;width:1280px">
+  <div style="display:flex;gap:14px;align-items:baseline">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;background:#14161B;color:#F4F1EA;padding:4px 8px;border-radius:3px">1b</span>
+    <span style="font-size:20px;font-weight:600">Liner Notes: light, editorial, using the logo's two colors</span>
+  </div>
+  <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start;font-size:14.5px;line-height:1.55;color:#3A3D45">
+    <div style="display:flex;gap:6px">
+      <div style="width:44px;height:44px;background:#F4F1EA;border:1px solid #CFCBC2"></div>
+      <div style="width:44px;height:44px;background:#14161B"></div>
+      <div style="width:44px;height:44px;background:#F9313C"></div>
+      <div style="width:44px;height:44px;background:#014DF9"></div>
+    </div>
+    <p style="margin:0;max-width:880px;text-wrap:pretty"><b>The bigger change.</b> A warm paper background and near-black text, plus exactly two accents: the logo's red and blue. Red marks voice and media (podcast, Listen); blue marks action and building (buttons, links, deployment). The palette matches the room you actually record in. Type is Newsreader for headlines, IBM Plex Sans for body text and Plex Mono for labels. The layout is modeled on album liner notes: a tracklist for the ecosystem, numbered steps for how you build, and captions under photos. <b>Tradeoff:</b> this moves away from the "dark navy foundation" in notablebit-design-direction.md §5, which you'd need to update.</p>
+  </div>
+  <div style="width:1280px;background:#F4F1EA;color:#14161B;font-family:'IBM Plex Sans',Helvetica,sans-serif;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(20,22,27,.18)">
+    <header style="position:absolute;top:0;left:0;right:0;z-index:5">
+      <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;min-height:78px">
+        <img src="./assets/logo-white-text.png" alt="NotableBIT" style="height:66px;width:auto;display:block">
+        <nav style="display:flex;gap:28px;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#E8E4DA">
+          <sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#1b" style="padding-bottom:4px">{{ r }}</a></sc-for>
+        </nav>
+        <a href="#1b" style="background:#014DF9;color:#fff;font-size:15px;font-weight:500;padding:11px 20px;border-radius:999px;display:inline-flex;align-items:center">Start a conversation</a>
+      </div>
+    </header>
+    <section style="position:relative;overflow:hidden;isolation:isolate;min-height:720px;background:#14161B;color:#F4F1EA">
+      <img src="./assets/first_podcast_set.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 68%;opacity:.55;filter:saturate(.95) contrast(1.05) brightness(.86);z-index:-2">
+      <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,22,27,.9) 0%,rgba(20,22,27,.8) 40%,rgba(20,22,27,.5) 72%,rgba(20,22,27,.7) 100%)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:3px;display:grid;grid-template-columns:1fr 1fr"><div style="background:#F9313C"></div><div style="background:#014DF9"></div></div>
+      <div style="max-width:1180px;margin:0 auto;padding:150px 24px 80px;min-height:720px;display:flex;flex-direction:column;justify-content:space-between;gap:64px">
+        <div style="display:flex;flex-direction:column;gap:28px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#D9D5CB;display:flex;gap:14px;align-items:center"><span style="width:8px;height:8px;border-radius:50%;background:#F9313C"></span>Black-founded technology studio · Tulsa, Oklahoma</div>
+          <h1 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:92px;line-height:.98;letter-spacing:-.025em;max-width:900px;text-wrap:balance">Black technologists are building the future.</h1>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:28px">
+          <p style="margin:0;font-size:20px;line-height:1.6;max-width:640px;color:#E8E4DA;text-wrap:pretty">What began as a podcast to amplify Black technologists has grown into a Black-founded studio building media, products, platforms, and strategic systems for the AI era.</p>
+          <div style="display:flex;gap:28px;align-items:center">
+            <a href="#1b" style="background:#014DF9;color:#fff;font-size:15.5px;font-weight:500;padding:15px 24px;border-radius:999px">Explore the ecosystem</a>
+            <a href="#1b" style="font-size:15.5px;font-weight:500;border-bottom:1px solid #F4F1EA;padding-bottom:2px">Listen to BIT Voices →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:56px 56px;border-top:1px solid rgba(20,22,27,.14);border-bottom:1px solid rgba(20,22,27,.14)">
+      <p style="margin:0 auto;max-width:960px;text-align:center;font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:400;font-size:40px;line-height:1.22;letter-spacing:-.01em;text-wrap:balance">Black technologists should be seen, remembered, and connected to the future they are already building.</p>
+    </section>
+
+    <section style="display:grid;grid-template-columns:320px minmax(0,1fr);gap:56px;padding:88px 56px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#5A5D66">Tracklist</div>
+        <h2 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:48px;line-height:1.02;letter-spacing:-.015em">One mission, four outputs.</h2>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#3A3D45">These are not separate ventures. Each one answers a real need builders have, and all of them come from the same mission.</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;border-top:1px solid #14161B">
+        <sc-for list="{{ eco }}" as="e" hint-placeholder-count="4">
+          <li style="border-bottom:1px solid rgba(20,22,27,.18)">
+            <a href="#1b" style="display:grid;grid-template-columns:56px minmax(0,1fr) 120px 24px;gap:24px;align-items:baseline;padding:26px 0">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#5A5D66">{{ e.n }}</span>
+              <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:Newsreader,Georgia,serif;font-size:34px;font-weight:500;line-height:1.05;letter-spacing:-.01em">{{ e.name }}</span><span style="font-size:15.5px;line-height:1.5;color:#3A3D45;max-width:520px">{{ e.line }}</span></span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:{{ e.ink }}">{{ e.role }}</span>
+              <span style="font-size:18px">→</span>
+            </a>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section style="background:#E9E5DA;color:#14161B;padding:80px 56px;display:flex;flex-direction:column;gap:44px">
+      <div style="display:grid;grid-template-columns:320px minmax(0,1fr);gap:56px;align-items:end">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#5A5D66">How the studio builds</div>
+        <h2 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:48px;line-height:1.05;letter-spacing:-.015em;max-width:760px;text-wrap:balance">Helping people become better builders, <span style="font-style:italic;color:#5A5D66">because generating code is not the finish line.</span></h2>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:0">
+        <sc-for list="{{ journey }}" as="j" hint-placeholder-count="9">
+          <li style="border-top:2px solid {{ j.rule }};padding:14px 14px 0 0;display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5A5D66">{{ j.n }}</span>
+            <span style="font-size:15.5px;font-weight:500;line-height:1.3">{{ j.label }}</span>
+          </li>
+        </sc-for>
+      </ol>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(20,22,27,.18);padding-top:28px">
+        <p style="margin:0;font-family:Newsreader,Georgia,serif;font-style:italic;font-size:28px;max-width:640px;line-height:1.3">The finish line is verified deployment, with a builder who understands what was built.</p>
+        <a href="#1b" style="font-size:15.5px;font-weight:500;border-bottom:1px solid #14161B;padding-bottom:2px">How we work with builders →</a>
+      </div>
+    </section>
+
+    <section style="padding:96px 56px">
+      <figure style="margin:0 auto;max-width:960px;display:flex;flex-direction:column;gap:28px;text-align:center">
+        <blockquote style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:48px;line-height:1.15;letter-spacing:-.015em;text-wrap:balance">“This work began with conversations. It is still about people, memory, visibility, and ownership.”</blockquote>
+        <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#3A3D45">B Donald Harris, Founder &amp; CEO, NotableBIT</figcaption>
+      </figure>
+    </section>
+
+    <section style="padding:0 56px 88px">
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+        <sc-for list="{{ entriesB }}" as="e" hint-placeholder-count="4">
+          <a href="#1b" style="display:flex;flex-direction:column;gap:12px;border-top:3px solid {{ e.rule }};padding-top:18px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5A5D66">{{ e.n }} · {{ e.label }}</span>
+            <span style="font-family:Newsreader,Georgia,serif;font-size:26px;font-weight:500;line-height:1.12">{{ e.title }}</span>
+            <span style="font-size:15px;line-height:1.5;color:#3A3D45">{{ e.desc }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <footer style="background:#14161B;color:#F4F1EA;border-top:0;padding:20px 56px 16px;display:flex;flex-direction:column;gap:12px;font-family:'IBM Plex Sans',Helvetica,sans-serif">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:32px;align-items:center;justify-items:center">
+        <img src="./assets/logo-white-text.png" alt="NotableBIT" style="width:280px;display:block;margin:-34px 0 -38px">
+        <p style="margin:0;max-width:340px;font-size:15px;line-height:1.6;text-align:center;color:#C9C5BC">A Black-founded technology studio building products, platforms, media, and strategic systems for builders moving with clarity, context, and ownership.</p>
+        <nav style="display:grid;grid-template-columns:repeat(2,auto);gap:10px 36px;font-size:15px;color:#C9C5BC"><a href="#1b">Home</a><sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#1b">{{ r }}</a></sc-for></nav>
+        <div style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:14px;align-items:center;justify-content:center">
+          <a href="https://bdonaldharris.com" aria-label="B Donald Harris"><img src="./assets/bdh-logo.png" alt="B Donald Harris" style="height:30px;border-radius:3px;display:block"></a>
+          <a href="https://www.youtube.com/@notablebit" aria-label="BIT Voices Podcast"><img src="./assets/bitvoices-podcast-icon-logo.png" alt="BIT Voices Podcast" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://bitvoices.network" aria-label="BitVoices Network"><img src="./assets/bitvoices-icon-logo.png" alt="BitVoices Network" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://hindsite.pro" aria-label="HindSite"><img src="./assets/hindsite-icon-logo.png" alt="HindSite" style="height:36px;border-radius:3px;display:block"></a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,241,234,.16);padding-top:14px">
+        <div style="display:flex;gap:18px;color:#C9C5BC"><sc-for list="{{ socials }}" as="s" hint-placeholder-count="6"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="{{ s }}"></path></svg></sc-for></div>
+        <p style="margin:0;color:#C9C5BC;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em">© 2026 NotableBIT. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ============ 1c SIGNAL (dark evolution) ============ -->
+<div id="1c" style="display:flex;flex-direction:column;gap:16px;width:1280px">
+  <div style="display:flex;gap:14px;align-items:baseline">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;background:#14161B;color:#F4F1EA;padding:4px 8px;border-radius:3px">1c</span>
+    <span style="font-size:20px;font-weight:600">Signal: keeps the dark theme, with far fewer colors and effects</span>
+  </div>
+  <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start;font-size:14.5px;line-height:1.55;color:#3A3D45">
+    <div style="display:flex;gap:6px">
+      <div style="width:44px;height:44px;background:#0B0D12"></div>
+      <div style="width:44px;height:44px;background:#F2EFE8;border:1px solid #CFCBC2"></div>
+      <div style="width:44px;height:44px;background:#014DF9"></div>
+      <div style="width:44px;height:44px;background:#E7AD3C"></div>
+    </div>
+    <p style="margin:0;max-width:880px;text-wrap:pretty"><b>The smaller change, and it stays within the current design-direction doc.</b> Keeps the dark base, electric blue and institutional gold. Cuts violet, burgundy, green, every radial glow, the grid and the woven texture. The background is a flat near-black instead of navy gradients. The blue is changed to the logo's blue. Gold is used only for labels and the final "Deployment" step, never for buttons. Type is Source Serif for headlines and Schibsted Grotesk for body text. The hero headline and its explanation sit together, and the ecosystem appears in your established order right in the hero.</p>
+  </div>
+  <div style="width:1280px;background:#0B0D12;color:#F2EFE8;font-family:'Schibsted Grotesk',Helvetica,sans-serif;border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(20,22,27,.25)">
+    <header style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;padding:0 56px;height:80px;border-bottom:1px solid rgba(242,239,232,.1)">
+      <img src="./assets/logo-white-text.png" alt="NotableBIT" style="height:62px;width:auto;display:block;margin-left:-14px">
+      <nav style="display:flex;gap:30px;justify-content:center;font-size:15px;color:#A9ADB8">
+        <sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#1c">{{ r }}</a></sc-for>
+      </nav>
+      <a href="#1c" style="background:#014DF9;color:#fff;font-size:14.5px;font-weight:600;padding:11px 18px;border-radius:4px">Start a conversation</a>
+    </header>
+
+    <section style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:620px">
+      <div style="padding:88px 56px 64px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
+        <div style="display:flex;flex-direction:column;gap:26px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#E7AD3C">Black-founded technology studio</div>
+          <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:72px;line-height:1.02;letter-spacing:-.02em;text-wrap:balance">Black technologists are building the future.</h1>
+          <p style="margin:0;font-size:19px;line-height:1.6;color:#C9CCD4;max-width:520px;text-wrap:pretty">What began as a podcast to amplify Black technologists has grown into a Black-founded studio building media, products, platforms, and strategic systems for the AI era.</p>
+          <div style="display:flex;gap:12px">
+            <a href="#1c" style="background:#014DF9;color:#fff;font-size:15.5px;font-weight:600;padding:14px 22px;border-radius:4px">Explore the ecosystem</a>
+            <a href="#1c" style="border:1px solid rgba(242,239,232,.28);font-size:15.5px;font-weight:500;padding:14px 22px;border-radius:4px">Listen to BIT Voices</a>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative">
+        <img src="./assets/first_podcast_set.jpeg" alt="NotableBIT podcast studio" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 72%;display:block">
+      </div>
+    </section>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(242,239,232,.1);border-bottom:1px solid rgba(242,239,232,.1)">
+      <sc-for list="{{ eco }}" as="e" hint-placeholder-count="4">
+        <a href="#1c" style="display:flex;flex-direction:column;gap:8px;padding:26px 28px;border-left:{{ e.borderC }}">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8A8F9C">{{ e.n }} · {{ e.role }}</span>
+          <span style="font-size:20px;font-weight:600">{{ e.name }}</span>
+          <span style="font-size:14.5px;line-height:1.5;color:#A9ADB8">{{ e.short }}</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <section style="display:grid;grid-template-columns:360px minmax(0,1fr);gap:56px;padding:96px 56px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#E7AD3C">Origin</div>
+        <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:40px;line-height:1.08;letter-spacing:-.01em">It started with the podcast.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px">
+        <sc-for list="{{ ledger }}" as="l" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(242,239,232,.2);padding-top:18px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8A8F9C">{{ l.label }}</span>
+            <span style="font-size:20px;font-weight:600">{{ l.title }}</span>
+            <span style="font-size:15.5px;line-height:1.55;color:#A9ADB8">{{ l.detail }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#12151C;padding:88px 56px;display:flex;flex-direction:column;gap:48px">
+      <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:44px;line-height:1.08;letter-spacing:-.015em;max-width:760px;text-wrap:balance">From idea to verified deployment, with your judgment kept in the loop.</h2>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));position:relative">
+        <sc-for list="{{ journey }}" as="j" hint-placeholder-count="9">
+          <li style="display:flex;flex-direction:column;gap:14px;padding-right:12px">
+            <div style="display:flex;align-items:center;gap:0"><span style="width:12px;height:12px;border-radius:50%;flex:none;background:{{ j.dotC }}"></span><span style="height:1px;flex:1;background:rgba(242,239,232,.2)"></span></div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A8F9C">{{ j.n }}</span>
+            <span style="font-size:15px;font-weight:500;line-height:1.3">{{ j.label }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:stretch">
+      <div style="padding:88px 56px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+        <blockquote style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;font-size:38px;line-height:1.2;letter-spacing:-.01em;text-wrap:balance">“This work began with conversations. It is still about people, memory, visibility, and ownership.”</blockquote>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#E7AD3C">B Donald Harris · Founder &amp; CEO</div>
+      </div>
+      <img src="./assets/workstation.jpg" alt="Founder workstation" style="width:100%;height:100%;min-height:420px;object-fit:cover;display:block;filter:brightness(.85)">
+    </section>
+
+    <section style="padding:88px 56px 72px">
+      <h2 style="margin:0 0 24px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:40px;letter-spacing:-.01em">Where to start.</h2>
+      <ol style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(242,239,232,.2)">
+        <sc-for list="{{ entriesB }}" as="e" hint-placeholder-count="4">
+          <li style="border-bottom:1px solid rgba(242,239,232,.12)">
+            <a href="#1c" style="display:grid;grid-template-columns:56px 120px minmax(0,1fr) auto;gap:28px;align-items:center;padding:22px 0">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#8A8F9C">{{ e.n }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#E7AD3C">{{ e.label }}</span>
+              <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:19px;font-weight:600">{{ e.title }}</span><span style="font-size:15px;color:#A9ADB8">{{ e.desc }}</span></span>
+              <span style="font-size:18px;color:#A9ADB8">→</span>
+            </a>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <footer style="background:#0B0D12;color:#F2EFE8;border-top:1px solid rgba(242,239,232,.1);padding:20px 56px 16px;display:flex;flex-direction:column;gap:12px;font-family:'Schibsted Grotesk',Helvetica,sans-serif">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:32px;align-items:center;justify-items:center">
+        <img src="./assets/logo-white-text.png" alt="NotableBIT" style="width:280px;display:block;margin:-34px 0 -38px">
+        <p style="margin:0;max-width:340px;font-size:15px;line-height:1.6;text-align:center;color:#A9ADB8">A Black-founded technology studio building products, platforms, media, and strategic systems for builders moving with clarity, context, and ownership.</p>
+        <nav style="display:grid;grid-template-columns:repeat(2,auto);gap:10px 36px;font-size:15px;color:#A9ADB8"><a href="#1c">Home</a><sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#1c">{{ r }}</a></sc-for></nav>
+        <div style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:14px;align-items:center;justify-content:center">
+          <a href="https://bdonaldharris.com" aria-label="B Donald Harris"><img src="./assets/bdh-logo.png" alt="B Donald Harris" style="height:30px;border-radius:3px;display:block"></a>
+          <a href="https://www.youtube.com/@notablebit" aria-label="BIT Voices Podcast"><img src="./assets/bitvoices-podcast-icon-logo.png" alt="BIT Voices Podcast" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://bitvoices.network" aria-label="BitVoices Network"><img src="./assets/bitvoices-icon-logo.png" alt="BitVoices Network" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://hindsite.pro" aria-label="HindSite"><img src="./assets/hindsite-icon-logo.png" alt="HindSite" style="height:36px;border-radius:3px;display:block"></a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(242,239,232,.1);padding-top:14px">
+        <div style="display:flex;gap:18px;color:#A9ADB8"><sc-for list="{{ socials }}" as="s" hint-placeholder-count="6"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="{{ s }}"></path></svg></sc-for></div>
+        <p style="margin:0;color:#A9ADB8;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em">© 2026 NotableBIT. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const RED = "#F9313C", BLUE = "#014DF9";
+    const eco = [
+      { name: "NotableBIT", role: "Studio", ink: "#14161B", line: "Consulting, coaching, education, and software construction, helping people move from idea to useful, deployed software.", short: "Consulting, coaching, education, construction." },
+      { name: "BIT Voices Podcast", role: "Media", ink: "#C81E2B", line: "Conversations amplifying Black voices and excellence in technology.", short: "Conversations amplifying Black voices in tech." },
+      { name: "BitVoices Network", role: "Community", ink: "#C81E2B", line: "Amplifying Black Excellence in Tech. Community is culture, not features.", short: "Community is culture, not features." },
+      { name: "HindSite", role: "Product", ink: BLUE, line: "Workflow intelligence for builders and AI-assisted development work.", short: "Workflow intelligence for builders." },
+    ].map((e, i) => ({ ...e, n: String(i + 1).padStart(2, "0"), borderC: i ? "1px solid rgba(242,239,232,.1)" : "0" }));
+    const steps = ["Idea", "Problem excavation", "Product definition", "Requirements", "Design", "Architecture", "Implementation", "Validation", "Deployment"];
+    const journey = steps.map((label, i) => ({
+      label, n: String(i + 1).padStart(2, "0"),
+      rule: i === 8 ? BLUE : "rgba(20,22,27,.4)",
+      dotC: i === 8 ? "#E7AD3C" : "rgba(242,239,232,.45)",
+    }));
+    const entries = [
+      { label: "Listen", title: "Start with BitVoices", desc: "The voice archive that started the work." },
+      { label: "Build", title: "Explore HindSite and product work", desc: "Builder-memory systems from the studio." },
+      { label: "Clarify", title: "Work with the studio", desc: "Product, AI workflow, and strategy support." },
+      { label: "Connect", title: "Start a conversation", desc: "Partnerships, speaking, advisory, and ecosystem inquiries." },
+    ].map((e, i) => ({ ...e, n: String(i + 1).padStart(2, "0") }));
+    const entriesB = [
+      { label: "Listen", title: "BIT Voices Podcast", desc: "The conversations that started the work.", rule: RED },
+      { label: "Build", title: "HindSite", desc: "Workflow intelligence from the studio.", rule: BLUE },
+      { label: "Clarify", title: "Work with the studio", desc: "Product, AI workflow, and strategy support.", rule: BLUE },
+      { label: "Connect", title: "Start a conversation", desc: "Partnerships, speaking, advisory, and ecosystem inquiries.", rule: "#14161B" },
+    ].map((e, i) => ({ ...e, n: String(i + 1).padStart(2, "0") }));
+    return {
+      routes: ["Studio", "Products", "Consulting", "Media", "About", "Contact"],
+      ledger: [
+        { label: "Origin Vehicle", title: "The podcast", detail: "The first public vehicle for the mission." },
+        { label: "Archive Function", title: "Document the builders", detail: "Process, leadership, ambition, ownership." },
+        { label: "Expansion Cue", title: "Beyond media", detail: "Stories became products, strategy, and infrastructure." },
+      ].map((l, i) => ({ ...l, border: i ? "1px solid rgba(241,231,210,.16)" : "0" })),
+      outputs: [
+        { vehicle: "BitVoices", fn: "Voice · Visibility" },
+        { vehicle: "HindSite", fn: "Builder Work · Memory" },
+        { vehicle: "Advisory", fn: "Strategy · Clarity" },
+        { vehicle: "NotableBIT Studio", fn: "Products · Infrastructure" },
+      ],
+      eco, journey, entries, entriesB,
+      socials: [
+        "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z",
+        "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z",
+        "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.39-6.933zm-1.291 19.482h2.039L6.486 3.24H4.298l13.312 17.395z",
+        "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z",
+        "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.840-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.920-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+        "M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.829.624-5.789.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

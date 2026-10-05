@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9E7E2;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#014DF9}
+*{box-sizing:border-box}
+@keyframes nb-blink{0%,48%{opacity:1}50%,100%{opacity:0}}
+</style>
+</helmet>
+
+<div style="padding:40px 0 80px;display:flex;justify-content:flex-start;overflow-x:auto">
+<div style="width:1280px;flex:none;position:relative;background:#F4F1EA;color:#14161B;font-family:'IBM Plex Sans',Helvetica,sans-serif;border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(20,22,27,.18)">
+
+  <header style="position:absolute;top:0;left:0;right:0;z-index:5">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;min-height:78px">
+      <a href="#top" aria-label="NotableBIT home"><img src="./assets/logo-black-text.png" alt="NotableBIT" style="height:66px;width:auto;display:{{ hero.logoBlack }}"><img src="./assets/logo-white-text.png" alt="NotableBIT" style="height:66px;width:auto;display:{{ hero.logoWhite }}"></a>
+      <nav style="display:flex;gap:28px;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase">
+        <sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#top" aria-current="{{ r.current }}" style="padding-bottom:4px;display:inline-flex;align-items:center;gap:8px;color:{{ r.ink }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ r.dot }}"></span>{{ r.label }}</a></sc-for>
+      </nav>
+      <a href="#cta" style="background:#014DF9;color:#fff;font-size:15px;font-weight:500;padding:11px 20px;border-radius:999px;display:inline-flex;align-items:center;white-space:nowrap">Start a conversation</a>
+    </div>
+  </header>
+
+  <section id="top" style="position:relative;overflow:hidden;isolation:isolate;min-height:780px;background:{{ hero.base }}">
+    <img src="./assets/media-hero.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%;opacity:{{ hero.imgOpacity }};filter:{{ hero.imgFilter }};z-index:-2">
+    <div style="position:absolute;inset:0;z-index:-1;background:{{ hero.overlay }}"></div>
+    <div style="max-width:1180px;margin:0 auto;padding:170px 24px 96px;display:flex;flex-direction:column;min-height:780px">
+      <h1 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:76px;line-height:1;letter-spacing:-.025em;max-width:880px;text-wrap:balance;color:{{ hero.ink }}">Media that documents builders, ideas, and the future of Black tech.</h1>
+      <p style="margin:auto 0 0;font-size:20px;line-height:1.6;max-width:720px;color:{{ hero.sub }};text-wrap:pretty">Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology, AI, entrepreneurship, and community.</p>
+      <div style="display:flex;gap:28px;align-items:center;margin-top:28px">
+        <a href="https://bitvoices.network" style="background:#014DF9;color:#fff;font-size:15.5px;font-weight:500;padding:15px 24px;border-radius:999px">Explore BitVoices</a>
+      </div>
+    </div>
+  </section>
+  <div style="display:grid;grid-template-columns:1fr 1fr;height:3px"><div style="background:#F9313C"></div><div style="background:#014DF9"></div></div>
+
+  <section style="padding:88px 56px 0;display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.015em;font-size:48px;line-height:1.05;white-space:nowrap">BIT Voices Podcast</h2>
+    <p style="margin:4px 0 0;font-size:18px;line-height:1.65;color:#3A3D45;max-width:860px;text-wrap:pretty">Conversations with Black technologists, founders, engineers, builders, and leaders shaping technology, AI, entrepreneurship, and community.</p>
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
+      <sc-for list="{{ shorts }}" as="s" hint-placeholder-count="4">
+        <button type="button" onClick="{{ s.open }}" aria-label="{{ s.label }}" style="appearance:none;font:inherit;color:inherit;text-align:left;padding:0;cursor:pointer;display:grid;grid-template-rows:minmax(112px,auto) 1fr;min-width:0;overflow:hidden;background:#FAF8F3;border:1px solid rgba(20,22,27,.2);border-radius:8px;box-shadow:0 18px 40px rgba(20,22,27,.1)" style-hover="transform:translateY(-3px);box-shadow:0 24px 50px rgba(20,22,27,.16)">
+          <span style="display:flex;align-items:flex-start;padding:22px 20px;font-size:17px;font-weight:600;line-height:1.3">{{ s.title }}</span>
+          <span style="display:block;position:relative;aspect-ratio:4/5;overflow:hidden;background:#14161B">
+            <img src="{{ s.thumb }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+            <span style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(5,7,13,.3))"></span>
+            <span style="position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(5,7,13,.5);border:1px solid rgba(255,255,255,.54);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.26)"><span style="margin-left:5px;width:0;height:0;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff"></span></span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:18px"><a href="https://www.youtube.com/@notablebit" style="font-size:15.5px;font-weight:500;padding:13px 22px;border:1px solid #14161B;border-radius:999px">Visit BIT Voices Podcast</a></div>
+    <p style="margin:4px 0 0;text-align:center;font-size:14.5px;line-height:1.6;color:#5A5D66;white-space:nowrap">Formerly The Notable &amp; Black in Tech Podcast, BIT Voices Podcast now sits inside the broader NotableBIT media and community ecosystem.</p>
+  </section>
+
+  <section style="padding:96px 56px;display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.015em;font-size:48px;line-height:1.05;white-space:nowrap">Media that serves the ecosystem.</h2>
+    <p style="margin:4px 0 0;font-size:18px;line-height:1.7;color:#3A3D45;max-width:880px;text-wrap:pretty">NotableBIT treats media as infrastructure: a way to document work, create context, amplify builders, and connect ideas across products, community, and strategy.</p>
+    <div style="margin-top:26px;position:relative;overflow:hidden;padding:52px;background:linear-gradient(rgba(20,22,27,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(20,22,27,.04) 1px,transparent 1px),#ECE8DD;background-size:44px 44px,44px 44px,auto;border:1px solid rgba(20,22,27,.2);border-radius:8px;box-shadow:0 30px 70px rgba(20,22,27,.14)">
+      <div style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#F9313C,#014DF9 44%,transparent 88%)"></div>
+      <div style="position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div style="position:absolute;left:0;right:0;top:13px;height:1px;background:linear-gradient(90deg,#F9313C,#014DF9 60%,rgba(20,22,27,.25))"></div>
+        <sc-for list="{{ paths }}" as="p" hint-placeholder-count="3">
+          <article style="min-width:0;position:relative;padding:{{ p.pad }};border-left:{{ p.bl }}">
+            <span style="display:inline-block;position:relative;background:#ECE8DD;padding-right:12px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.1em;color:#14161B">{{ p.n }}</span>
+            <h3 style="margin:30px 0 0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:26px;line-height:1.1;letter-spacing:-.01em">{{ p.title }}</h3>
+            <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#3A3D45">{{ p.body }}</p>
+          </article>
+        </sc-for>
+      </div>
+      <div style="position:relative;margin-top:44px;padding-top:26px;border-top:1px solid rgba(20,22,27,.18);display:flex;justify-content:flex-end;align-items:center;gap:22px">
+        <a href="https://bitvoices.network" style="font-size:15.5px;font-weight:500;border-bottom:1px solid #14161B;padding-bottom:2px">Visit BitVoices →</a>
+        <a href="#" style="background:#014DF9;color:#fff;font-size:15.5px;font-weight:500;padding:14px 22px;border-radius:999px">Start a media conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:100;background:rgba(10,12,16,.72);display:flex;align-items:center;justify-content:center;padding:24px">
+      <section onClick="{{ stop }}" role="dialog" aria-modal="true" style="width:400px;max-width:100%;background:#FAF8F3;border-radius:8px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4)">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border-bottom:1px solid rgba(20,22,27,.14)">
+          <h2 style="margin:0;font-size:15px;font-weight:600;line-height:1.3">{{ modalTitle }}</h2>
+          <button type="button" onClick="{{ closeModal }}" style="appearance:none;font:inherit;font-size:13px;font-weight:500;padding:6px 12px;border:1px solid #14161B;border-radius:999px;background:transparent;cursor:pointer">Close</button>
+        </div>
+        <div style="aspect-ratio:9/16;background:#000"><iframe src="{{ modalSrc }}" title="{{ modalTitle }}" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe></div>
+      </section>
+    </div>
+  </sc-if>
+
+  <footer style="background:#14161B;color:#F4F1EA;border-top:0;padding:20px 56px 16px;display:flex;flex-direction:column;gap:12px;font-family:'IBM Plex Sans',Helvetica,sans-serif">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:32px;align-items:center;justify-items:center">
+        <img src="./assets/logo-white-text.png" alt="NotableBIT" style="width:280px;display:block;margin:-34px 0 -38px">
+        <p style="margin:0;max-width:340px;font-size:15px;line-height:1.6;text-align:center;color:#C9C5BC">A Black-founded technology studio building products, platforms, media, and strategic systems for builders moving with clarity, context, and ownership.</p>
+        <nav style="display:grid;grid-template-columns:repeat(2,auto);gap:10px 36px;font-size:15px;color:#C9C5BC"><a href="#top">Home</a><sc-for list="{{ routes }}" as="r" hint-placeholder-count="6"><a href="#top">{{ r.label }}</a></sc-for></nav>
+        <div style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:14px;align-items:center;justify-content:center">
+          <a href="https://bdonaldharris.com" aria-label="B Donald Harris"><img src="./assets/bdh-logo.png" alt="B Donald Harris" style="height:30px;border-radius:3px;display:block"></a>
+          <a href="https://www.youtube.com/@notablebit" aria-label="BIT Voices Podcast"><img src="./assets/bitvoices-podcast-icon-logo.png" alt="BIT Voices Podcast" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://bitvoices.network" aria-label="BitVoices Network"><img src="./assets/bitvoices-icon-logo.png" alt="BitVoices Network" style="height:36px;border-radius:3px;display:block"></a>
+          <a href="https://hindsite.pro" aria-label="HindSite"><img src="./assets/hindsite-icon-logo.png" alt="HindSite" style="height:36px;border-radius:3px;display:block"></a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,241,234,.16);padding-top:14px">
+        <div style="display:flex;gap:18px;color:#C9C5BC"><sc-for list="{{ socials }}" as="s" hint-placeholder-count="6"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="{{ s }}"></path></svg></sc-for></div>
+        <p style="margin:0;color:#C9C5BC;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em">© 2026 NotableBIT. All rights reserved.</p>
+      </div>
+    </footer>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { sel: null };
+  renderVals() {
+    const RED = "#F9313C", BLUE = "#014DF9", INK = "#14161B";
+    const nn = (i) => String(i + 1).padStart(2, "0");
+    const dark = (this.props.heroTheme ?? "dark") === "dark";
+    const hero = dark ? {
+      base: "#14161B", imgOpacity: 0.6, imgFilter: "saturate(.9) contrast(1.05) brightness(.64)",
+      overlay: "linear-gradient(90deg,rgba(20,22,27,.92) 0%,rgba(20,22,27,.82) 42%,rgba(20,22,27,.52) 72%,rgba(20,22,27,.7) 100%)",
+      ink: "#F4F1EA", sub: "#E8E4DA", navInk: "#C9C5BC", logoBlack: "none", logoWhite: "block",
+    } : {
+      base: "#F4F1EA", imgOpacity: 0.55, imgFilter: "saturate(.9) contrast(1.02) brightness(1.08)",
+      overlay: "linear-gradient(90deg,rgba(244,241,234,.97) 0%,rgba(244,241,234,.9) 42%,rgba(244,241,234,.6) 72%,rgba(244,241,234,.78) 100%)",
+      ink: "#14161B", sub: "#2E3139", navInk: "#3A3D45", logoBlack: "block", logoWhite: "none",
+    };
+    const shorts = [
+      { id: "MzOqnc5QHpU", title: "Unlock Hidden Skills: AI Reveals Your Untapped Potential!" },
+      { id: "jzCg1cjBqF8", title: "Embrace Detours: Discover Lessons in Unexpected Paths" },
+      { id: "v4v69Snz4lU", title: "AI Adoption: Should We Slow Down?" },
+      { id: "ju9Rj1ez5BM", title: "AI Risks: Building Ferraris Without Brakes?" },
+    ].map((s) => ({ ...s, thumb: "https://i.ytimg.com/vi/" + s.id + "/oar2.jpg" }));
+    const tfs = ["rotate(-0.7deg) translateY(12px)", "rotate(0.6deg)", "rotate(-0.35deg) translateY(18px)"];
+    return {
+      hero,
+      routes: ["Studio", "Products", "Consulting", "Media", "About", "Contact"].map((label) => ({
+        label, current: label === "Media" ? "page" : undefined,
+        ink: label === "Media" ? hero.ink : hero.navInk, dot: label === "Media" ? RED : "transparent",
+      })),
+      paths: [
+        { title: "BIT Voices Podcast", body: "Conversations with Black technologists, founders, engineers, builders, and leaders shaping technology, AI, entrepreneurship, and community." },
+        { title: "Community Storytelling", body: "Stories that make emerging ideas, overlooked work, builder journeys, and ecosystem lessons visible." },
+        { title: "Speaking / Conversations", body: "Founder-led talks, interviews, panels, and public thought routed through B Donald Harris when deeper context belongs there." },
+      ].map((p, i) => ({ ...p, n: nn(i), pad: i === 0 ? "0 36px 0 0" : i === 2 ? "0 0 0 36px" : "0 36px", bl: i ? "1px solid rgba(20,22,27,.16)" : "0" })),
+      shorts: shorts.map((s) => ({ ...s, label: "Play " + s.title, open: () => this.setState({ sel: s }) })),
+      modalOpen: !!this.state.sel,
+      modalTitle: this.state.sel ? this.state.sel.title : "",
+      modalSrc: this.state.sel ? "https://www.youtube.com/embed/" + this.state.sel.id : "",
+      closeModal: () => this.setState({ sel: null }),
+      stop: (e) => e.stopPropagation(),
+      socials: [
+        "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z",
+        "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z",
+        "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.39-6.933zm-1.291 19.482h2.039L6.486 3.24H4.298l13.312 17.395z",
+        "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z",
+        "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.840-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.920-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+        "M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.829.624-5.789.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
