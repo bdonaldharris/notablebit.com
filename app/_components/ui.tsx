@@ -34,15 +34,6 @@ export function Button({ children, className = "", href, variant = "primary", ..
   );
 }
 
-type BadgeProps = {
-  children: ReactNode;
-  tone?: "amber" | "blue";
-};
-
-export function Badge({ children, tone = "amber" }: BadgeProps) {
-  return <span className={`badge ${tone === "blue" ? "badge-blue" : ""}`.trim()}>{children}</span>;
-}
-
 type CardProps = {
   children: ReactNode;
   className?: string;
@@ -66,31 +57,6 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
       <h2 className="heading-xl">{title}</h2>
       {description ? <p className="body-copy">{description}</p> : null}
     </div>
-  );
-}
-
-type LinkCardProps = {
-  href: string;
-  title: string;
-  description: string;
-  label?: string;
-};
-
-export function LinkCard({ description, href, label, title }: LinkCardProps) {
-  const isExternal = isExternalHttpHref(href);
-  return (
-    <Link
-      className="card card-interactive link-card"
-      href={href}
-      rel={isExternal ? "noopener noreferrer" : undefined}
-      target={isExternal ? "_blank" : undefined}
-    >
-      <div className="card-stack">
-        {label ? <Badge tone="blue">{label}</Badge> : null}
-        <h3 className="heading-md">{title}</h3>
-        <p className="body-copy">{description}</p>
-      </div>
-    </Link>
   );
 }
 
@@ -129,9 +95,9 @@ export function CtaSection({
           <div className="button-row">
             <Button href={primaryHref}>{primaryLabel}</Button>
             {secondaryHref && secondaryLabel ? (
-              <Button href={secondaryHref} variant="secondary">
-                {secondaryLabel}
-              </Button>
+              <Link className="text-link" href={secondaryHref}>
+                {secondaryLabel} <span aria-hidden="true">→</span>
+              </Link>
             ) : null}
           </div>
         </div>

@@ -71,18 +71,15 @@ export default function StudioPage() {
             </h2>
             <p className="body-copy">{method.description}</p>
           </div>
-          <div className="studio-method-canvas">
-            <ol className="studio-method-flow">
-              {method.items?.map((item, itemIndex) => (
-                <li className="studio-method-node" key={item.title}>
-                  <span className="studio-method-node-number">{String(itemIndex + 1).padStart(2, "0")}</span>
-                  <h3 className="studio-method-node-title">{item.title}</h3>
-                  <p className="studio-method-node-body">{item.description}</p>
-                  {itemIndex < (method.items?.length ?? 0) - 1 ? <span aria-hidden="true" className="studio-method-connector" /> : null}
-                </li>
-              ))}
-            </ol>
-          </div>
+          <ol className="studio-method-flow">
+            {method.items?.map((item, itemIndex) => (
+              <li className="studio-method-node" key={item.title}>
+                <span className="studio-method-node-number">{String(itemIndex + 1).padStart(2, "0")}</span>
+                <h3 className="studio-method-node-title">{item.title}</h3>
+                <p className="studio-method-node-body">{item.description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

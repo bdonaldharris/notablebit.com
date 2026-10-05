@@ -125,6 +125,7 @@ export default function ConsultingPage() {
                 </div>
                 <p className="consulting-artifacts-proof-note">
                   The point is practical clarity: a path people can understand, review, and build.
+                  <span aria-hidden="true" className="consulting-sticky-fold" />
                 </p>
               </div>
             </div>

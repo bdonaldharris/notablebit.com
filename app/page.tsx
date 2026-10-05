@@ -150,8 +150,9 @@ export default function Home() {
       <section id="ecosystem" className="section ecosystem-archive" aria-labelledby="ecosystem-title">
         <div className="container">
           <div className="ecosystem-intro">
+            <p className="section-label">Tracklist</p>
             <h2 className="heading-xl" id="ecosystem-title">
-              Outputs from the same mission.
+              One mission, four outputs.
             </h2>
             <p className="lede">
               These are not separate ventures. Each one answers a real need builders have, and all of them come from the same mission.
@@ -173,6 +174,7 @@ export default function Home() {
 
       <section className="section-tight home-journey" aria-labelledby="journey-title">
         <div className="container">
+          <p className="section-label">How the studio builds</p>
           <h2 className="heading-xl" id="journey-title">Helping people become better builders, <em>because generating code is not the finish line.</em></h2>
           <ol className="home-journey-rail">
             {["Idea", "Problem excavation", "Product definition", "Requirements", "Design", "Architecture", "Implementation", "Validation", "Deployment"].map((step, index) => (
