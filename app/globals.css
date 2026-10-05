@@ -5826,3 +5826,1021 @@ body { color: var(--nb-ink); font-family: var(--nb-font-body); }
 .home-hero .display { font-size: 92px; line-height: .98; }
 .nb-rule { background: var(--nb-rule); height: 3px; }
 .nb-frame { border: 1px solid var(--nb-line); }
+/* =========================================================================
+   NotableBIT light-theme patch. APPEND to the END of app/globals.css.
+   Why: the token remap (--text/--cream/--muted -> ink) is kept, but every
+   legacy panel that still hardcodes a navy background is restyled here, and
+   every legacy near-white text color on a now-light surface is re-set.
+   Prefix `.site-shell main` raises specificity above legacy `.home-main .x`
+   rules without !important. Delete this file's rules page by page as the
+   legacy blocks are removed (see issues/11-globals-cleanup.md).
+   ========================================================================= */
+
+.site-shell main {
+  --nb-ink-2: #2E3139;
+  --nb-ink-3: #3A3D45;
+  --nb-soft-shadow: 0 24px 54px rgb(20 22 27 / .1);
+}
+
+/* ---- page + typography on light surfaces ------------------------------- */
+.site-shell main.home-main { background: var(--nb-paper); }
+.site-shell main .lede { color: var(--nb-ink-2); }
+.site-shell main .body-copy { color: var(--nb-ink-3); }
+.site-shell main .heading-xl,
+.site-shell main .heading-lg,
+.site-shell main .heading-md,
+.site-shell main .display { color: var(--nb-ink); font-family: var(--nb-font-display); font-weight: 500; letter-spacing: -.015em; }
+.site-shell main .inline-link { color: var(--nb-blue); text-decoration: underline; text-underline-offset: 3px; }
+.site-shell main .inline-link:hover { color: #0A5CFF; }
+
+/* ---- buttons: blue pill primary, underlined text link secondary -------- */
+.site-shell main .button {
+  font-family: var(--nb-font-body); font-size: 15.5px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; border-radius: var(--nb-radius-pill);
+  padding: 15px 24px; min-height: 0;
+}
+.site-shell main .button-primary { background: var(--nb-blue); color: #fff; box-shadow: none; }
+.site-shell main .button-primary:hover { background: #0A5CFF; box-shadow: none; }
+.site-shell main .button-secondary {
+  background: transparent; border: 0; border-bottom: 1px solid currentColor; border-radius: 0;
+  padding: 0 0 2px; color: var(--nb-ink); box-shadow: none; text-decoration: none;
+}
+.site-shell main .button-secondary:hover { color: var(--nb-blue); box-shadow: none; }
+
+/* ---- dark heroes: restore light text ------------------------------------ */
+.site-shell main .home-hero .display,
+.site-shell main .studio-hero .display,
+.site-shell main .products-hero .display,
+.site-shell main .consulting-hero .display,
+.site-shell main .media-hero .display,
+.site-shell main .about-hero .display { color: var(--nb-cream); }
+.site-shell main .home-hero .lede,
+.site-shell main .studio-hero .lede,
+.site-shell main .products-hero .lede,
+.site-shell main .consulting-hero .lede,
+.site-shell main .media-hero .lede,
+.site-shell main .about-hero .lede { color: #E8E4DA; }
+.site-shell main .home-hero .button-secondary,
+.site-shell main .studio-hero .button-secondary,
+.site-shell main .products-hero .button-secondary,
+.site-shell main .consulting-hero .button-secondary,
+.site-shell main .media-hero .button-secondary,
+.site-shell main .about-hero .button-secondary { color: var(--nb-cream); }
+/* shared: red/blue bar under heroes */
+.site-shell main .home-hero::after,
+.site-shell main .studio-hero::after,
+.site-shell main .products-hero::after,
+.site-shell main .consulting-hero::after,
+.site-shell main .media-hero::after,
+.site-shell main .about-hero::after { background: linear-gradient(90deg, var(--nb-red) 50%, var(--nb-blue) 50%); height: 3px; }
+
+/* ---- shared card surface (replaces the blanket `background: white`) ----- */
+.site-shell main .mission-card,
+.site-shell main .products-feature-card,
+.site-shell main .platform-card,
+.site-shell main .products-closing-card,
+.site-shell main .studio-cta-panel,
+.site-shell main .consulting-closing-panel,
+.site-shell main .about-cta-section .cta-panel,
+.site-shell main .card {
+  background: var(--nb-card); border: 1px solid var(--nb-line);
+  border-radius: var(--nb-radius-card); box-shadow: var(--nb-soft-shadow); color: var(--nb-ink);
+}
+.site-shell main .products-feature-card::before,
+.site-shell main .products-closing-card::before,
+.site-shell main .consulting-closing-panel::before,
+.site-shell main .studio-cta-panel::before,
+.site-shell main .about-cta-section .cta-panel::before { background: var(--nb-rule); height: 2px; opacity: 1; }
+
+/* tinted bordered panel (grid lines) used by method, zones, media, about values */
+.site-shell main .studio-method-canvas,
+.site-shell main .consulting-lane-field,
+.site-shell main .media-infrastructure-panel,
+.site-shell main .about-values-field {
+  background:
+    linear-gradient(rgb(20 22 27 / .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 22 27 / .04) 1px, transparent 1px),
+    var(--nb-paper-panel);
+  background-size: 34px 34px, 34px 34px, auto;
+  border: 1px solid var(--nb-line); border-radius: var(--nb-radius-card);
+  box-shadow: 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .studio-method-canvas::before,
+.site-shell main .media-infrastructure-panel::before { display: none; }
+.site-shell main .consulting-lane-field::after,
+.site-shell main .media-infrastructure-panel::after { background: var(--nb-rule); }
+
+/* ---- HOME --------------------------------------------------------------- */
+.site-shell main .podcast-cover { background: var(--nb-card); border-color: var(--nb-line); }
+.site-shell main .podcast-cover figcaption { color: var(--nb-muted); border-top-color: var(--nb-line-soft); }
+.site-shell main .podcast-cover figcaption strong { color: var(--nb-ink); }
+.site-shell main .podcast-ledger-item + .podcast-ledger-item { border-left-color: var(--nb-line-soft); }
+.site-shell main .artifact-label { color: var(--nb-red); }
+.site-shell main .mission-card { background: transparent; border: 0; border-top: 1px solid var(--nb-line-soft); border-bottom: 1px solid var(--nb-line-soft); border-radius: 0; box-shadow: none; max-width: 960px; padding: 56px 24px; }
+.site-shell main .mission-card p:last-child { color: var(--nb-ink); font-size: 2.5rem; line-height: 1.22; letter-spacing: -.01em; }
+.site-shell main .ecosystem-diagram { --ecosystem-divider: var(--nb-line-soft); }
+.site-shell main .ecosystem-core { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .ecosystem-core strong { color: var(--nb-ink); }
+.site-shell main .ecosystem-core span,
+.site-shell main .ecosystem-function { color: var(--nb-muted); }
+.site-shell main .ecosystem-output-link:hover { color: var(--nb-blue); }
+.site-shell main .founder-field { background: transparent; border-color: var(--nb-line-soft); box-shadow: none; }
+.site-shell main .founder-note-card { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .founder-note-card::before { color: var(--nb-red); opacity: .35; }
+.site-shell main .founder-note-card blockquote { color: var(--nb-ink); }
+.site-shell main .founder-note-card figcaption { color: var(--nb-muted); }
+.site-shell main .entry-list { border-top-color: var(--nb-ink); }
+.site-shell main .entry-item { border-bottom-color: var(--nb-line-soft); }
+.site-shell main .entry-row::before { background: rgb(20 22 27 / .04); }
+.site-shell main .entry-index { color: var(--nb-muted); }
+.site-shell main .entry-label { color: var(--nb-red); }
+.site-shell main .entry-title { color: var(--nb-ink); }
+.site-shell main .entry-row:hover .entry-title { color: var(--nb-blue); }
+.site-shell main .entry-row .entry-desc { color: var(--nb-ink-3); }
+.site-shell main .entry-cue { color: var(--nb-blue); }
+
+/* ---- STUDIO ------------------------------------------------------------- */
+.site-shell main .studio-principles-notes { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .studio-principles-notes::before { display: none; }
+.site-shell main .studio-method-node { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-method-node-number { color: var(--nb-blue); }
+.site-shell main .studio-method-node:nth-child(4) .studio-method-node-number { color: var(--nb-red); }
+.site-shell main .studio-method-node-title { color: var(--nb-ink); }
+.site-shell main .studio-method-node-body { color: var(--nb-ink-3); }
+.site-shell main .studio-disciplines-intro,
+.site-shell main .studio-method-header .body-copy,
+.site-shell main .studio-model-copy { color: var(--nb-ink-3); }
+.site-shell main .studio-model-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-model-card-index { color: var(--nb-muted); }
+.site-shell main .studio-model-card-title { color: var(--nb-ink); }
+.site-shell main .studio-model-card-body { color: var(--nb-ink-3); }
+.site-shell main .studio-cta-heading { color: var(--nb-ink); }
+.site-shell main .studio-cta-copy { color: var(--nb-ink-3); }
+/* terminal (.studio-console) intentionally stays dark */
+
+/* ---- PRODUCTS ----------------------------------------------------------- */
+.site-shell main .products-feature-status { color: var(--nb-muted); border-bottom-color: var(--nb-line-soft); }
+.site-shell main .products-feature-intro { color: var(--nb-ink-3); }
+.site-shell main .products-workflow-rail { border-left-color: rgb(1 77 249 / .35); }
+.site-shell main .products-workflow-rail li::before { border-color: var(--nb-card); box-shadow: none; }
+.site-shell main .products-workflow-rail span { color: var(--nb-blue); }
+.site-shell main .products-workflow-rail strong { color: var(--nb-ink); }
+.site-shell main .platform-card-stage { color: var(--nb-muted); }
+.site-shell main .platform-card-title { color: var(--nb-ink); }
+.site-shell main .platform-card-copy { color: var(--nb-ink-3); }
+.site-shell main .platform-card-media { border-bottom-color: var(--nb-line); }
+.site-shell main .platform-card-icon { background: var(--nb-ink); padding: 4px; border-radius: 6px; }
+.site-shell main .products-closing-heading { color: var(--nb-ink); }
+.site-shell main .products-closing-copy { color: var(--nb-ink-3); }
+
+/* ---- CONSULTING --------------------------------------------------------- */
+.site-shell main .consulting-section-intro .body-copy { color: var(--nb-ink-3); }
+.site-shell main .consulting-zone-card { background: var(--nb-card); border: 1px solid var(--nb-line); border-top: 3px solid var(--nb-red); box-shadow: 0 18px 40px rgb(20 22 27 / .14); }
+.site-shell main .consulting-zone-card:nth-of-type(even) { border-top-color: var(--nb-blue); }
+.site-shell main .consulting-zone-header { background: var(--nb-ink-header); border-bottom-color: rgb(20 22 27 / .3); align-items: center; min-height: 76px; }
+.site-shell main .consulting-zone-header .heading-md { color: var(--nb-cream); font-family: var(--nb-font-body); font-weight: 600; letter-spacing: 0; }
+.site-shell main .consulting-zone-body { background: var(--nb-card); }
+.site-shell main .consulting-zone-card:hover,
+.site-shell main .consulting-zone-card:focus-visible { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .18); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-header { background: var(--nb-ink-header); filter: brightness(1.12); border-bottom-color: rgb(20 22 27 / .3); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-body { background: var(--nb-card); filter: none; }
+.site-shell main .consulting-lane-foundation { background: var(--nb-ink); border-top: 2px solid var(--nb-red); box-shadow: none; }
+.site-shell main .consulting-lane-foundation h3 { color: var(--nb-cream); font-family: var(--nb-font-display); font-weight: 500; }
+.site-shell main .consulting-lane-foundation p { color: var(--nb-cream-muted); }
+.site-shell main .consulting-decision-lanes span { background: linear-gradient(180deg, rgb(249 49 60 / .22), rgb(249 49 60 / 0)); border: 0; box-shadow: none; clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%); opacity: 1; filter: none; border-radius: 0; }
+.site-shell main .consulting-decision-lanes span:nth-child(even) { background: linear-gradient(180deg, rgb(1 77 249 / .22), rgb(1 77 249 / 0)); }
+.site-shell main .consulting-artifacts-header p { color: var(--nb-ink-3); }
+.site-shell main .consulting-artifacts-proof {
+  background: var(--nb-card);
+  border: 1px solid var(--nb-line);
+  box-shadow: -6px -5px 0 #F0ECE2, -10px -9px 0 #E7E2D5, -14px -13px 0 rgb(20 22 27 / .08), 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .consulting-artifacts-proof::before { background: var(--nb-rule); }
+.site-shell main .consulting-artifacts-proof-label { color: var(--nb-muted); }
+.site-shell main .consulting-artifact-statement { background: none; }
+.site-shell main .consulting-artifact-statement + .consulting-artifact-statement { border-top-color: var(--nb-line-soft); }
+.site-shell main .consulting-artifact-statement h3 { color: var(--nb-ink); font-weight: 500; }
+.site-shell main .consulting-artifact-statement h3::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue)); }
+.site-shell main .consulting-artifact-statement p { color: var(--nb-ink-2); }
+.site-shell main .consulting-closing-panel .lede { color: var(--nb-ink-3); }
+.site-shell main .consulting-closing-actions .button-secondary { color: var(--nb-ink); text-decoration: none; }
+
+/* ---- MEDIA -------------------------------------------------------------- */
+.site-shell main .podcast-showcase-copy .lede { color: var(--nb-ink-3); }
+.site-shell main .podcast-short-card { background: var(--nb-card); border-color: var(--nb-line); box-shadow: 0 18px 40px rgb(20 22 27 / .1); color: var(--nb-ink); }
+.site-shell main .podcast-short-card:hover { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .16); }
+.site-shell main .podcast-short-title { color: var(--nb-ink); font-family: var(--nb-font-body); font-weight: 600; }
+.site-shell main .media-podcast-link {
+  background: transparent; border: 1px solid var(--nb-ink); border-radius: var(--nb-radius-pill);
+  box-shadow: none; color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 15.5px;
+  font-weight: 500; letter-spacing: 0; text-transform: none; padding: 13px 22px;
+}
+.site-shell main .media-podcast-link:hover { color: var(--nb-blue); border-color: var(--nb-blue); box-shadow: none; }
+.site-shell main .podcast-showcase-context { color: var(--nb-muted); }
+.site-shell main .media-infrastructure-header .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-paths::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue) 60%, rgb(20 22 27 / .25)); }
+.site-shell main .media-infrastructure-path + .media-infrastructure-path { border-left-color: var(--nb-line-soft); }
+.site-shell main .media-infrastructure-index { background: var(--nb-paper-panel); color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .heading-md { color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-actions { border-top-color: var(--nb-line-soft); }
+
+/* ---- ABOUT -------------------------------------------------------------- */
+.site-shell main .about-story { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .about-story-column .heading-lg { color: var(--nb-ink); }
+.site-shell main .about-story-column .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-founder-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 24px 54px rgb(20 22 27 / .1); }
+.site-shell main .about-founder-card::before { background: var(--nb-rule); }
+.site-shell main .about-founder-copy { color: var(--nb-ink-3); }
+.site-shell main .about-values-cell { background: transparent; border-color: var(--nb-line-soft); }
+.site-shell main .about-values-cell .heading-md { color: var(--nb-ink); font-size: 1.6rem; }
+.site-shell main .about-values-cell .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-cta-section .cta-panel .heading-lg { color: var(--nb-ink); font-family: var(--nb-font-display); }
+.site-shell main .about-cta-section .cta-panel .lede { color: var(--nb-ink-3); }
+
+/* ---- CONTACT ------------------------------------------------------------ */
+.site-shell main .contact-hero-title { color: var(--nb-ink); }
+.site-shell main .contact-hero-copy { color: var(--nb-ink-2); }
+.site-shell main .contact-form-panel { background: var(--nb-card); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .contact-form-email-fallback { color: var(--nb-muted); }
+.site-shell main .contact-form-email-fallback .inline-link { color: var(--nb-blue); }
+.site-shell main .label { color: var(--nb-ink); font-family: var(--nb-font-mono); font-weight: 500; }
+.site-shell main .input { background: #fff; border: 1px solid rgb(20 22 27 / .28); color: var(--nb-ink); border-radius: 4px; }
+.site-shell main .input:focus { border-color: var(--nb-blue); box-shadow: 0 0 0 3px rgb(1 77 249 / .2); }
+.site-shell main .contact-form-panel #form-status { color: var(--nb-muted); }
+.site-shell main .contact-form-status[data-state="success"] { color: #1F7A4D; }
+.site-shell main .contact-form-status[data-state="error"] { color: #B3261E; }
+/* =========================================================================
+   NotableBIT light-theme patch. APPEND to the END of app/globals.css.
+   Why: the token remap (--text/--cream/--muted -> ink) is kept, but every
+   legacy panel that still hardcodes a navy background is restyled here, and
+   every legacy near-white text color on a now-light surface is re-set.
+   Prefix `.site-shell main` raises specificity above legacy `.home-main .x`
+   rules without !important. Delete this file's rules page by page as the
+   legacy blocks are removed (see issues/11-globals-cleanup.md).
+   ========================================================================= */
+
+.site-shell main {
+  --nb-ink-2: #2E3139;
+  --nb-ink-3: #3A3D45;
+  --nb-soft-shadow: 0 24px 54px rgb(20 22 27 / .1);
+}
+
+/* ---- page + typography on light surfaces ------------------------------- */
+.site-shell main.home-main { background: var(--nb-paper); }
+.site-shell main .lede { color: var(--nb-ink-2); }
+.site-shell main .body-copy { color: var(--nb-ink-3); }
+.site-shell main .heading-xl,
+.site-shell main .heading-lg,
+.site-shell main .heading-md,
+.site-shell main .display { color: var(--nb-ink); font-family: var(--nb-font-display); font-weight: 500; letter-spacing: -.015em; }
+.site-shell main .inline-link { color: var(--nb-blue); text-decoration: underline; text-underline-offset: 3px; }
+.site-shell main .inline-link:hover { color: #0A5CFF; }
+
+/* ---- buttons: blue pill primary, underlined text link secondary -------- */
+.site-shell main .button {
+  font-family: var(--nb-font-body); font-size: 15.5px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; border-radius: var(--nb-radius-pill);
+  padding: 15px 24px; min-height: 0;
+}
+.site-shell main .button-primary { background: var(--nb-blue); color: #fff; box-shadow: none; }
+.site-shell main .button-primary:hover { background: #0A5CFF; box-shadow: none; }
+.site-shell main .button-secondary {
+  background: transparent; border: 0; border-bottom: 1px solid currentColor; border-radius: 0;
+  padding: 0 0 2px; color: var(--nb-ink); box-shadow: none; text-decoration: none;
+}
+.site-shell main .button-secondary:hover { color: var(--nb-blue); box-shadow: none; }
+
+/* ---- dark heroes: restore light text ------------------------------------ */
+.site-shell main .home-hero .display,
+.site-shell main .studio-hero .display,
+.site-shell main .products-hero .display,
+.site-shell main .consulting-hero .display,
+.site-shell main .media-hero .display,
+.site-shell main .about-hero .display { color: var(--nb-cream); }
+.site-shell main .home-hero .lede,
+.site-shell main .studio-hero .lede,
+.site-shell main .products-hero .lede,
+.site-shell main .consulting-hero .lede,
+.site-shell main .media-hero .lede,
+.site-shell main .about-hero .lede { color: #E8E4DA; }
+.site-shell main .home-hero .button-secondary,
+.site-shell main .studio-hero .button-secondary,
+.site-shell main .products-hero .button-secondary,
+.site-shell main .consulting-hero .button-secondary,
+.site-shell main .media-hero .button-secondary,
+.site-shell main .about-hero .button-secondary { color: var(--nb-cream); }
+/* shared: red/blue bar under heroes */
+.site-shell main .home-hero::after,
+.site-shell main .studio-hero::after,
+.site-shell main .products-hero::after,
+.site-shell main .consulting-hero::after,
+.site-shell main .media-hero::after,
+.site-shell main .about-hero::after { background: linear-gradient(90deg, var(--nb-red) 50%, var(--nb-blue) 50%); height: 3px; }
+
+/* ---- shared card surface (replaces the blanket `background: white`) ----- */
+.site-shell main .mission-card,
+.site-shell main .products-feature-card,
+.site-shell main .platform-card,
+.site-shell main .products-closing-card,
+.site-shell main .studio-cta-panel,
+.site-shell main .consulting-closing-panel,
+.site-shell main .about-cta-section .cta-panel,
+.site-shell main .card {
+  background: var(--nb-card); border: 1px solid var(--nb-line);
+  border-radius: var(--nb-radius-card); box-shadow: var(--nb-soft-shadow); color: var(--nb-ink);
+}
+.site-shell main .products-feature-card::before,
+.site-shell main .products-closing-card::before,
+.site-shell main .consulting-closing-panel::before,
+.site-shell main .studio-cta-panel::before,
+.site-shell main .about-cta-section .cta-panel::before { background: var(--nb-rule); height: 2px; opacity: 1; }
+
+/* tinted bordered panel (grid lines) used by method, zones, media, about values */
+.site-shell main .studio-method-canvas,
+.site-shell main .consulting-lane-field,
+.site-shell main .media-infrastructure-panel,
+.site-shell main .about-values-field {
+  background:
+    linear-gradient(rgb(20 22 27 / .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 22 27 / .04) 1px, transparent 1px),
+    var(--nb-paper-panel);
+  background-size: 34px 34px, 34px 34px, auto;
+  border: 1px solid var(--nb-line); border-radius: var(--nb-radius-card);
+  box-shadow: 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .studio-method-canvas::before,
+.site-shell main .media-infrastructure-panel::before { display: none; }
+.site-shell main .consulting-lane-field::after,
+.site-shell main .media-infrastructure-panel::after { background: var(--nb-rule); }
+
+/* ---- HOME --------------------------------------------------------------- */
+.site-shell main .podcast-cover { background: var(--nb-card); border-color: var(--nb-line); }
+.site-shell main .podcast-cover figcaption { color: var(--nb-muted); border-top-color: var(--nb-line-soft); }
+.site-shell main .podcast-cover figcaption strong { color: var(--nb-ink); }
+.site-shell main .podcast-ledger-item + .podcast-ledger-item { border-left-color: var(--nb-line-soft); }
+.site-shell main .artifact-label { color: var(--nb-red); }
+.site-shell main .mission-card { background: transparent; border: 0; border-top: 1px solid var(--nb-line-soft); border-bottom: 1px solid var(--nb-line-soft); border-radius: 0; box-shadow: none; max-width: 960px; padding: 56px 24px; }
+.site-shell main .mission-card p:last-child { color: var(--nb-ink); font-size: 2.5rem; line-height: 1.22; letter-spacing: -.01em; }
+.site-shell main .ecosystem-diagram { --ecosystem-divider: var(--nb-line-soft); }
+.site-shell main .ecosystem-core { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .ecosystem-core strong { color: var(--nb-ink); }
+.site-shell main .ecosystem-core span,
+.site-shell main .ecosystem-function { color: var(--nb-muted); }
+.site-shell main .ecosystem-output-link:hover { color: var(--nb-blue); }
+.site-shell main .founder-field { background: transparent; border-color: var(--nb-line-soft); box-shadow: none; }
+.site-shell main .founder-note-card { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .founder-note-card::before { color: var(--nb-red); opacity: .35; }
+.site-shell main .founder-note-card blockquote { color: var(--nb-ink); }
+.site-shell main .founder-note-card figcaption { color: var(--nb-muted); }
+.site-shell main .entry-list { border-top-color: var(--nb-ink); }
+.site-shell main .entry-item { border-bottom-color: var(--nb-line-soft); }
+.site-shell main .entry-row::before { background: rgb(20 22 27 / .04); }
+.site-shell main .entry-index { color: var(--nb-muted); }
+.site-shell main .entry-label { color: var(--nb-red); }
+.site-shell main .entry-title { color: var(--nb-ink); }
+.site-shell main .entry-row:hover .entry-title { color: var(--nb-blue); }
+.site-shell main .entry-row .entry-desc { color: var(--nb-ink-3); }
+.site-shell main .entry-cue { color: var(--nb-blue); }
+
+/* ---- STUDIO ------------------------------------------------------------- */
+.site-shell main .studio-principles-notes { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .studio-principles-notes::before { display: none; }
+.site-shell main .studio-method-node { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-method-node-number { color: var(--nb-blue); }
+.site-shell main .studio-method-node:nth-child(4) .studio-method-node-number { color: var(--nb-red); }
+.site-shell main .studio-method-node-title { color: var(--nb-ink); }
+.site-shell main .studio-method-node-body { color: var(--nb-ink-3); }
+.site-shell main .studio-disciplines-intro,
+.site-shell main .studio-method-header .body-copy,
+.site-shell main .studio-model-copy { color: var(--nb-ink-3); }
+.site-shell main .studio-model-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-model-card-index { color: var(--nb-muted); }
+.site-shell main .studio-model-card-title { color: var(--nb-ink); }
+.site-shell main .studio-model-card-body { color: var(--nb-ink-3); }
+.site-shell main .studio-cta-heading { color: var(--nb-ink); }
+.site-shell main .studio-cta-copy { color: var(--nb-ink-3); }
+/* terminal (.studio-console) intentionally stays dark */
+
+/* ---- PRODUCTS ----------------------------------------------------------- */
+.site-shell main .products-feature-status { color: var(--nb-muted); border-bottom-color: var(--nb-line-soft); }
+.site-shell main .products-feature-intro { color: var(--nb-ink-3); }
+.site-shell main .products-workflow-rail { border-left-color: rgb(1 77 249 / .35); }
+.site-shell main .products-workflow-rail li::before { border-color: var(--nb-card); box-shadow: none; }
+.site-shell main .products-workflow-rail span { color: var(--nb-blue); }
+.site-shell main .products-workflow-rail strong { color: var(--nb-ink); }
+.site-shell main .platform-card-stage { color: var(--nb-muted); }
+.site-shell main .platform-card-title { color: var(--nb-ink); }
+.site-shell main .platform-card-copy { color: var(--nb-ink-3); }
+.site-shell main .platform-card-media { border-bottom-color: var(--nb-line); }
+.site-shell main .platform-card-icon { background: var(--nb-ink); padding: 4px; border-radius: 6px; }
+.site-shell main .products-closing-heading { color: var(--nb-ink); }
+.site-shell main .products-closing-copy { color: var(--nb-ink-3); }
+
+/* ---- CONSULTING --------------------------------------------------------- */
+.site-shell main .consulting-section-intro .body-copy { color: var(--nb-ink-3); }
+.site-shell main .consulting-zone-card { background: var(--nb-card); border: 1px solid var(--nb-line); border-top: 3px solid var(--nb-red); box-shadow: 0 18px 40px rgb(20 22 27 / .14); }
+.site-shell main .consulting-zone-card:nth-of-type(even) { border-top-color: var(--nb-blue); }
+.site-shell main .consulting-zone-header { background: var(--nb-ink-header); border-bottom-color: rgb(20 22 27 / .3); align-items: center; min-height: 76px; }
+.site-shell main .consulting-zone-header .heading-md { color: var(--nb-cream); font-family: var(--nb-font-body); font-weight: 600; letter-spacing: 0; }
+.site-shell main .consulting-zone-body { background: var(--nb-card); }
+.site-shell main .consulting-zone-card:hover,
+.site-shell main .consulting-zone-card:focus-visible { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .18); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-header { background: var(--nb-ink-header); filter: brightness(1.12); border-bottom-color: rgb(20 22 27 / .3); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-body { background: var(--nb-card); filter: none; }
+.site-shell main .consulting-lane-foundation { background: var(--nb-ink); border-top: 2px solid var(--nb-red); box-shadow: none; }
+.site-shell main .consulting-lane-foundation h3 { color: var(--nb-cream); font-family: var(--nb-font-display); font-weight: 500; }
+.site-shell main .consulting-lane-foundation p { color: var(--nb-cream-muted); }
+.site-shell main .consulting-decision-lanes span { background: linear-gradient(180deg, rgb(249 49 60 / .22), rgb(249 49 60 / 0)); border: 0; box-shadow: none; clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%); opacity: 1; filter: none; border-radius: 0; }
+.site-shell main .consulting-decision-lanes span:nth-child(even) { background: linear-gradient(180deg, rgb(1 77 249 / .22), rgb(1 77 249 / 0)); }
+.site-shell main .consulting-artifacts-header p { color: var(--nb-ink-3); }
+.site-shell main .consulting-artifacts-proof {
+  background: var(--nb-card);
+  border: 1px solid var(--nb-line);
+  box-shadow: -6px -5px 0 #F0ECE2, -10px -9px 0 #E7E2D5, -14px -13px 0 rgb(20 22 27 / .08), 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .consulting-artifacts-proof::before { background: var(--nb-rule); }
+.site-shell main .consulting-artifacts-proof-label { color: var(--nb-muted); }
+.site-shell main .consulting-artifact-statement { background: none; }
+.site-shell main .consulting-artifact-statement + .consulting-artifact-statement { border-top-color: var(--nb-line-soft); }
+.site-shell main .consulting-artifact-statement h3 { color: var(--nb-ink); font-weight: 500; }
+.site-shell main .consulting-artifact-statement h3::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue)); }
+.site-shell main .consulting-artifact-statement p { color: var(--nb-ink-2); }
+.site-shell main .consulting-closing-panel .lede { color: var(--nb-ink-3); }
+.site-shell main .consulting-closing-actions .button-secondary { color: var(--nb-ink); text-decoration: none; }
+
+/* ---- MEDIA -------------------------------------------------------------- */
+.site-shell main .podcast-showcase-copy .lede { color: var(--nb-ink-3); }
+.site-shell main .podcast-short-card { background: var(--nb-card); border-color: var(--nb-line); box-shadow: 0 18px 40px rgb(20 22 27 / .1); color: var(--nb-ink); }
+.site-shell main .podcast-short-card:hover { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .16); }
+.site-shell main .podcast-short-title { color: var(--nb-ink); font-family: var(--nb-font-body); font-weight: 600; }
+.site-shell main .media-podcast-link {
+  background: transparent; border: 1px solid var(--nb-ink); border-radius: var(--nb-radius-pill);
+  box-shadow: none; color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 15.5px;
+  font-weight: 500; letter-spacing: 0; text-transform: none; padding: 13px 22px;
+}
+.site-shell main .media-podcast-link:hover { color: var(--nb-blue); border-color: var(--nb-blue); box-shadow: none; }
+.site-shell main .podcast-showcase-context { color: var(--nb-muted); }
+.site-shell main .media-infrastructure-header .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-paths::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue) 60%, rgb(20 22 27 / .25)); }
+.site-shell main .media-infrastructure-path + .media-infrastructure-path { border-left-color: var(--nb-line-soft); }
+.site-shell main .media-infrastructure-index { background: var(--nb-paper-panel); color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .heading-md { color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-actions { border-top-color: var(--nb-line-soft); }
+
+/* ---- ABOUT -------------------------------------------------------------- */
+.site-shell main .about-story { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .about-story-column .heading-lg { color: var(--nb-ink); }
+.site-shell main .about-story-column .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-founder-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 24px 54px rgb(20 22 27 / .1); }
+.site-shell main .about-founder-card::before { background: var(--nb-rule); }
+.site-shell main .about-founder-copy { color: var(--nb-ink-3); }
+.site-shell main .about-values-cell { background: transparent; border-color: var(--nb-line-soft); }
+.site-shell main .about-values-cell .heading-md { color: var(--nb-ink); font-size: 1.6rem; }
+.site-shell main .about-values-cell .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-cta-section .cta-panel .heading-lg { color: var(--nb-ink); font-family: var(--nb-font-display); }
+.site-shell main .about-cta-section .cta-panel .lede { color: var(--nb-ink-3); }
+
+/* ---- CONTACT ------------------------------------------------------------ */
+.site-shell main .contact-hero-title { color: var(--nb-ink); }
+.site-shell main .contact-hero-copy { color: var(--nb-ink-2); }
+.site-shell main .contact-form-panel { background: var(--nb-card); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .contact-form-email-fallback { color: var(--nb-muted); }
+.site-shell main .contact-form-email-fallback .inline-link { color: var(--nb-blue); }
+.site-shell main .label { color: var(--nb-ink); font-family: var(--nb-font-mono); font-weight: 500; }
+.site-shell main .input { background: #fff; border: 1px solid rgb(20 22 27 / .28); color: var(--nb-ink); border-radius: 4px; }
+.site-shell main .input:focus { border-color: var(--nb-blue); box-shadow: 0 0 0 3px rgb(1 77 249 / .2); }
+.site-shell main .contact-form-panel #form-status { color: var(--nb-muted); }
+.site-shell main .contact-form-status[data-state="success"] { color: #1F7A4D; }
+.site-shell main .contact-form-status[data-state="error"] { color: #B3261E; }
+
+/* ---- ABOUT: remove tinted overlay and dimming on the founder portrait --- */
+/* Source: about-refinements.module.css (.founderMedia::before/::after gradients, .founderImage filter)
+   and the matching .about-founder-media rules in globals.css. Cleanest fix: delete those module rules. */
+.site-shell main .about-founder-media::before,
+.site-shell main .about-founder-media::after { content: none; background: none; }
+.site-shell main .about-founder-image { filter: none; opacity: 1; }
+
+/* =========================================================================
+   NotableBIT light-theme patch. APPEND to the END of app/globals.css.
+   Why: the token remap (--text/--cream/--muted -> ink) is kept, but every
+   legacy panel that still hardcodes a navy background is restyled here, and
+   every legacy near-white text color on a now-light surface is re-set.
+   Prefix `.site-shell main` raises specificity above legacy `.home-main .x`
+   rules without !important. Delete this file's rules page by page as the
+   legacy blocks are removed (see issues/11-globals-cleanup.md).
+   ========================================================================= */
+
+.site-shell main {
+  --nb-ink-2: #2E3139;
+  --nb-ink-3: #3A3D45;
+  --nb-soft-shadow: 0 24px 54px rgb(20 22 27 / .1);
+}
+
+/* ---- page + typography on light surfaces ------------------------------- */
+.site-shell main.home-main { background: var(--nb-paper); }
+.site-shell main .lede { color: var(--nb-ink-2); }
+.site-shell main .body-copy { color: var(--nb-ink-3); }
+.site-shell main .heading-xl,
+.site-shell main .heading-lg,
+.site-shell main .heading-md,
+.site-shell main .display { color: var(--nb-ink); font-family: var(--nb-font-display); font-weight: 500; letter-spacing: -.015em; }
+.site-shell main .inline-link { color: var(--nb-blue); text-decoration: underline; text-underline-offset: 3px; }
+.site-shell main .inline-link:hover { color: #0A5CFF; }
+
+/* ---- buttons: blue pill primary, underlined text link secondary -------- */
+.site-shell main .button {
+  font-family: var(--nb-font-body); font-size: 15.5px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; border-radius: var(--nb-radius-pill);
+  padding: 15px 24px; min-height: 0;
+}
+.site-shell main .button-primary { background: var(--nb-blue); color: #fff; box-shadow: none; }
+.site-shell main .button-primary:hover { background: #0A5CFF; box-shadow: none; }
+.site-shell main .button-secondary {
+  background: transparent; border: 0; border-bottom: 1px solid currentColor; border-radius: 0;
+  padding: 0 0 2px; color: var(--nb-ink); box-shadow: none; text-decoration: none;
+}
+.site-shell main .button-secondary:hover { color: var(--nb-blue); box-shadow: none; }
+
+/* ---- dark heroes: restore light text ------------------------------------ */
+.site-shell main .home-hero .display,
+.site-shell main .studio-hero .display,
+.site-shell main .products-hero .display,
+.site-shell main .consulting-hero .display,
+.site-shell main .media-hero .display,
+.site-shell main .about-hero .display { color: var(--nb-cream); }
+.site-shell main .home-hero .lede,
+.site-shell main .studio-hero .lede,
+.site-shell main .products-hero .lede,
+.site-shell main .consulting-hero .lede,
+.site-shell main .media-hero .lede,
+.site-shell main .about-hero .lede { color: #E8E4DA; }
+.site-shell main .home-hero .button-secondary,
+.site-shell main .studio-hero .button-secondary,
+.site-shell main .products-hero .button-secondary,
+.site-shell main .consulting-hero .button-secondary,
+.site-shell main .media-hero .button-secondary,
+.site-shell main .about-hero .button-secondary { color: var(--nb-cream); }
+/* shared: red/blue bar under heroes */
+.site-shell main .home-hero::after,
+.site-shell main .studio-hero::after,
+.site-shell main .products-hero::after,
+.site-shell main .consulting-hero::after,
+.site-shell main .media-hero::after,
+.site-shell main .about-hero::after { background: linear-gradient(90deg, var(--nb-red) 50%, var(--nb-blue) 50%); height: 3px; }
+
+/* ---- shared card surface (replaces the blanket `background: white`) ----- */
+.site-shell main .mission-card,
+.site-shell main .products-feature-card,
+.site-shell main .platform-card,
+.site-shell main .products-closing-card,
+.site-shell main .studio-cta-panel,
+.site-shell main .consulting-closing-panel,
+.site-shell main .about-cta-section .cta-panel,
+.site-shell main .card {
+  background: var(--nb-card); border: 1px solid var(--nb-line);
+  border-radius: var(--nb-radius-card); box-shadow: var(--nb-soft-shadow); color: var(--nb-ink);
+}
+.site-shell main .products-feature-card::before,
+.site-shell main .products-closing-card::before,
+.site-shell main .consulting-closing-panel::before,
+.site-shell main .studio-cta-panel::before,
+.site-shell main .about-cta-section .cta-panel::before { background: var(--nb-rule); height: 2px; opacity: 1; }
+
+/* tinted bordered panel (grid lines) used by method, zones, media, about values */
+.site-shell main .studio-method-canvas,
+.site-shell main .consulting-lane-field,
+.site-shell main .media-infrastructure-panel,
+.site-shell main .about-values-field {
+  background:
+    linear-gradient(rgb(20 22 27 / .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 22 27 / .04) 1px, transparent 1px),
+    var(--nb-paper-panel);
+  background-size: 34px 34px, 34px 34px, auto;
+  border: 1px solid var(--nb-line); border-radius: var(--nb-radius-card);
+  box-shadow: 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .studio-method-canvas::before,
+.site-shell main .media-infrastructure-panel::before { display: none; }
+.site-shell main .consulting-lane-field::after,
+.site-shell main .media-infrastructure-panel::after { background: var(--nb-rule); }
+
+/* ---- HOME --------------------------------------------------------------- */
+.site-shell main .podcast-cover { background: var(--nb-card); border-color: var(--nb-line); }
+.site-shell main .podcast-cover figcaption { color: var(--nb-muted); border-top-color: var(--nb-line-soft); }
+.site-shell main .podcast-cover figcaption strong { color: var(--nb-ink); }
+.site-shell main .podcast-ledger-item + .podcast-ledger-item { border-left-color: var(--nb-line-soft); }
+.site-shell main .artifact-label { color: var(--nb-red); }
+.site-shell main .mission-card { background: transparent; border: 0; border-top: 1px solid var(--nb-line-soft); border-bottom: 1px solid var(--nb-line-soft); border-radius: 0; box-shadow: none; max-width: 960px; padding: 56px 24px; }
+.site-shell main .mission-card p:last-child { color: var(--nb-ink); font-size: 2.5rem; line-height: 1.22; letter-spacing: -.01em; }
+.site-shell main .ecosystem-diagram { --ecosystem-divider: var(--nb-line-soft); }
+.site-shell main .ecosystem-core { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .ecosystem-core strong { color: var(--nb-ink); }
+.site-shell main .ecosystem-core span,
+.site-shell main .ecosystem-function { color: var(--nb-muted); }
+.site-shell main .ecosystem-output-link:hover { color: var(--nb-blue); }
+.site-shell main .founder-field { background: transparent; border-color: var(--nb-line-soft); box-shadow: none; }
+.site-shell main .founder-note-card { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .founder-note-card::before { color: var(--nb-red); opacity: .35; }
+.site-shell main .founder-note-card blockquote { color: var(--nb-ink); }
+.site-shell main .founder-note-card figcaption { color: var(--nb-muted); }
+.site-shell main .entry-list { border-top-color: var(--nb-ink); }
+.site-shell main .entry-item { border-bottom-color: var(--nb-line-soft); }
+.site-shell main .entry-row::before { background: rgb(20 22 27 / .04); }
+.site-shell main .entry-index { color: var(--nb-muted); }
+.site-shell main .entry-label { color: var(--nb-red); }
+.site-shell main .entry-title { color: var(--nb-ink); }
+.site-shell main .entry-row:hover .entry-title { color: var(--nb-blue); }
+.site-shell main .entry-row .entry-desc { color: var(--nb-ink-3); }
+.site-shell main .entry-cue { color: var(--nb-blue); }
+
+/* ---- STUDIO ------------------------------------------------------------- */
+.site-shell main .studio-principles-notes { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .studio-principles-notes::before { display: none; }
+.site-shell main .studio-method-node { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-method-node-number { color: var(--nb-blue); }
+.site-shell main .studio-method-node:nth-child(4) .studio-method-node-number { color: var(--nb-red); }
+.site-shell main .studio-method-node-title { color: var(--nb-ink); }
+.site-shell main .studio-method-node-body { color: var(--nb-ink-3); }
+.site-shell main .studio-disciplines-intro,
+.site-shell main .studio-method-header .body-copy,
+.site-shell main .studio-model-copy { color: var(--nb-ink-3); }
+.site-shell main .studio-model-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-model-card-index { color: var(--nb-muted); }
+.site-shell main .studio-model-card-title { color: var(--nb-ink); }
+.site-shell main .studio-model-card-body { color: var(--nb-ink-3); }
+.site-shell main .studio-cta-heading { color: var(--nb-ink); }
+.site-shell main .studio-cta-copy { color: var(--nb-ink-3); }
+/* terminal (.studio-console) intentionally stays dark */
+
+/* ---- PRODUCTS ----------------------------------------------------------- */
+.site-shell main .products-feature-status { color: var(--nb-muted); border-bottom-color: var(--nb-line-soft); }
+.site-shell main .products-feature-intro { color: var(--nb-ink-3); }
+.site-shell main .products-workflow-rail { border-left-color: rgb(1 77 249 / .35); }
+.site-shell main .products-workflow-rail li::before { border-color: var(--nb-card); box-shadow: none; }
+.site-shell main .products-workflow-rail span { color: var(--nb-blue); }
+.site-shell main .products-workflow-rail strong { color: var(--nb-ink); }
+.site-shell main .platform-card-stage { color: var(--nb-muted); }
+.site-shell main .platform-card-title { color: var(--nb-ink); }
+.site-shell main .platform-card-copy { color: var(--nb-ink-3); }
+.site-shell main .platform-card-media { border-bottom-color: var(--nb-line); }
+.site-shell main .platform-card-icon { background: var(--nb-ink); padding: 4px; border-radius: 6px; }
+.site-shell main .products-closing-heading { color: var(--nb-ink); }
+.site-shell main .products-closing-copy { color: var(--nb-ink-3); }
+
+/* ---- CONSULTING --------------------------------------------------------- */
+.site-shell main .consulting-section-intro .body-copy { color: var(--nb-ink-3); }
+.site-shell main .consulting-zone-card { background: var(--nb-card); border: 1px solid var(--nb-line); border-top: 3px solid var(--nb-red); box-shadow: 0 18px 40px rgb(20 22 27 / .14); }
+.site-shell main .consulting-zone-card:nth-of-type(even) { border-top-color: var(--nb-blue); }
+.site-shell main .consulting-zone-header { background: var(--nb-ink-header); border-bottom-color: rgb(20 22 27 / .3); align-items: center; min-height: 76px; }
+.site-shell main .consulting-zone-header .heading-md { color: var(--nb-cream); font-family: var(--nb-font-body); font-weight: 600; letter-spacing: 0; }
+.site-shell main .consulting-zone-body { background: var(--nb-card); }
+.site-shell main .consulting-zone-card:hover,
+.site-shell main .consulting-zone-card:focus-visible { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .18); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-header { background: var(--nb-ink-header); filter: brightness(1.12); border-bottom-color: rgb(20 22 27 / .3); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-body { background: var(--nb-card); filter: none; }
+.site-shell main .consulting-lane-foundation { background: var(--nb-ink); border-top: 2px solid var(--nb-red); box-shadow: none; }
+.site-shell main .consulting-lane-foundation h3 { color: var(--nb-cream); font-family: var(--nb-font-display); font-weight: 500; }
+.site-shell main .consulting-lane-foundation p { color: var(--nb-cream-muted); }
+.site-shell main .consulting-decision-lanes span { background: linear-gradient(180deg, rgb(249 49 60 / .22), rgb(249 49 60 / 0)); border: 0; box-shadow: none; clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%); opacity: 1; filter: none; border-radius: 0; }
+.site-shell main .consulting-decision-lanes span:nth-child(even) { background: linear-gradient(180deg, rgb(1 77 249 / .22), rgb(1 77 249 / 0)); }
+.site-shell main .consulting-artifacts-header p { color: var(--nb-ink-3); }
+.site-shell main .consulting-artifacts-proof {
+  background: var(--nb-card);
+  border: 1px solid var(--nb-line);
+  box-shadow: -6px -5px 0 #F0ECE2, -10px -9px 0 #E7E2D5, -14px -13px 0 rgb(20 22 27 / .08), 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .consulting-artifacts-proof::before { background: var(--nb-rule); }
+.site-shell main .consulting-artifacts-proof-label { color: var(--nb-muted); }
+.site-shell main .consulting-artifact-statement { background: none; }
+.site-shell main .consulting-artifact-statement + .consulting-artifact-statement { border-top-color: var(--nb-line-soft); }
+.site-shell main .consulting-artifact-statement h3 { color: var(--nb-ink); font-weight: 500; }
+.site-shell main .consulting-artifact-statement h3::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue)); }
+.site-shell main .consulting-artifact-statement p { color: var(--nb-ink-2); }
+.site-shell main .consulting-closing-panel .lede { color: var(--nb-ink-3); }
+.site-shell main .consulting-closing-actions .button-secondary { color: var(--nb-ink); text-decoration: none; }
+
+/* ---- MEDIA -------------------------------------------------------------- */
+.site-shell main .podcast-showcase-copy .lede { color: var(--nb-ink-3); }
+.site-shell main .podcast-short-card { background: var(--nb-card); border-color: var(--nb-line); box-shadow: 0 18px 40px rgb(20 22 27 / .1); color: var(--nb-ink); }
+.site-shell main .podcast-short-card:hover { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .16); }
+.site-shell main .podcast-short-title { color: var(--nb-ink); font-family: var(--nb-font-body); font-weight: 600; }
+.site-shell main .media-podcast-link {
+  background: transparent; border: 1px solid var(--nb-ink); border-radius: var(--nb-radius-pill);
+  box-shadow: none; color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 15.5px;
+  font-weight: 500; letter-spacing: 0; text-transform: none; padding: 13px 22px;
+}
+.site-shell main .media-podcast-link:hover { color: var(--nb-blue); border-color: var(--nb-blue); box-shadow: none; }
+.site-shell main .podcast-showcase-context { color: var(--nb-muted); }
+.site-shell main .media-infrastructure-header .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-paths::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue) 60%, rgb(20 22 27 / .25)); }
+.site-shell main .media-infrastructure-path + .media-infrastructure-path { border-left-color: var(--nb-line-soft); }
+.site-shell main .media-infrastructure-index { background: var(--nb-paper-panel); color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .heading-md { color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-actions { border-top-color: var(--nb-line-soft); }
+
+/* ---- ABOUT -------------------------------------------------------------- */
+.site-shell main .about-story { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .about-story-column .heading-lg { color: var(--nb-ink); }
+.site-shell main .about-story-column .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-founder-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 24px 54px rgb(20 22 27 / .1); }
+.site-shell main .about-founder-card::before { background: var(--nb-rule); }
+.site-shell main .about-founder-copy { color: var(--nb-ink-3); }
+.site-shell main .about-values-cell { background: transparent; border-color: var(--nb-line-soft); }
+.site-shell main .about-values-cell .heading-md { color: var(--nb-ink); font-size: 1.6rem; }
+.site-shell main .about-values-cell .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-cta-section .cta-panel .heading-lg { color: var(--nb-ink); font-family: var(--nb-font-display); }
+.site-shell main .about-cta-section .cta-panel .lede { color: var(--nb-ink-3); }
+
+/* ---- CONTACT ------------------------------------------------------------ */
+.site-shell main .contact-hero-title { color: var(--nb-ink); }
+.site-shell main .contact-hero-copy { color: var(--nb-ink-2); }
+.site-shell main .contact-form-panel { background: var(--nb-card); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .contact-form-email-fallback { color: var(--nb-muted); }
+.site-shell main .contact-form-email-fallback .inline-link { color: var(--nb-blue); }
+.site-shell main .label { color: var(--nb-ink); font-family: var(--nb-font-mono); font-weight: 500; }
+.site-shell main .input { background: #fff; border: 1px solid rgb(20 22 27 / .28); color: var(--nb-ink); border-radius: 4px; }
+.site-shell main .input:focus { border-color: var(--nb-blue); box-shadow: 0 0 0 3px rgb(1 77 249 / .2); }
+.site-shell main .contact-form-panel #form-status { color: var(--nb-muted); }
+.site-shell main .contact-form-status[data-state="success"] { color: #1F7A4D; }
+.site-shell main .contact-form-status[data-state="error"] { color: #B3261E; }
+
+/* ---- ABOUT: remove tinted overlay and dimming on the founder portrait --- */
+/* Source: about-refinements.module.css (.founderMedia::before/::after gradients, .founderImage filter)
+   and the matching .about-founder-media rules in globals.css. Cleanest fix: delete those module rules. */
+.site-shell main .about-founder-media::before,
+.site-shell main .about-founder-media::after { content: none; background: none; }
+.site-shell main .about-founder-image { filter: none; opacity: 1; }
+
+/* ---- MEDIA: video modal (legacy dark panel + ink text = unreadable header) -- */
+.media-video-modal-backdrop { background: rgb(10 12 16 / .72); }
+.media-video-modal { background: var(--nb-card); border: 1px solid var(--nb-line); border-radius: var(--nb-radius-card); box-shadow: 0 30px 80px rgb(0 0 0 / .4); color: var(--nb-ink); }
+.media-video-modal-header { background: var(--nb-card); border-bottom: 1px solid var(--nb-line-soft); }
+.media-video-modal-header h2 { color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 15px; font-weight: 600; line-height: 1.3; letter-spacing: 0; }
+.media-video-modal-close { background: transparent; border: 1px solid var(--nb-ink); border-radius: var(--nb-radius-pill); color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; padding: 6px 14px; }
+.media-video-modal-close:hover,
+.media-video-modal-close:focus-visible { background: var(--nb-ink); color: var(--nb-cream); border-color: var(--nb-ink); }
+.media-video-frame { background: #000; }
+/* =========================================================================
+   NotableBIT light-theme patch. APPEND to the END of app/globals.css.
+   Why: the token remap (--text/--cream/--muted -> ink) is kept, but every
+   legacy panel that still hardcodes a navy background is restyled here, and
+   every legacy near-white text color on a now-light surface is re-set.
+   Prefix `.site-shell main` raises specificity above legacy `.home-main .x`
+   rules without !important. Delete this file's rules page by page as the
+   legacy blocks are removed (see issues/11-globals-cleanup.md).
+   ========================================================================= */
+
+.site-shell main {
+  --nb-ink-2: #2E3139;
+  --nb-ink-3: #3A3D45;
+  --nb-soft-shadow: 0 24px 54px rgb(20 22 27 / .1);
+}
+
+/* ---- page + typography on light surfaces ------------------------------- */
+.site-shell main.home-main { background: var(--nb-paper); }
+.site-shell main .lede { color: var(--nb-ink-2); }
+.site-shell main .body-copy { color: var(--nb-ink-3); }
+.site-shell main .heading-xl,
+.site-shell main .heading-lg,
+.site-shell main .heading-md,
+.site-shell main .display { color: var(--nb-ink); font-family: var(--nb-font-display); font-weight: 500; letter-spacing: -.015em; }
+.site-shell main .inline-link { color: var(--nb-blue); text-decoration: underline; text-underline-offset: 3px; }
+.site-shell main .inline-link:hover { color: #0A5CFF; }
+
+/* ---- buttons: blue pill primary, underlined text link secondary -------- */
+.site-shell main .button {
+  font-family: var(--nb-font-body); font-size: 15.5px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; border-radius: var(--nb-radius-pill);
+  padding: 15px 24px; min-height: 0;
+}
+.site-shell main .button-primary { background: var(--nb-blue); color: #fff; box-shadow: none; }
+.site-shell main .button-primary:hover { background: #0A5CFF; box-shadow: none; }
+.site-shell main .button-secondary {
+  background: transparent; border: 0; border-bottom: 1px solid currentColor; border-radius: 0;
+  padding: 0 0 2px; color: var(--nb-ink); box-shadow: none; text-decoration: none;
+}
+.site-shell main .button-secondary:hover { color: var(--nb-blue); box-shadow: none; }
+
+/* ---- dark heroes: restore light text ------------------------------------ */
+.site-shell main .home-hero .display,
+.site-shell main .studio-hero .display,
+.site-shell main .products-hero .display,
+.site-shell main .consulting-hero .display,
+.site-shell main .media-hero .display,
+.site-shell main .about-hero .display { color: var(--nb-cream); }
+.site-shell main .home-hero .lede,
+.site-shell main .studio-hero .lede,
+.site-shell main .products-hero .lede,
+.site-shell main .consulting-hero .lede,
+.site-shell main .media-hero .lede,
+.site-shell main .about-hero .lede { color: #E8E4DA; }
+.site-shell main .home-hero .button-secondary,
+.site-shell main .studio-hero .button-secondary,
+.site-shell main .products-hero .button-secondary,
+.site-shell main .consulting-hero .button-secondary,
+.site-shell main .media-hero .button-secondary,
+.site-shell main .about-hero .button-secondary { color: var(--nb-cream); }
+/* shared: red/blue bar under heroes */
+.site-shell main .home-hero::after,
+.site-shell main .studio-hero::after,
+.site-shell main .products-hero::after,
+.site-shell main .consulting-hero::after,
+.site-shell main .media-hero::after,
+.site-shell main .about-hero::after { background: linear-gradient(90deg, var(--nb-red) 50%, var(--nb-blue) 50%); height: 3px; }
+
+/* ---- shared card surface (replaces the blanket `background: white`) ----- */
+.site-shell main .mission-card,
+.site-shell main .products-feature-card,
+.site-shell main .platform-card,
+.site-shell main .products-closing-card,
+.site-shell main .studio-cta-panel,
+.site-shell main .consulting-closing-panel,
+.site-shell main .about-cta-section .cta-panel,
+.site-shell main .card {
+  background: var(--nb-card); border: 1px solid var(--nb-line);
+  border-radius: var(--nb-radius-card); box-shadow: var(--nb-soft-shadow); color: var(--nb-ink);
+}
+.site-shell main .products-feature-card::before,
+.site-shell main .products-closing-card::before,
+.site-shell main .consulting-closing-panel::before,
+.site-shell main .studio-cta-panel::before,
+.site-shell main .about-cta-section .cta-panel::before { background: var(--nb-rule); height: 2px; opacity: 1; }
+
+/* tinted bordered panel (grid lines) used by method, zones, media, about values */
+.site-shell main .studio-method-canvas,
+.site-shell main .consulting-lane-field,
+.site-shell main .media-infrastructure-panel,
+.site-shell main .about-values-field {
+  background:
+    linear-gradient(rgb(20 22 27 / .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 22 27 / .04) 1px, transparent 1px),
+    var(--nb-paper-panel);
+  background-size: 34px 34px, 34px 34px, auto;
+  border: 1px solid var(--nb-line); border-radius: var(--nb-radius-card);
+  box-shadow: 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .studio-method-canvas::before,
+.site-shell main .media-infrastructure-panel::before { display: none; }
+.site-shell main .consulting-lane-field::after,
+.site-shell main .media-infrastructure-panel::after { background: var(--nb-rule); }
+
+/* ---- HOME --------------------------------------------------------------- */
+.site-shell main .podcast-cover { background: var(--nb-card); border-color: var(--nb-line); }
+.site-shell main .podcast-cover figcaption { color: var(--nb-muted); border-top-color: var(--nb-line-soft); }
+.site-shell main .podcast-cover figcaption strong { color: var(--nb-ink); }
+.site-shell main .podcast-ledger-item + .podcast-ledger-item { border-left-color: var(--nb-line-soft); }
+.site-shell main .artifact-label { color: var(--nb-red); }
+.site-shell main .mission-card { background: transparent; border: 0; border-top: 1px solid var(--nb-line-soft); border-bottom: 1px solid var(--nb-line-soft); border-radius: 0; box-shadow: none; max-width: 960px; padding: 56px 24px; }
+.site-shell main .mission-card p:last-child { color: var(--nb-ink); font-size: 2.5rem; line-height: 1.22; letter-spacing: -.01em; }
+.site-shell main .ecosystem-diagram { --ecosystem-divider: var(--nb-line-soft); }
+.site-shell main .ecosystem-core { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .ecosystem-core strong { color: var(--nb-ink); }
+.site-shell main .ecosystem-core span,
+.site-shell main .ecosystem-function { color: var(--nb-muted); }
+.site-shell main .ecosystem-output-link:hover { color: var(--nb-blue); }
+.site-shell main .founder-field { background: transparent; border-color: var(--nb-line-soft); box-shadow: none; }
+.site-shell main .founder-note-card { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .founder-note-card::before { color: var(--nb-red); opacity: .35; }
+.site-shell main .founder-note-card blockquote { color: var(--nb-ink); }
+.site-shell main .founder-note-card figcaption { color: var(--nb-muted); }
+.site-shell main .entry-list { border-top-color: var(--nb-ink); }
+.site-shell main .entry-item { border-bottom-color: var(--nb-line-soft); }
+.site-shell main .entry-row::before { background: rgb(20 22 27 / .04); }
+.site-shell main .entry-index { color: var(--nb-muted); }
+.site-shell main .entry-label { color: var(--nb-red); }
+.site-shell main .entry-title { color: var(--nb-ink); }
+.site-shell main .entry-row:hover .entry-title { color: var(--nb-blue); }
+.site-shell main .entry-row .entry-desc { color: var(--nb-ink-3); }
+.site-shell main .entry-cue { color: var(--nb-blue); }
+
+/* ---- STUDIO ------------------------------------------------------------- */
+.site-shell main .studio-principles-notes { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .studio-principles-notes::before { display: none; }
+.site-shell main .studio-method-node { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-method-node-number { color: var(--nb-blue); }
+.site-shell main .studio-method-node:nth-child(4) .studio-method-node-number { color: var(--nb-red); }
+.site-shell main .studio-method-node-title { color: var(--nb-ink); }
+.site-shell main .studio-method-node-body { color: var(--nb-ink-3); }
+.site-shell main .studio-disciplines-intro,
+.site-shell main .studio-method-header .body-copy,
+.site-shell main .studio-model-copy { color: var(--nb-ink-3); }
+.site-shell main .studio-model-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 14px 30px rgb(20 22 27 / .1); }
+.site-shell main .studio-model-card-index { color: var(--nb-muted); }
+.site-shell main .studio-model-card-title { color: var(--nb-ink); }
+.site-shell main .studio-model-card-body { color: var(--nb-ink-3); }
+.site-shell main .studio-cta-heading { color: var(--nb-ink); }
+.site-shell main .studio-cta-copy { color: var(--nb-ink-3); }
+/* terminal (.studio-console) intentionally stays dark */
+
+/* ---- PRODUCTS ----------------------------------------------------------- */
+.site-shell main .products-feature-status { color: var(--nb-muted); border-bottom-color: var(--nb-line-soft); }
+.site-shell main .products-feature-intro { color: var(--nb-ink-3); }
+.site-shell main .products-workflow-rail { border-left-color: rgb(1 77 249 / .35); }
+.site-shell main .products-workflow-rail li::before { border-color: var(--nb-card); box-shadow: none; }
+.site-shell main .products-workflow-rail span { color: var(--nb-blue); }
+.site-shell main .products-workflow-rail strong { color: var(--nb-ink); }
+.site-shell main .platform-card-stage { color: var(--nb-muted); }
+.site-shell main .platform-card-title { color: var(--nb-ink); }
+.site-shell main .platform-card-copy { color: var(--nb-ink-3); }
+.site-shell main .platform-card-media { border-bottom-color: var(--nb-line); }
+.site-shell main .platform-card-icon { background: var(--nb-ink); padding: 4px; border-radius: 6px; }
+.site-shell main .products-closing-heading { color: var(--nb-ink); }
+.site-shell main .products-closing-copy { color: var(--nb-ink-3); }
+
+/* ---- CONSULTING --------------------------------------------------------- */
+.site-shell main .consulting-section-intro .body-copy { color: var(--nb-ink-3); }
+.site-shell main .consulting-zone-card { background: var(--nb-card); border: 1px solid var(--nb-line); border-top: 3px solid var(--nb-red); box-shadow: 0 18px 40px rgb(20 22 27 / .14); }
+.site-shell main .consulting-zone-card:nth-of-type(even) { border-top-color: var(--nb-blue); }
+.site-shell main .consulting-zone-header { background: var(--nb-ink-header); border-bottom-color: rgb(20 22 27 / .3); align-items: center; min-height: 76px; }
+.site-shell main .consulting-zone-header .heading-md { color: var(--nb-cream); font-family: var(--nb-font-body); font-weight: 600; letter-spacing: 0; }
+.site-shell main .consulting-zone-body { background: var(--nb-card); }
+.site-shell main .consulting-zone-card:hover,
+.site-shell main .consulting-zone-card:focus-visible { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .18); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-header { background: var(--nb-ink-header); filter: brightness(1.12); border-bottom-color: rgb(20 22 27 / .3); }
+.site-shell main .consulting-zone-card:hover .consulting-zone-body { background: var(--nb-card); filter: none; }
+.site-shell main .consulting-lane-foundation { background: var(--nb-ink); border-top: 2px solid var(--nb-red); box-shadow: none; }
+.site-shell main .consulting-lane-foundation h3 { color: var(--nb-cream); font-family: var(--nb-font-display); font-weight: 500; }
+.site-shell main .consulting-lane-foundation p { color: var(--nb-cream-muted); }
+.site-shell main .consulting-decision-lanes span { background: linear-gradient(180deg, rgb(249 49 60 / .22), rgb(249 49 60 / 0)); border: 0; box-shadow: none; clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%); opacity: 1; filter: none; border-radius: 0; }
+.site-shell main .consulting-decision-lanes span:nth-child(even) { background: linear-gradient(180deg, rgb(1 77 249 / .22), rgb(1 77 249 / 0)); }
+.site-shell main .consulting-artifacts-header p { color: var(--nb-ink-3); }
+.site-shell main .consulting-artifacts-proof {
+  background: var(--nb-card);
+  border: 1px solid var(--nb-line);
+  box-shadow: -6px -5px 0 #F0ECE2, -10px -9px 0 #E7E2D5, -14px -13px 0 rgb(20 22 27 / .08), 0 30px 70px rgb(20 22 27 / .14);
+}
+.site-shell main .consulting-artifacts-proof::before { background: var(--nb-rule); }
+.site-shell main .consulting-artifacts-proof-label { color: var(--nb-muted); }
+.site-shell main .consulting-artifact-statement { background: none; }
+.site-shell main .consulting-artifact-statement + .consulting-artifact-statement { border-top-color: var(--nb-line-soft); }
+.site-shell main .consulting-artifact-statement h3 { color: var(--nb-ink); font-weight: 500; }
+.site-shell main .consulting-artifact-statement h3::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue)); }
+.site-shell main .consulting-artifact-statement p { color: var(--nb-ink-2); }
+.site-shell main .consulting-closing-panel .lede { color: var(--nb-ink-3); }
+.site-shell main .consulting-closing-actions .button-secondary { color: var(--nb-ink); text-decoration: none; }
+
+/* ---- MEDIA -------------------------------------------------------------- */
+.site-shell main .podcast-showcase-copy .lede { color: var(--nb-ink-3); }
+.site-shell main .podcast-short-card { background: var(--nb-card); border-color: var(--nb-line); box-shadow: 0 18px 40px rgb(20 22 27 / .1); color: var(--nb-ink); }
+.site-shell main .podcast-short-card:hover { border-color: var(--nb-line); box-shadow: 0 24px 50px rgb(20 22 27 / .16); }
+.site-shell main .podcast-short-title { color: var(--nb-ink); font-family: var(--nb-font-body); font-weight: 600; }
+.site-shell main .media-podcast-link {
+  background: transparent; border: 1px solid var(--nb-ink); border-radius: var(--nb-radius-pill);
+  box-shadow: none; color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 15.5px;
+  font-weight: 500; letter-spacing: 0; text-transform: none; padding: 13px 22px;
+}
+.site-shell main .media-podcast-link:hover { color: var(--nb-blue); border-color: var(--nb-blue); box-shadow: none; }
+.site-shell main .podcast-showcase-context { color: var(--nb-muted); }
+.site-shell main .media-infrastructure-header .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-paths::before { background: linear-gradient(90deg, var(--nb-red), var(--nb-blue) 60%, rgb(20 22 27 / .25)); }
+.site-shell main .media-infrastructure-path + .media-infrastructure-path { border-left-color: var(--nb-line-soft); }
+.site-shell main .media-infrastructure-index { background: var(--nb-paper-panel); color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .heading-md { color: var(--nb-ink); }
+.site-shell main .media-infrastructure-path .body-copy { color: var(--nb-ink-3); }
+.site-shell main .media-infrastructure-actions { border-top-color: var(--nb-line-soft); }
+
+/* ---- ABOUT -------------------------------------------------------------- */
+.site-shell main .about-story { background: transparent; border: 0; box-shadow: none; }
+.site-shell main .about-story-column .heading-lg { color: var(--nb-ink); }
+.site-shell main .about-story-column .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-founder-card { background: var(--nb-card); border: 1px solid var(--nb-line); box-shadow: 0 24px 54px rgb(20 22 27 / .1); }
+.site-shell main .about-founder-card::before { background: var(--nb-rule); }
+.site-shell main .about-founder-copy { color: var(--nb-ink-3); }
+.site-shell main .about-values-cell { background: transparent; border-color: var(--nb-line-soft); }
+.site-shell main .about-values-cell .heading-md { color: var(--nb-ink); font-size: 1.6rem; }
+.site-shell main .about-values-cell .body-copy { color: var(--nb-ink-3); }
+.site-shell main .about-cta-section .cta-panel .heading-lg { color: var(--nb-ink); font-family: var(--nb-font-display); }
+.site-shell main .about-cta-section .cta-panel .lede { color: var(--nb-ink-3); }
+
+/* ---- CONTACT ------------------------------------------------------------ */
+.site-shell main .contact-hero-title { color: var(--nb-ink); }
+.site-shell main .contact-hero-copy { color: var(--nb-ink-2); }
+.site-shell main .contact-form-panel { background: var(--nb-card); box-shadow: var(--nb-soft-shadow); }
+.site-shell main .contact-form-email-fallback { color: var(--nb-muted); }
+.site-shell main .contact-form-email-fallback .inline-link { color: var(--nb-blue); }
+.site-shell main .label { color: var(--nb-ink); font-family: var(--nb-font-mono); font-weight: 500; }
+.site-shell main .input { background: #fff; border: 1px solid rgb(20 22 27 / .28); color: var(--nb-ink); border-radius: 4px; }
+.site-shell main .input:focus { border-color: var(--nb-blue); box-shadow: 0 0 0 3px rgb(1 77 249 / .2); }
+.site-shell main .contact-form-panel #form-status { color: var(--nb-muted); }
+.site-shell main .contact-form-status[data-state="success"] { color: #1F7A4D; }
+.site-shell main .contact-form-status[data-state="error"] { color: #B3261E; }
+
+/* ---- ABOUT: remove tinted overlay and dimming on the founder portrait --- */
+/* Source: about-refinements.module.css (.founderMedia::before/::after gradients, .founderImage filter)
+   and the matching .about-founder-media rules in globals.css. Cleanest fix: delete those module rules. */
+.site-shell main .about-founder-media::before,
+.site-shell main .about-founder-media::after { content: none; background: none; }
+.site-shell main .about-founder-image { filter: none; opacity: 1; }
+
+/* ---- MEDIA: video modal (legacy dark panel + ink text = unreadable header) -- */
+.media-video-modal-backdrop { background: rgb(10 12 16 / .72); }
+.media-video-modal { background: var(--nb-card); border: 1px solid var(--nb-line); border-radius: var(--nb-radius-card); box-shadow: 0 30px 80px rgb(0 0 0 / .4); color: var(--nb-ink); }
+.media-video-modal-header { background: var(--nb-card); border-bottom: 1px solid var(--nb-line-soft); }
+.media-video-modal-header h2 { color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 15px; font-weight: 600; line-height: 1.3; letter-spacing: 0; }
+.media-video-modal-close { background: transparent; border: 1px solid var(--nb-ink); border-radius: var(--nb-radius-pill); color: var(--nb-ink); font-family: var(--nb-font-body); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; padding: 6px 14px; }
+.media-video-modal-close:hover,
+.media-video-modal-close:focus-visible { background: var(--nb-ink); color: var(--nb-cream); border-color: var(--nb-ink); }
+.media-video-frame { background: #000; }

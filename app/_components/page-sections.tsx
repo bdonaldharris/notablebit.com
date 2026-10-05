@@ -28,7 +28,7 @@ export function PageHero({
         alt=""
         className="page-hero-image"
         fill
-        priority
+        preload
         sizes="100vw"
         src={image}
         style={objectPosition ? { objectPosition } : undefined}

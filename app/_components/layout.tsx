@@ -89,7 +89,7 @@ export function Header({ overHero = true }: { overHero?: boolean }) {
     <header className={`site-header ${isLight ? "site-header-light" : "site-header-over-hero"}`}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="NotableBIT home">
-          <Image className="brand-logo" src={isLight ? logoBlack : logoWhite} alt="NotableBIT" priority />
+          <Image className="brand-logo" src={isLight ? logoBlack : logoWhite} alt="NotableBIT" loading="eager" />
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">

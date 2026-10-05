@@ -140,7 +140,7 @@ export default function Home() {
           alt=""
           className="home-hero-atmosphere"
           fill
-          priority
+          preload
           sizes="100vw"
           src={heroAtmosphereImage}
         />
