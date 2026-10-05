@@ -1,19 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  --background: #05070d;
-  --surface: #0a1128;
-  --surface-soft: #101827;
-  --surface-elevated: #161c2a;
-  --border: rgb(179 197 255 / 0.16);
-  --border-strong: rgb(0 102 255 / 0.48);
-  --text: #f5f7ff;
-  --muted: #c5c8d6;
-  --subtle: #8f96ad;
-  --blue: #0066ff;
-  --blue-soft: #b3c5ff;
-  --cream: #f1e7d2;
-  --danger: #ff7a70;
   --radius-sm: 4px;
   --radius-md: 8px;
   --container: 1180px;
@@ -22,15 +9,6 @@
   --section-gap-tight: clamp(28px, 3.5vw, 48px);
   --section-gap-standard: clamp(40px, 5vw, 72px);
   --section-gap-loose: clamp(56px, 7vw, 96px);
-  /* Typography system — promoted from the Home page so the entire site shares
-     one editorial / technical / founder-led voice. Display + body share a warm
-     humanist sans; heroes and standout statements lean on an editorial serif;
-     labels, eyebrows, buttons, and metadata use a refined monospace. */
-  --font-body: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-display: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-hero: Georgia, "Times New Roman", Times, serif;
-  --font-editorial: Georgia, "Times New Roman", Times, serif;
-  --font-meta: "SFMono-Regular", "Cascadia Mono", "Aptos Mono", "Liberation Mono", "Courier New", Courier, monospace;
 }
 
 /* Redesign foundation. These rules intentionally sit after the legacy page
@@ -75,6 +53,7 @@ a:hover { color: var(--nb-blue); }
 .button-secondary:hover { border-color: var(--nb-blue); box-shadow: none; color: var(--nb-blue); }
 .nb-rule, .site-footer::before { background: linear-gradient(90deg, var(--nb-rule-red), var(--nb-blue)); height: 3px; }
 .nb-frame { border: 1px solid var(--nb-line); }
+.home-main { background: var(--nb-paper); }
 
 .site-header { background: transparent; border: 0; box-shadow: none; position: absolute; width: 100%; }
 .site-header::after { display: none; }
@@ -219,7 +198,7 @@ textarea {
 
 .site-shell {
   min-height: 100vh;
-  /* clip horizontal bleed only — `overflow: hidden` here would make this a
+  /* clip horizontal bleed only - `overflow: hidden` here would make this a
      scroll container and break `position: sticky` on the header. */
   overflow-x: clip;
   position: relative;
@@ -237,7 +216,7 @@ textarea {
   position: fixed;
 }
 
-/* Faint textile-inspired weave — cultural texture under the tech grid, kept
+/* Faint textile-inspired weave - cultural texture under the tech grid, kept
    barely perceptible so it reads as warmth and pattern, never decoration. */
 .site-shell::after {
   background-image:
@@ -285,7 +264,7 @@ textarea {
   z-index: 50;
 }
 
-/* Thin institutional banner line — gold to blue, the studio's signal colors. */
+/* Thin institutional banner line - gold to blue, the studio's signal colors. */
 .site-header::after {
   background: linear-gradient(90deg, var(--nb-rule-red), var(--blue) 38%, transparent 72%);
   bottom: -1px;
@@ -612,7 +591,7 @@ textarea {
   text-transform: uppercase;
 }
 
-/* HBCU-style institutional label bar — a small crest tick before each kicker. */
+/* HBCU-style institutional label bar - a small crest tick before each kicker. */
 .eyebrow::before {
   background: linear-gradient(90deg, var(--nb-rule-red), rgb(231 173 60 / 0));
   content: "";
@@ -847,7 +826,7 @@ textarea {
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
 }
 
-/* About hero — founder-studio artifacts form the full editorial canvas, while
+/* About hero - founder-studio artifacts form the full editorial canvas, while
    the left-side scrim preserves readable copy and keeps the warmer desk alive. */
 .about-hero {
   align-items: center;
@@ -988,7 +967,7 @@ textarea {
   width: 100%;
 }
 
-/* Products hero — the product-work image becomes the page canvas, preserving
+/* Products hero - the product-work image becomes the page canvas, preserving
    a clear editorial path from proposition to real workflow artifacts. */
 .products-hero {
   isolation: isolate;
@@ -1404,7 +1383,7 @@ a.platform-card:focus-visible {
   }
 }
 
-/* Studio hero — page-specific immersive composition modeled on the Home hero:
+/* Studio hero - page-specific immersive composition modeled on the Home hero:
    the workstation photo becomes the atmospheric canvas filling the section, with
    layered scrims keeping the editorial text block readable over it. */
 .studio-hero {
@@ -1461,7 +1440,7 @@ a.platform-card:focus-visible {
   max-width: 760px;
 }
 
-/* Studio principles — a composed workboard of notes placed before the work. */
+/* Studio principles - a composed workboard of notes placed before the work. */
 .studio-principles-section {
   /* The third note translates down 18px on desktop; this compensation keeps
      the tokenized gap measured from the visible note edge. */
@@ -1568,7 +1547,7 @@ a.platform-card:focus-visible {
   margin: 18px 0 0;
 }
 
-/* Studio method — a technical workflow board with a deliberate stepped path. */
+/* Studio method - a technical workflow board with a deliberate stepped path. */
 .studio-method-section {
   padding-bottom: 0;
   padding-top: 0;
@@ -1731,7 +1710,7 @@ a.platform-card:focus-visible {
   width: 7px;
 }
 
-/* Studio disciplines — one builder console, structured as readable output. */
+/* Studio disciplines - one builder console, structured as readable output. */
 .studio-disciplines-header {
   max-width: 1120px;
 }
@@ -1916,7 +1895,7 @@ a.platform-card:focus-visible {
   }
 }
 
-/* Ecosystem signal ring — concentric community rings with a slow signal sweep
+/* Ecosystem signal ring - concentric community rings with a slow signal sweep
    and a warm gold core. Reads as network/constellation, not a SaaS planet. */
 .hero-orbit {
   aspect-ratio: 1;
@@ -2075,7 +2054,7 @@ a.platform-card:focus-visible {
   grid-template-columns: minmax(0, 0.72fr) minmax(320px, 1fr);
 }
 
-/* Studio operating model — four connected modes, presented as one board. */
+/* Studio operating model - four connected modes, presented as one board. */
 .studio-model-header {
   max-width: 1120px;
 }
@@ -2244,7 +2223,7 @@ a.platform-card:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-/* Media hero — the recording desk, notes, and stage form the editorial canvas;
+/* Media hero - the recording desk, notes, and stage form the editorial canvas;
    layered scrims keep the story legible without turning the image into a card. */
 .media-hero {
   isolation: isolate;
@@ -2694,7 +2673,7 @@ a.platform-card:focus-visible {
   width: 100%;
 }
 
-/* Consulting — the decision-clarity layer. Like the finished Home, Studio,
+/* Consulting - the decision-clarity layer. Like the finished Home, Studio,
    and Products heroes, the workspace image opens as atmosphere rather than a
    contained module; the sections below move from uncertainty to a buildable path. */
 .consulting-page {
@@ -3013,7 +2992,7 @@ a.platform-card:focus-visible {
   padding-bottom: clamp(48px, 6vw, 76px);
 }
 
-/* Useful Artifacts — editorial top-sheet stack. */
+/* Useful Artifacts - editorial top-sheet stack. */
 .consulting-artifacts {
   position: relative;
 }
@@ -4083,10 +4062,10 @@ textarea.input {
    ========================================================================== */
 
 .home-main {
-  --home-body: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-display: system-ui, Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-editorial: Georgia, "Times New Roman", Times, serif;
-  --home-meta: "SFMono-Regular", "Cascadia Mono", "Aptos Mono", "Liberation Mono", "Courier New", Courier, monospace;
+  --home-body: var(--nb-font-body);
+  --home-display: var(--nb-font-display);
+  --home-editorial: var(--nb-font-display);
+  --home-meta: var(--nb-font-mono);
   --home-hero-font: var(--home-display);
   --home-heading-font: var(--home-display);
   --home-title-font: var(--home-display);
@@ -4118,99 +4097,6 @@ textarea.input {
   z-index: 1;
 }
 
-/* Home typography lab.
-   Toggle the class on <main> in app/page.tsx:
-   - home-type-grotesk: Warm bold grotesk
-   - home-type-editorial: Black editorial media
-   - home-type-editorial-modern: Editorial warmth + modern studio clarity
-   - home-type-institutional: Modern institutional / HBCU-adjacent
-   - home-type-premium: Premium tech + cultural warmth
-   All stacks are system/web-safe or commonly licensed OS fonts. */
-.home-type-grotesk {
-  --home-display: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --home-hero-size: 4.28rem;
-  --home-hero-weight: 850;
-  --home-hero-line-height: 1;
-  --home-heading-xl-size: 2.58rem;
-  --home-heading-lg-size: 2.22rem;
-  --home-heading-weight: 800;
-  --home-title-weight: 800;
-  --home-statement-font: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --home-statement-style: normal;
-  --home-statement-weight: 780;
-}
-
-.home-type-editorial {
-  --home-display: Georgia, "Times New Roman", Times, serif;
-  --home-hero-size: 4.05rem;
-  --home-hero-weight: 700;
-  --home-hero-line-height: 1.02;
-  --home-heading-xl-size: 2.46rem;
-  --home-heading-lg-size: 2.12rem;
-  --home-heading-weight: 700;
-  --home-title-font: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --home-title-weight: 780;
-  --home-statement-font: Georgia, "Times New Roman", Times, serif;
-  --home-statement-style: normal;
-  --home-statement-weight: 700;
-}
-
-.home-type-editorial-modern {
-  --home-display: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-hero-font: Georgia, "Times New Roman", Times, serif;
-  --home-hero-size: 3.76rem;
-  --home-hero-weight: 700;
-  --home-hero-line-height: 1.05;
-  --home-hero-max-width: 860px;
-  --home-heading-font: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-heading-xl-size: 2.36rem;
-  --home-heading-lg-size: 2.04rem;
-  --home-heading-weight: 740;
-  --home-heading-line-height: 1.13;
-  --home-title-font: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-title-weight: 740;
-  --home-statement-font: Georgia, "Times New Roman", Times, serif;
-  --home-statement-style: italic;
-  --home-statement-weight: 700;
-}
-
-.home-type-editorial-modern .display-accent {
-  color: rgb(241 231 210 / 0.9);
-  display: block;
-  font-family: var(--home-display);
-  font-size: 0.74em;
-  font-weight: 740;
-  line-height: 1.14;
-  margin-top: 0.12em;
-  max-width: 740px;
-}
-
-.home-type-institutional {
-  --home-display: "Aptos Display", Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-hero-size: 4.02rem;
-  --home-hero-weight: 760;
-  --home-hero-line-height: 1.05;
-  --home-heading-xl-size: 2.38rem;
-  --home-heading-lg-size: 2.06rem;
-  --home-heading-weight: 730;
-  --home-title-weight: 730;
-  --home-statement-font: Georgia, "Times New Roman", Times, serif;
-  --home-statement-style: italic;
-}
-
-.home-type-premium {
-  --home-display: system-ui, Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --home-hero-size: 4.15rem;
-  --home-hero-weight: 800;
-  --home-hero-line-height: 1.03;
-  --home-heading-xl-size: 2.5rem;
-  --home-heading-lg-size: 2.18rem;
-  --home-heading-weight: 760;
-  --home-title-weight: 760;
-  --home-statement-font: Georgia, "Times New Roman", Times, serif;
-  --home-statement-style: italic;
-}
-
 .site-shell:has(.home-main)::before,
 .site-shell:has(.home-main)::after {
   opacity: 0;
@@ -4224,7 +4110,7 @@ textarea.input {
   padding: 40px 0;
 }
 
-/* Entry list is now the closing section — trim bottom padding so the footer
+/* Entry list is now the closing section - trim bottom padding so the footer
    sits with modest, intentional breathing room rather than a large gap. */
 .home-main .entry-archive {
   padding-bottom: 24px;
@@ -4756,7 +4642,7 @@ textarea.input {
 .founder-note-card::before {
   color: rgb(218 181 94 / 0.24);
   content: "“";
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: var(--nb-font-display);
   font-size: clamp(44px, 6vw, 76px);
   left: clamp(18px, 3vw, 34px);
   line-height: 1;
@@ -4816,7 +4702,7 @@ textarea.input {
   transition: background-color 180ms ease;
 }
 
-/* hover wash — absolutely positioned so it never participates in the grid */
+/* hover wash - absolutely positioned so it never participates in the grid */
 .entry-row::before {
   background: rgb(241 231 210 / 0.045);
   content: "";
@@ -4988,12 +4874,6 @@ textarea.input {
     line-height: 1.05;
   }
 
-  .home-type-editorial-modern .display-accent {
-    font-size: 0.78em;
-    margin-top: 0.1em;
-    max-width: 100%;
-  }
-
   .home-main .home-hero-copy .lede {
     font-size: 1.08rem;
     line-height: 1.62;
@@ -5154,10 +5034,6 @@ textarea.input {
   .home-main .display {
     font-size: min(var(--home-hero-size), 2.12rem);
     line-height: 1.07;
-  }
-
-  .home-type-editorial-modern .display-accent {
-    font-size: 0.8em;
   }
 
   .home-main .home-hero-copy .lede {
@@ -5875,3 +5751,78 @@ body { background: var(--nb-paper); color: var(--nb-ink); font-family: var(--fon
   .footer-grid { grid-template-columns: 1fr; }
   .page-hero { min-height: 600px; padding-top: 130px; }
 }
+
+/* Canonical handoff tokens and shared component refinements. */
+:root {
+  --nb-paper: #F4F1EA;
+  --nb-paper-band: #E9E5DA;
+  --nb-paper-panel: #ECE8DD;
+  --nb-card: #FAF8F3;
+  --nb-ink: #14161B;
+  --nb-ink-2: #2E3139;
+  --nb-ink-3: #3A3D45;
+  --nb-muted: #5A5D66;
+  --nb-ink-header: #1F2430;
+  --nb-cream: #F4F1EA;
+  --nb-cream-2: #E8E4DA;
+  --nb-cream-muted: #C9C5BC;
+  --nb-red: #F9313C;
+  --nb-blue: #014DF9;
+  --nb-line: rgb(20 22 27 / .2);
+  --nb-line-soft: rgb(20 22 27 / .14);
+  --nb-rule: linear-gradient(90deg, var(--nb-red), var(--nb-blue) 50%, transparent 88%);
+  --nb-note: linear-gradient(145deg, #f4e5a8 0%, #e8cf7a 100%);
+  --nb-note-old: linear-gradient(145deg, #f6edd9 0%, #eaddbd 100%);
+  --nb-term-bg: #030405;
+  --nb-term-fg: #8fdc95;
+  --nb-term-title: #9be7a1;
+  --nb-font-display: var(--font-newsreader), Newsreader, Georgia, serif;
+  --nb-font-body: var(--font-plex-sans), "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  --nb-font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
+  --nb-radius-pill: 999px;
+  --nb-radius-card: 8px;
+  --nb-radius-sheet: 4px;
+  --nb-frame: 1280px;
+  --nb-gutter: 56px;
+  --nb-container: 1180px;
+  --nb-header-h: 78px;
+  --nb-logo-h: 66px;
+  --nb-hero-overlay-dark: linear-gradient(90deg, rgb(20 22 27 / .92) 0%, rgb(20 22 27 / .82) 42%, rgb(20 22 27 / .52) 72%, rgb(20 22 27 / .7) 100%);
+  --nb-hero-overlay-light: linear-gradient(90deg, rgb(244 241 234 / .97) 0%, rgb(244 241 234 / .9) 42%, rgb(244 241 234 / .6) 72%, rgb(244 241 234 / .78) 100%);
+}
+
+body { color: var(--nb-ink); font-family: var(--nb-font-body); }
+.display, .heading-xl, .heading-lg, .heading-md { font-family: var(--nb-font-display); font-weight: 500; letter-spacing: -.015em; }
+.desktop-nav a { align-items: center; display: inline-flex; font-family: var(--nb-font-mono); font-size: 12.5px; letter-spacing: .08em; }
+.desktop-nav a::after { display: none; }
+.desktop-nav a::before { background: var(--nb-red); border-radius: 50%; content: ""; height: 6px; margin-right: 7px; opacity: 0; width: 6px; }
+.desktop-nav a[aria-current="page"]::before { opacity: 1; }
+.site-header-over-hero .desktop-nav a { color: var(--nb-cream-muted); }
+.site-header-over-hero .desktop-nav a[aria-current="page"] { color: var(--nb-cream); }
+.site-header-light .desktop-nav a { color: var(--nb-ink-3); }
+.site-header-light .desktop-nav a[aria-current="page"] { color: var(--nb-ink); }
+.header-actions .button { font-family: var(--nb-font-body); font-size: 15px; font-weight: 500; padding: 11px 20px; text-transform: none; }
+.brand-logo { height: var(--nb-logo-h); }
+.footer-brand-logo { margin: -34px 0 -38px; width: 280px; }
+.footer-copy, .footer-links a, .footer-copyright, .footer-socials a { color: var(--nb-cream-muted); }
+.footer-links { display: grid; gap: 10px 36px; grid-template-columns: repeat(2, max-content); }
+.footer-eco { gap: 14px; }
+.eco-logo-bdh { height: 30px; }
+.eco-logo-podcast, .eco-logo-bitvoices, .eco-logo-hindsite { height: 36px; }
+.page-hero { min-height: 780px; padding: 170px 0 96px; }
+.studio-hero { min-height: 640px; }
+.page-hero::before { background: var(--nb-hero-overlay-dark); }
+.page-hero-image { filter: saturate(.9) contrast(1.05) brightness(.64); opacity: .6; }
+.page-hero-light::before { background: var(--nb-hero-overlay-light); }
+.page-hero-light .display { color: var(--nb-ink); }
+.page-hero-light .lede { color: var(--nb-ink-2); }
+.page-hero-light .button-secondary { border-color: var(--nb-ink); color: var(--nb-ink); }
+.page-hero .display { color: var(--nb-cream); font-size: 76px; font-weight: 500; letter-spacing: -.025em; line-height: 1; max-width: 860px; }
+.page-hero .lede { color: var(--nb-cream-2); font-size: 20px; line-height: 1.6; max-width: 720px; }
+.button-row { margin-top: 28px; }
+.page-hero .button-primary { font-size: 15.5px; font-weight: 500; padding: 15px 24px; }
+.page-hero .button-secondary { border: 0; border-bottom: 1px solid currentcolor; border-radius: 0; min-height: auto; padding: 5px 0; }
+.home-hero { min-height: 720px; }
+.home-hero .display { font-size: 92px; line-height: .98; }
+.nb-rule { background: var(--nb-rule); height: 3px; }
+.nb-frame { border: 1px solid var(--nb-line); }

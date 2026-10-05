@@ -133,7 +133,7 @@ function artifactLink(item: MissionOutput | EntryPoint, className: string) {
 
 export default function Home() {
   return (
-    <main className="home-main home-type-editorial-modern">
+    <main className="home-main">
       <section className="section home-hero" aria-labelledby="page-title">
         <Image
           aria-hidden="true"

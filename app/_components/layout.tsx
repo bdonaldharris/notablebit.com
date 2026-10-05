@@ -12,7 +12,7 @@ import bitvoicesPodcastLogo from "@/assets/originals/bitvoices-podcast-icon-logo
 import hindsiteLogo from "@/assets/originals/hindsite-icon-logo.png";
 import bdhLogo from "@/assets/originals/bdh-logo.png";
 
-const HEADER_CTA = "Start a Conversation";
+const HEADER_CTA = "Start a conversation";
 
 type EcosystemLink = {
   name: string;
@@ -99,7 +99,7 @@ export function Header({ overHero = true }: { overHero?: boolean }) {
               href={route.href}
               aria-current={pathname === route.href ? "page" : undefined}
             >
-              {route.label}
+              <span>{route.label}</span>
             </Link>
           ))}
         </nav>
@@ -147,6 +147,17 @@ export function Footer() {
 
           <div className="footer-sections">
             <div>
+              <nav className="footer-links" aria-label="Footer site navigation">
+                <Link href="/">Home</Link>
+                {routes.map((route) => (
+                  <Link key={route.href} href={route.href}>
+                    {route.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div>
               <div className="footer-eco" aria-label="Ecosystem links">
                 {ecosystemLogos.map((item) => (
                   <a
@@ -161,17 +172,6 @@ export function Footer() {
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div>
-              <nav className="footer-links" aria-label="Footer site navigation">
-                <Link href="/">Home</Link>
-                {routes.map((route) => (
-                  <Link key={route.href} href={route.href}>
-                    {route.label}
-                  </Link>
-                ))}
-              </nav>
             </div>
           </div>
         </div>

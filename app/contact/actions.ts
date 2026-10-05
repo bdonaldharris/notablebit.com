@@ -7,7 +7,7 @@ type ContactFormState = {
   message: string;
 };
 
-const CONTACT_SUCCESS_MESSAGE = "Thanks — your inquiry has been sent. I’ll review it and follow up if there’s a fit.";
+const CONTACT_SUCCESS_MESSAGE = "Thanks, your inquiry has been sent. I'll review it and follow up if there's a fit.";
 const CONTACT_ERROR_MESSAGE = "Something went wrong sending the inquiry. Please email hello@notablebit.com directly.";
 const CONTACT_VALIDATION_ERROR_MESSAGE = "Please complete all required fields with a valid email address.";
 

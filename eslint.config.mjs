@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Static visual handoff references, not shipped application code.
+    "design_handoff_notablebit_redesign/design_files/**",
   ]),
 ]);
 
