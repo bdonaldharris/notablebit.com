@@ -56,7 +56,7 @@ export default function ConsultingPage() {
     <main className="consulting-page">
       <PageHero
         className="consulting-hero"
-        image="/assets/originals/consulting-hero.jpeg"
+        image="/assets/originals/consulting-hero.png"
         lede="NotableBIT provides selective advisory for builders, founders, and organizations that need clarity before execution, from product strategy and AI workflows to platform decisions, technical leadership, and implementation-ready plans."
         primary={{ href: "/contact", label: "Start a Consulting Conversation" }}
         title="Where product, AI, and technology decisions become buildable paths."
@@ -99,28 +99,35 @@ export default function ConsultingPage() {
 
       <section className="section-tight page-section consulting-artifacts" aria-labelledby="deliverables-title">
         <div className="container">
-          <div className="consulting-artifacts-header">
-            <h2 className="heading-xl" id="deliverables-title">
-              Useful artifacts, not vague advice.
-            </h2>
-            <p>
-              Each engagement is shaped around the decision at hand. The outcome might be a product brief, user flow, feature scope,
-              architecture note, GitHub issue plan, or AI-agent-ready implementation prompt.
-            </p>
-          </div>
-          <div className="consulting-artifacts-proof" aria-label="Useful consulting artifacts">
-            <p className="consulting-artifacts-proof-label">What you leave with</p>
-            <div className="consulting-artifact-statements">
-              {artifacts.map((artifact) => (
-                <article className="consulting-artifact-statement" key={artifact.title}>
-                  <h3>{artifact.title}</h3>
-                  <p>{artifact.description}</p>
-                </article>
-              ))}
+          <div className="consulting-artifacts-layout">
+            <div className="consulting-artifacts-header">
+              <h2 className="heading-xl" id="deliverables-title">
+                Useful artifacts,<br />not vague advice.
+              </h2>
+              <p>
+                Each engagement is shaped around the decision at hand. The outcome might be a product brief, user flow, feature scope,
+                architecture note, GitHub issue plan, or AI-agent-ready implementation prompt.
+              </p>
             </div>
-            <p className="consulting-artifacts-proof-note">
-              The point is practical clarity: a path people can understand, review, and build.
-            </p>
+            <div className="consulting-paper-stack">
+              <span aria-hidden="true" className="consulting-paper-sheet consulting-paper-sheet-back" />
+              <span aria-hidden="true" className="consulting-paper-sheet consulting-paper-sheet-middle" />
+              <span aria-hidden="true" className="consulting-paper-sheet consulting-paper-sheet-front" />
+              <div className="consulting-artifacts-proof" aria-label="Useful consulting artifacts">
+                <p className="consulting-artifacts-proof-label">What you leave with</p>
+                <div className="consulting-artifact-statements">
+                  {artifacts.map((artifact) => (
+                    <article className="consulting-artifact-statement" key={artifact.title}>
+                      <h3>{artifact.title}</h3>
+                      <p>{artifact.description}</p>
+                    </article>
+                  ))}
+                </div>
+                <p className="consulting-artifacts-proof-note">
+                  The point is practical clarity: a path people can understand, review, and build.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -137,10 +144,10 @@ export default function ConsultingPage() {
               </p>
             </div>
             <div className="consulting-closing-actions">
-              <Button href="/contact">Start a Consulting Conversation</Button>
               <Button href="/products" variant="secondary">
-                View Products
+                View products →
               </Button>
+              <Button href="/contact">Start a consulting conversation</Button>
             </div>
           </div>
         </div>

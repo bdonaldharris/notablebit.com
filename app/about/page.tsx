@@ -38,6 +38,7 @@ export default function AboutPage() {
                 community-building, and storytelling work.
               </p>
             </article>
+            <div aria-hidden="true" className="about-story-divider" />
             <article className="about-story-column">
               <h2 className="heading-lg">Help builders and organizations move from ideas to execution.</h2>
               <p className="body-copy">

@@ -36,11 +36,11 @@ export default function StudioPage() {
       <PageHero
         className="studio-hero"
         image={studioHeroImage}
-        lede={route.description}
+        lede="How NotableBIT thinks, builds, focuses, and operates across internal products, advisory work, partnerships, and media/community initiatives."
         objectPosition="62% 52%"
         primary={{ href: "/contact", label: "Work with the Studio" }}
-        secondary={{ href: "/products", label: "Explore Products" }}
-        title={route.title}
+        secondary={{ href: "/products", label: "Explore products" }}
+        title="A studio for practical technology, product clarity, and builder infrastructure."
       />
 
       <section className="section-tight page-section studio-principles-section" aria-labelledby="studio-principles-title">
@@ -49,6 +49,7 @@ export default function StudioPage() {
             <h2 className="heading-xl" id="studio-principles-title">
               {principles.title}
             </h2>
+            <p className="body-copy">Context before automation. Strategy before code. Systems before scattered effort.</p>
           </div>
           <ol className="studio-principles-notes">
             {principles.items?.map((item, itemIndex) => (

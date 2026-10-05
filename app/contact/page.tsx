@@ -24,6 +24,7 @@ export default function ContactPage() {
             Whether you&apos;re exploring a product, evaluating an AI workflow, planning a technical initiative, or looking for strategic guidance,
             start with context. Every inquiry is reviewed personally.
           </p>
+          <div className="nb-rule" />
         </div>
       </section>
 

@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import { Button } from "@/app/_components/ui";
 
 type PageHeroProps = {
@@ -41,11 +42,7 @@ export function PageHero({
           <p className="lede">{lede}</p>
           <div className="button-row">
             <Button href={primary.href}>{primary.label}</Button>
-            {secondary ? (
-              <Button href={secondary.href} variant="secondary">
-                {secondary.label}
-              </Button>
-            ) : null}
+            {secondary ? <Link className="hero-text-link" href={secondary.href}>{secondary.label} <span aria-hidden="true">→</span></Link> : null}
           </div>
         </div>
       </div>

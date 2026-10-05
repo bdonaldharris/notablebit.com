@@ -31,10 +31,10 @@ export default function ProductsPage() {
       <PageHero
         className="products-hero"
         image={productsHeroImage}
-        lede={route.description}
-        primary={{ href: "https://hindsite.pro", label: "Join the HindSite Waitlist" }}
+        lede="The NotableBIT-built ecosystem includes HindSite, BitVoices Network, and carefully framed labs work that supports builders and AI-era workflows."
+        primary={{ href: "https://hindsite.pro", label: "Join the HindSite waitlist" }}
         secondary={{ href: "https://bitvoices.network", label: "Visit BitVoices" }}
-        title={route.title}
+        title="Products and platforms built from real builder workflows."
       />
 
       <section className="section-tight products-feature-section" aria-labelledby="featured-product">
@@ -62,7 +62,7 @@ export default function ProductsPage() {
               <div className="button-row products-feature-actions">
                 <Button href="https://hindsite.pro">Join Waitlist</Button>
                 <Button href="/contact" variant="secondary">
-                  Discuss Builder Workflows
+                  Discuss builder workflows →
                 </Button>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function ProductsPage() {
                 <p className="platform-card-copy">
                   A platform and media network created to amplify Black excellence in tech and help Black builders connect, share, and be seen.
                 </p>
-                <Image aria-hidden="true" alt="" className="platform-card-icon" src={bitVoicesIcon} />
+                <span className="platform-card-icon-tile"><Image aria-hidden="true" alt="" className="platform-card-icon" src={bitVoicesIcon} /></span>
               </div>
             </a>
 
@@ -125,7 +125,7 @@ export default function ProductsPage() {
                   Workflow intelligence for builders. HindSite captures development traces, reconstructs timelines, supports reflection, and helps
                   builders turn work into useful artifacts.
                 </p>
-                <Image aria-hidden="true" alt="" className="platform-card-icon" src={hindSiteIcon} />
+                <span className="platform-card-icon-tile"><Image aria-hidden="true" alt="" className="platform-card-icon" src={hindSiteIcon} /></span>
               </div>
             </a>
 
@@ -147,7 +147,7 @@ export default function ProductsPage() {
                   Carefully scoped experiments for builder workflows, community infrastructure, and AI-era execution systems, shared publicly only
                   when ready.
                 </p>
-                <Image aria-hidden="true" alt="" className="platform-card-icon platform-card-icon-labs" src={notableBitLabsIcon} />
+                <span className="platform-card-icon-tile"><Image aria-hidden="true" alt="" className="platform-card-icon platform-card-icon-labs" src={notableBitLabsIcon} /></span>
               </div>
             </article>
           </div>
@@ -166,7 +166,7 @@ export default function ProductsPage() {
             <div className="products-closing-actions">
               <Button href="/contact">Start a Product Conversation</Button>
               <Button href="/studio" variant="secondary">
-                Explore the Studio
+                Explore the studio →
               </Button>
             </div>
           </div>

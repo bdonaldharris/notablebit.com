@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import bitvoicesPodcastLogo from "@/assets/originals/bitvoices-podcast-logo.png";
 import heroAtmosphereImage from "@/assets/originals/first_podcast_set.jpeg";
 import { Button } from "@/app/_components/ui";
 import { homeRoute } from "@/app/_content/site";
@@ -13,68 +12,44 @@ export const metadata: Metadata = createMetadata({
   path: homeRoute.href,
 });
 
-type Artifact = {
-  label: string;
-  title: string;
-  detail?: string;
-};
-
-const podcastArtifacts: Artifact[] = [
-  {
-    label: "Origin Vehicle",
-    title: "The podcast",
-    detail: "The first public vehicle for the mission.",
-  },
-  {
-    label: "Archive Function",
-    title: "Document the builders",
-    detail: "Process, leadership, ambition, ownership.",
-  },
-  {
-    label: "Expansion Cue",
-    title: "Beyond media",
-    detail: "Stories became products, strategy, and infrastructure.",
-  },
-];
-
 type MissionOutput = {
-  source: string;
-  becomes: string;
-  vehicle: string;
+  title: string;
+  description: string;
+  role: string;
   href: string;
-  slot: "voice" | "memory" | "clarity" | "studio";
+  roleTone: "ink" | "red" | "blue";
   external?: boolean;
 };
 
 const missionOutputs: MissionOutput[] = [
   {
-    source: "Studio",
-    becomes: "Direction",
-    vehicle: "NotableBIT",
+    title: "NotableBIT",
+    description: "Consulting, coaching, education, and software construction, helping people move from idea to useful, deployed software.",
+    role: "Studio",
     href: "/studio",
-    slot: "voice",
+    roleTone: "ink",
   },
   {
-    source: "Podcast",
-    becomes: "Visibility",
-    vehicle: "BIT Voices Podcast",
+    title: "BIT Voices Podcast",
+    description: "Conversations amplifying Black voices and excellence in technology.",
+    role: "Media",
     href: "/media",
-    slot: "memory",
+    roleTone: "red",
   },
   {
-    source: "Network",
-    becomes: "Connection",
-    vehicle: "BitVoices Network",
+    title: "BitVoices Network",
+    description: "Amplifying Black Excellence in Tech. Community is culture, not features.",
+    role: "Community",
     href: "https://bitvoices.network",
-    slot: "clarity",
+    roleTone: "red",
     external: true,
   },
   {
-    source: "Product",
-    becomes: "Memory",
-    vehicle: "HindSite",
+    title: "HindSite",
+    description: "Workflow intelligence for builders and AI-assisted development work.",
+    role: "Product",
     href: "https://hindsite.pro",
-    slot: "studio",
+    roleTone: "blue",
     external: true,
   },
 ];
@@ -119,14 +94,14 @@ function artifactLink(item: MissionOutput | EntryPoint, className: string) {
   if (item.external) {
     return (
       <a className={className} href={item.href} rel="noopener noreferrer" target="_blank">
-        {"vehicle" in item ? item.vehicle : item.title}
+        {item.title}
       </a>
     );
   }
 
   return (
     <Link className={className} href={item.href}>
-      {"vehicle" in item ? item.vehicle : item.title}
+      {item.title}
     </Link>
   );
 }
@@ -146,7 +121,7 @@ export default function Home() {
         />
         <div className="container home-hero-grid">
           <div className="home-hero-copy">
-            <p className="eyebrow">NotableBIT</p>
+            <p className="eyebrow">Black-founded technology studio · Tulsa, Oklahoma</p>
             <h1 className="display" id="page-title">
               <span className="display-declaration">Black technologists are building the future.</span>
             </h1>
@@ -155,39 +130,8 @@ export default function Home() {
               media, products, platforms, and strategic systems for the AI era.
             </p>
             <div className="button-row">
-              <Button href="#ecosystem">Explore the Ecosystem</Button>
-              <Button href="/media" variant="secondary">
-                Start With Voice
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-tight voice-origin" aria-label="Podcast origin archive">
-        <div className="container voice-grid">
-          <div className="podcast-archive" aria-label="Podcast origin artifacts">
-            <figure className="podcast-cover">
-              <Image
-                className="podcast-cover-image"
-                src={bitvoicesPodcastLogo}
-                alt="BitVoices podcast logo"
-                placeholder="blur"
-                sizes="(max-width: 860px) 70vw, 280px"
-              />
-              <figcaption>
-                <span>First vehicle</span>
-                <strong>Podcast origin</strong>
-              </figcaption>
-            </figure>
-            <div className="podcast-ledger">
-              {podcastArtifacts.map((artifact) => (
-                <article className="podcast-ledger-item" key={artifact.title}>
-                  <p className="artifact-label">{artifact.label}</p>
-                  <h3 className="heading-md">{artifact.title}</h3>
-                  <p className="body-copy">{artifact.detail}</p>
-                </article>
-              ))}
+              <Button href="#ecosystem">Explore the ecosystem</Button>
+              <Link className="hero-text-link" href="/media">Listen to BIT Voices <span aria-hidden="true">→</span></Link>
             </div>
           </div>
         </div>
@@ -210,42 +154,38 @@ export default function Home() {
               Outputs from the same mission.
             </h2>
             <p className="lede">
-              The ecosystem is not disconnected ventures. It is one visibility mission meeting real builder needs.
+              These are not separate ventures. Each one answers a real need builders have, and all of them come from the same mission.
             </p>
           </div>
-
-          <div className="ecosystem-diagram">
-            <div className="ecosystem-core">
-              <strong>Visibility</strong>
-              <span>Mission</span>
-            </div>
-            {missionOutputs.map((output) => (
-              <article className={`ecosystem-output ecosystem-output-${output.slot}`} key={output.vehicle}>
-                <h3 className="heading-md">{artifactLink(output, "ecosystem-output-link")}</h3>
-                <p className="ecosystem-function">
-                  {output.source} <span aria-hidden="true">·</span> {output.becomes}
-                </p>
-              </article>
+          <ol className="tracklist">
+            {missionOutputs.map((output, index) => (
+              <li className="tracklist-row" key={output.title}>
+                <span className="tracklist-index">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{artifactLink(output, "tracklist-link")}</h3>
+                <p>{output.description}</p>
+                <span className={`tracklist-role tracklist-role-${output.roleTone}`}>{output.role}</span>
+                <span aria-hidden="true">→</span>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       <section className="section-tight home-journey" aria-labelledby="journey-title">
         <div className="container">
-          <h2 className="heading-xl" id="journey-title">
-            From conversation to durable infrastructure.
-          </h2>
+          <h2 className="heading-xl" id="journey-title">Helping people become better builders, <em>because generating code is not the finish line.</em></h2>
           <ol className="home-journey-rail">
-            {["Listen", "Notice", "Name", "Connect", "Clarify", "Design", "Build", "Remember", "Share"].map((step, index) => (
+            {["Idea", "Problem excavation", "Product definition", "Requirements", "Design", "Architecture", "Implementation", "Validation", "Deployment"].map((step, index) => (
               <li key={step}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {step}
               </li>
             ))}
           </ol>
-          <p className="body-copy">Every part of the ecosystem makes more room for Black builders to be seen, supported, and remembered.</p>
-          <Button href="/contact" variant="secondary">Start a conversation</Button>
+          <div className="home-journey-closing">
+            <p>The finish line is verified deployment, with a builder who understands what was built.</p>
+            <Link href="/consulting">How we work with builders <span aria-hidden="true">→</span></Link>
+          </div>
         </div>
       </section>
 
@@ -255,24 +195,19 @@ export default function Home() {
             <blockquote>
               This work began with conversations. It is still about people, memory, visibility, and ownership.
             </blockquote>
-            <figcaption>B Donald Harris, Founder, NotableBIT</figcaption>
+            <figcaption>B Donald Harris, Founder &amp; CEO, NotableBIT</figcaption>
           </figure>
         </div>
       </section>
 
       <section className="section-tight entry-archive" aria-labelledby="entry-title">
         <div className="container">
-          <div className="entry-heading">
-            <h2 className="heading-xl" id="entry-title">
-              Where to enter the ecosystem.
-            </h2>
-          </div>
           <ol className="entry-list">
             {entryPoints.map((entry, index) => {
               const rowContent = (
                 <>
                   <span className="entry-index" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
+                    {String(index + 1).padStart(2, "0")} ·
                   </span>
                   <span className="entry-label">{entry.label}</span>
                   <span className="entry-body">

@@ -37,7 +37,7 @@ export default function MediaPage() {
     <main className="media-page">
       <PageHero
         className="media-hero"
-        image="/assets/originals/media-hero.jpeg"
+        image="/assets/originals/media-hero.png"
         lede="Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology, AI, entrepreneurship, and community."
         primary={{ href: "https://bitvoices.network", label: "Explore BitVoices" }}
         title="Media that documents builders, ideas, and the future of Black tech."
@@ -101,10 +101,10 @@ export default function MediaPage() {
 
             <div className="media-infrastructure-actions">
               <div className="button-row">
-                <Button href="/contact">Start a Media Conversation</Button>
                 <Button href="https://bitvoices.network" variant="secondary">
-                  Visit BitVoices
+                  Visit BitVoices →
                 </Button>
+                <Button href="/contact">Start a media conversation</Button>
               </div>
             </div>
           </div>
