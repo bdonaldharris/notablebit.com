@@ -1,7 +1,30 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import { Header, Footer } from "@/app/_components/layout";
 import { site } from "@/app/_content/site";
 import "./globals.css";
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  display: "swap",
+});
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-plex-sans",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-plex-mono",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className={`${newsreader.variable} ${plexSans.variable} ${plexMono.variable}`} lang="en">
       <body suppressHydrationWarning>
         <a className="skip-link" href="#main-content">
           Skip to content

@@ -26,6 +26,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
+      <div aria-hidden="true" className="nb-rule contact-rule" />
 
       <section className="contact-form-section" aria-labelledby="inquiry-form-title">
         <div className="container">

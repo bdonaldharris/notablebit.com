@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
 import { pageSections } from "@/app/_content/ecosystem";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
@@ -33,38 +34,24 @@ export default function StudioPage() {
 
   return (
     <main>
-      <section className="section studio-hero" aria-labelledby="page-title">
-        <Image
-          aria-hidden="true"
-          alt=""
-          className="studio-hero-atmosphere"
-          fill
-          priority
-          sizes="100vw"
-          src={studioHeroImage}
-        />
-        <div className="container studio-hero-grid">
-          <div className="studio-hero-copy">
-            <h1 className="display" id="page-title">
-              {route.title}
-            </h1>
-            <p className="lede">{route.description}</p>
-            <div className="button-row">
-              <Button href="/contact">Work with the Studio</Button>
-              <Button href="/products" variant="secondary">
-                Explore Products
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="studio-hero"
+        image={studioHeroImage}
+        layout="stacked"
+        lede="How NotableBIT thinks, builds, focuses, and operates across internal products, advisory work, partnerships, and media/community initiatives."
+        objectPosition="62% 52%"
+        primary={{ href: "/contact", label: "Work with the studio" }}
+        secondary={{ href: "/products", label: "Explore products" }}
+        title="A studio for practical technology, product clarity, and builder infrastructure."
+      />
 
-      <section className="section-tight page-section studio-principles-section" aria-labelledby="studio-principles-title">
+      <section className="studio-principles-section" aria-labelledby="studio-principles-title">
         <div className="container">
           <div className="studio-principles-header">
             <h2 className="heading-xl" id="studio-principles-title">
               {principles.title}
             </h2>
+            <p className="body-copy">{principles.description}</p>
           </div>
           <ol className="studio-principles-notes">
             {principles.items?.map((item, itemIndex) => (
@@ -78,7 +65,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="section-tight page-section section-gap-tight studio-method-section" aria-labelledby="studio-method-title">
+      <section className="studio-method-section" aria-labelledby="studio-method-title">
         <div className="container">
           <div className="studio-method-header">
             <h2 className="heading-xl" id="studio-method-title">
@@ -86,28 +73,25 @@ export default function StudioPage() {
             </h2>
             <p className="body-copy">{method.description}</p>
           </div>
-          <div className="studio-method-canvas">
-            <ol className="studio-method-flow">
-              {method.items?.map((item, itemIndex) => (
-                <li className="studio-method-node" key={item.title}>
-                  <span className="studio-method-node-number">{String(itemIndex + 1).padStart(2, "0")}</span>
-                  <h3 className="studio-method-node-title">{item.title}</h3>
-                  <p className="studio-method-node-body">{item.description}</p>
-                  {itemIndex < (method.items?.length ?? 0) - 1 ? <span aria-hidden="true" className="studio-method-connector" /> : null}
-                </li>
-              ))}
-            </ol>
-          </div>
+          <ol className="studio-method-flow">
+            {method.items?.map((item, itemIndex) => (
+              <li className="studio-method-node" key={item.title}>
+                <span className="studio-method-node-number">{String(itemIndex + 1).padStart(2, "0")}</span>
+                <h3 className="studio-method-node-title">{item.title}</h3>
+                <p className="studio-method-node-body">{item.description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="section-tight page-section studio-disciplines-section" aria-labelledby="studio-disciplines-title">
+      <section className="studio-disciplines-section" aria-labelledby="studio-disciplines-title">
         <div className="container">
           <div className="studio-disciplines-header">
             <h2 className="heading-xl" id="studio-disciplines-title">
               Disciplines of the Work
             </h2>
-            <p className="studio-disciplines-intro">
+            <p className="body-copy">
               The studio concentrates where software, AI workflow strategy, product clarity, media, and community infrastructure overlap.
             </p>
           </div>
@@ -123,7 +107,10 @@ export default function StudioPage() {
             </div>
             <div className="studio-console-body">
               <p className="studio-console-command">
-                <span aria-hidden="true">&gt;</span> notablebit.focus --list
+                <span aria-hidden="true" className="studio-console-caret">
+                  &gt;
+                </span>
+                notablebit.focus --list
               </p>
               <ol className="studio-console-list">
                 {focusAreas.map((area, areaIndex) => (
@@ -134,22 +121,23 @@ export default function StudioPage() {
                   </li>
                 ))}
               </ol>
-              <p className="studio-console-prompt">
-                <span aria-hidden="true">&gt;</span>
-                <span aria-hidden="true" className="studio-console-cursor" />
+              <p className="studio-console-prompt" aria-hidden="true">
+                <span className="studio-console-caret">&gt;</span>
+                <span className="studio-console-cursor" />
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-tight page-section studio-model-section" aria-labelledby="studio-model-title">
+      <section className="studio-model-section" aria-labelledby="studio-model-title">
         <div className="container">
+          <div aria-hidden="true" className="section-hairline" />
           <div className="studio-model-header">
             <h2 className="heading-xl" id="studio-model-title">
               Company/Studio, Not Agency
             </h2>
-            <p className="studio-model-copy">
+            <p className="body-copy">
               NotableBIT operates as a company/studio: building internal products, advising select clients, partnering around aligned ecosystem work,
               and using media/community initiatives to document and amplify builders.
             </p>
@@ -166,7 +154,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="section-tight page-section studio-cta-section" aria-labelledby="studio-cta-title">
+      <section className="studio-cta-section" aria-labelledby="studio-cta-title">
         <div className="container">
           <div className="studio-cta-panel">
             <h2 className="studio-cta-heading" id="studio-cta-title">
@@ -177,9 +165,9 @@ export default function StudioPage() {
             </p>
             <div className="studio-cta-actions">
               <Button href="/contact">Partner with NotableBIT</Button>
-              <Button href="/consulting" variant="secondary">
-                View Consulting
-              </Button>
+              <Link className="text-link" href="/consulting">
+                View consulting <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
         </div>

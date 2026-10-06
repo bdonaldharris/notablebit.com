@@ -6,12 +6,13 @@ import { usePathname } from "next/navigation";
 import { routes } from "@/app/_content/site";
 import { Button } from "@/app/_components/ui";
 import logoWhite from "@/assets/originals/logo-white-text.png";
+import logoBlack from "@/assets/originals/logo-black-text.png";
 import bitvoicesLogo from "@/assets/originals/bitvoices-icon-logo.png";
 import bitvoicesPodcastLogo from "@/assets/originals/bitvoices-podcast-icon-logo.png";
 import hindsiteLogo from "@/assets/originals/hindsite-icon-logo.png";
 import bdhLogo from "@/assets/originals/bdh-logo.png";
 
-const HEADER_CTA = "Start a Conversation";
+const HEADER_CTA = "Start a conversation";
 
 type EcosystemLink = {
   name: string;
@@ -80,14 +81,16 @@ const socials = [
   },
 ];
 
-export function Header() {
+export function Header({ overHero = true }: { overHero?: boolean }) {
   const pathname = usePathname();
+  const isLight = !overHero || pathname === "/contact";
+  const headerClassName = isLight ? "site-header-light" : `site-header-over-hero${pathname === "/" ? " site-header-home" : ""}`;
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${headerClassName}`}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="NotableBIT home">
-          <Image className="brand-logo" src={logoWhite} alt="NotableBIT" priority />
+          <Image className="brand-logo" src={isLight ? logoBlack : logoWhite} alt="NotableBIT" loading="eager" />
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -97,7 +100,7 @@ export function Header() {
               href={route.href}
               aria-current={pathname === route.href ? "page" : undefined}
             >
-              {route.label}
+              <span>{route.label}</span>
             </Link>
           ))}
         </nav>
@@ -113,11 +116,11 @@ export function Header() {
           <nav aria-label="Mobile navigation">
             <Link href="/">Home</Link>
             {routes.map((route) => (
-              <Link key={route.href} href={route.href}>
+              <Link key={route.href} href={route.href} aria-current={pathname === route.href ? "page" : undefined}>
                 {route.label}
               </Link>
             ))}
-            <Link href="/contact">{HEADER_CTA}</Link>
+            <Link className="mobile-nav-cta" href="/contact">{HEADER_CTA}</Link>
           </nav>
         </details>
       </div>
@@ -145,6 +148,17 @@ export function Footer() {
 
           <div className="footer-sections">
             <div>
+              <nav className="footer-links" aria-label="Footer site navigation">
+                <Link href="/">Home</Link>
+                {routes.map((route) => (
+                  <Link key={route.href} href={route.href}>
+                    {route.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div>
               <div className="footer-eco" aria-label="Ecosystem links">
                 {ecosystemLogos.map((item) => (
                   <a
@@ -159,17 +173,6 @@ export function Footer() {
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div>
-              <nav className="footer-links" aria-label="Footer site navigation">
-                <Link href="/">Home</Link>
-                {routes.map((route) => (
-                  <Link key={route.href} href={route.href}>
-                    {route.label}
-                  </Link>
-                ))}
-              </nav>
             </div>
           </div>
         </div>

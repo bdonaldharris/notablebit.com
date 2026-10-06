@@ -1,51 +1,50 @@
+import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import { Button } from "@/app/_components/ui";
 
 type PageHeroProps = {
-  eyebrow: string;
+  image: StaticImageData | string;
   title: string;
-  description: string;
-  primaryHref: string;
-  primaryLabel: string;
-  secondaryHref?: string;
-  secondaryLabel?: string;
+  lede: string;
+  primary: { href: string; label: string };
+  secondary?: { href: string; label: string };
+  objectPosition?: string;
+  /** "split" pins the lede and actions to the bottom of the hero; "stacked" keeps them under the title (Studio). */
+  layout?: "split" | "stacked";
+  className?: string;
 };
 
 export function PageHero({
-  description,
-  eyebrow,
-  primaryHref,
-  primaryLabel,
-  secondaryHref,
-  secondaryLabel,
+  className = "",
+  image,
+  layout = "split",
+  lede,
+  objectPosition,
+  primary,
+  secondary,
   title,
 }: PageHeroProps) {
   return (
-    <section className="section page-hero" aria-labelledby="page-title">
-      <div className="container page-hero-grid">
-        <div>
-          <p className="eyebrow">{eyebrow}</p>
+    <section className={`page-hero page-hero-${layout} ${className}`.trim()} aria-labelledby="page-title">
+      <Image
+        alt=""
+        className="page-hero-image"
+        fill
+        preload
+        sizes="100vw"
+        src={image}
+        style={objectPosition ? { objectPosition } : undefined}
+      />
+      <div className="page-hero-grid">
+        <div className="page-hero-copy">
           <h1 className="display" id="page-title">
             {title}
           </h1>
-          <p className="lede">{description}</p>
+          <p className="lede">{lede}</p>
           <div className="button-row">
-            <Button href={primaryHref}>{primaryLabel}</Button>
-            {secondaryHref && secondaryLabel ? (
-              <Button href={secondaryHref} variant="secondary">
-                {secondaryLabel}
-              </Button>
-            ) : null}
+            <Button href={primary.href}>{primary.label}</Button>
+            {secondary ? <Link className="hero-text-link" href={secondary.href}>{secondary.label} <span aria-hidden="true">→</span></Link> : null}
           </div>
-        </div>
-        <div className="hero-orbit" aria-hidden="true">
-          <span className="orbit-ring orbit-ring-one" />
-          <span className="orbit-ring orbit-ring-two" />
-          <span className="orbit-ring orbit-ring-three" />
-          <span className="orbit-core" />
-          <span className="orbit-node orbit-node-one" />
-          <span className="orbit-node orbit-node-two" />
-          <span className="orbit-node orbit-node-three" />
-          <span className="orbit-node orbit-node-four" />
         </div>
       </div>
     </section>

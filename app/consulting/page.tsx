@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 
@@ -54,59 +55,38 @@ const decisionZones = [
 export default function ConsultingPage() {
   return (
     <main className="consulting-page">
-      <section className="section consulting-hero" aria-labelledby="page-title">
-        <div className="consulting-hero-media">
-          <Image
-            alt="Strategic advisory workspace with decision maps, product planning notes, AI workflow diagrams, and technical architecture sketches."
-            className="consulting-hero-atmosphere"
-            fill
-            priority
-            sizes="100vw"
-            src="/assets/originals/consulting-hero.jpeg"
-          />
-        </div>
-        <div className="container consulting-hero-grid">
-          <div className="consulting-hero-copy">
-            <h1 className="display" id="page-title">
-              Where product, AI, and technology decisions become buildable paths.
-            </h1>
-            <p className="lede">
-              NotableBIT provides selective advisory for builders, founders, and organizations that need clarity before execution — from
-              product strategy and AI workflows to platform decisions, technical leadership, and implementation-ready plans.
-            </p>
-            <div className="button-row">
-              <Button href="/contact">Start a Consulting Conversation</Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="consulting-hero"
+        image="/assets/originals/consulting-hero.jpeg"
+        lede="NotableBIT provides selective advisory for builders, founders, and organizations that need clarity before execution, from product strategy and AI workflows to platform decisions, technical leadership, and implementation-ready plans."
+        primary={{ href: "/contact", label: "Start a consulting conversation" }}
+        title="Where product, AI, and technology decisions become buildable paths."
+      />
 
-      <section className="section-tight page-section consulting-decisions" aria-labelledby="consulting-decisions-title">
+      <section className="consulting-decisions" aria-labelledby="consulting-decisions-title">
         <div className="container">
           <div className="consulting-section-intro">
             <h2 className="heading-xl" id="consulting-decisions-title">
               Five decision zones. One clearer path forward.
             </h2>
             <p className="body-copy">
-              When the next move is unclear, NotableBIT helps locate the real decision and shape the path around it — across product direction,
+              When the next move is unclear, NotableBIT helps locate the real decision and shape the path around it, across product direction,
               AI workflows, technical leadership, software planning, and community platform strategy.
             </p>
           </div>
           <div className="consulting-lane-field">
-            <div className="consulting-decision-lanes" aria-hidden="true">
-              {decisionZones.map((zone) => (
-                <span key={`lane-${zone.title}`} />
-              ))}
-            </div>
             {decisionZones.map((zone) => (
-              <article className="consulting-zone-card" key={zone.title} tabIndex={0}>
-                <div className="consulting-zone-header">
-                  <h3 className="heading-md">{zone.title}</h3>
-                </div>
-                <div className="consulting-zone-body">
-                  <p className="body-copy">{zone.description}</p>
-                </div>
-              </article>
+              <div className="consulting-zone" key={zone.title}>
+                <article className="consulting-zone-card">
+                  <div className="consulting-zone-header">
+                    <h3>{zone.title}</h3>
+                  </div>
+                  <div className="consulting-zone-body">
+                    <p>{zone.description}</p>
+                  </div>
+                </article>
+                <span aria-hidden="true" className="consulting-zone-tail" />
+              </div>
             ))}
             <div className="consulting-lane-foundation">
               <h3>Clarity Before Execution</h3>
@@ -116,50 +96,56 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      <section className="section-tight page-section consulting-artifacts" aria-labelledby="deliverables-title">
+      <section className="consulting-artifacts" aria-labelledby="deliverables-title">
         <div className="container">
-          <div className="consulting-artifacts-header">
-            <h2 className="heading-xl" id="deliverables-title">
-              Useful artifacts, not vague advice.
-            </h2>
-            <p>
-              Each engagement is shaped around the decision at hand. The outcome might be a product brief, user flow, feature scope,
-              architecture note, GitHub issue plan, or AI-agent-ready implementation prompt.
-            </p>
-          </div>
-          <div className="consulting-artifacts-proof" aria-label="Useful consulting artifacts">
-            <p className="consulting-artifacts-proof-label">What you leave with</p>
-            <div className="consulting-artifact-statements">
-              {artifacts.map((artifact) => (
-                <article className="consulting-artifact-statement" key={artifact.title}>
-                  <h3>{artifact.title}</h3>
-                  <p>{artifact.description}</p>
-                </article>
-              ))}
+          <div className="consulting-artifacts-layout">
+            <div className="consulting-artifacts-header">
+              <h2 className="heading-xl" id="deliverables-title">
+                Useful artifacts,<br />not vague advice.
+              </h2>
+              <p>
+                Each engagement is shaped around the decision at hand. The outcome might be a product brief, user flow, feature scope,
+                architecture note, GitHub issue plan, or AI-agent-ready implementation prompt.
+              </p>
             </div>
-            <p className="consulting-artifacts-proof-note">
-              The point is practical clarity: a path people can understand, review, and build.
-            </p>
+            <div className="consulting-paper-stack">
+              <span aria-hidden="true" className="consulting-paper-sheet consulting-paper-sheet-back" />
+              <span aria-hidden="true" className="consulting-paper-sheet consulting-paper-sheet-middle" />
+              <span aria-hidden="true" className="consulting-paper-sheet consulting-paper-sheet-front" />
+              <div className="consulting-artifacts-proof" aria-label="Useful consulting artifacts">
+                <p className="consulting-artifacts-proof-label">What you leave with</p>
+                <div className="consulting-artifact-statements">
+                  {artifacts.map((artifact) => (
+                    <article className="consulting-artifact-statement" key={artifact.title}>
+                      <h3>{artifact.title}</h3>
+                      <p>{artifact.description}</p>
+                    </article>
+                  ))}
+                </div>
+                <div className="consulting-sticky-note">
+                  <p>The point is practical clarity: a path people can understand, review, and build.</p>
+                  <span aria-hidden="true" className="consulting-sticky-fold" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section-tight page-section consulting-closing" aria-labelledby="consulting-closing-title">
+      <section className="consulting-closing" aria-labelledby="consulting-closing-title">
         <div className="container">
           <div className="consulting-closing-panel">
-            <div>
-              <h2 className="heading-lg" id="consulting-closing-title">
-                Start with the conversation, not a menu.
-              </h2>
-              <p className="lede">
-                Bring the decision, constraint, or opportunity. NotableBIT will help shape the right next move before execution gets expensive.
-              </p>
-            </div>
+            <h2 className="consulting-closing-heading" id="consulting-closing-title">
+              Start with the conversation, not a menu.
+            </h2>
+            <p className="consulting-closing-copy">
+              Bring the decision, constraint, or opportunity. NotableBIT will help shape the right next move before execution gets expensive.
+            </p>
             <div className="consulting-closing-actions">
-              <Button href="/contact">Start a Consulting Conversation</Button>
-              <Button href="/products" variant="secondary">
-                View Products
-              </Button>
+              <Link className="text-link" href="/products">
+                View products <span aria-hidden="true">→</span>
+              </Link>
+              <Button href="/contact">Start a consulting conversation</Button>
             </div>
           </div>
         </div>

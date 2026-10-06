@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/app/_components/ui";
+import { PageHero } from "@/app/_components/page-sections";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
 import { PodcastShorts } from "@/app/media/podcast-shorts";
-import styles from "@/app/media/media-refinements.module.css";
 
 const route = routeByHref.get("/media")!;
 
@@ -35,47 +34,29 @@ const mediaPaths = [
 export default function MediaPage() {
   return (
     <main className="media-page">
-      <section className="page-section media-hero" aria-labelledby="page-title">
-        <Image
-          aria-hidden="true"
-          alt=""
-          className="media-hero-atmosphere"
-          fill
-          priority
-          sizes="100vw"
-          src="/assets/originals/media-hero.jpeg"
-        />
-        <div className="container media-hero-grid">
-          <div className="media-hero-copy">
-            <h1 className="display" id="page-title">
-              Media that documents builders, ideas, and the future of Black tech.
-            </h1>
-            <p className="lede">
-              Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology,
-              AI, entrepreneurship, and community.
-            </p>
-            <div className="button-row">
-              <Button href="https://bitvoices.network">Explore BitVoices</Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        className="media-hero"
+        image="/assets/originals/media-hero.jpeg"
+        lede="Through podcast conversations, community storytelling, and founder-led media, NotableBIT documents the builders shaping technology, AI, entrepreneurship, and community."
+        primary={{ href: "https://bitvoices.network", label: "Explore BitVoices" }}
+        title="Media that documents builders, ideas, and the future of Black tech."
+      />
 
-      <section className="page-section" aria-labelledby="podcast-title">
+      <section className="media-podcast-section" aria-labelledby="podcast-title">
         <div className="container podcast-showcase">
           <div className="podcast-showcase-copy">
             <h2 className="heading-xl" id="podcast-title">
               BIT Voices Podcast
             </h2>
-            <p className="lede">
+            <p className="body-copy">
               Conversations with Black technologists, founders, engineers, builders, and leaders shaping technology, AI, entrepreneurship, and
               community.
             </p>
           </div>
           <PodcastShorts />
-          <div className={`media-podcast-actions ${styles.podcastActions}`}>
+          <div className="media-podcast-actions">
             <Link
-              className={`media-podcast-link ${styles.podcastLink}`}
+              className="outline-pill"
               href="https://www.youtube.com/@notablebit"
               rel="noopener noreferrer"
               target="_blank"
@@ -83,16 +64,13 @@ export default function MediaPage() {
               Visit BIT Voices Podcast
             </Link>
           </div>
-          <p className={`body-copy podcast-showcase-context media-podcast-note ${styles.podcastNote}`}>
+          <p className="podcast-showcase-context">
             Formerly The Notable &amp; Black in Tech Podcast, BIT Voices Podcast now sits inside the broader NotableBIT media and community ecosystem.
           </p>
         </div>
       </section>
 
-      <section
-        className="page-section media-infrastructure-section media-closing-section"
-        aria-labelledby="media-infrastructure-title"
-      >
+      <section className="media-infrastructure-section" aria-labelledby="media-infrastructure-title">
         <div className="container">
           <div className="media-infrastructure-header">
             <h2 className="heading-xl" id="media-infrastructure-title">
@@ -111,19 +89,17 @@ export default function MediaPage() {
                   <span className="media-infrastructure-index" aria-hidden="true">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="heading-md">{path.title}</h3>
-                  <p className="body-copy">{path.description}</p>
+                  <h3>{path.title}</h3>
+                  <p>{path.description}</p>
                 </article>
               ))}
             </div>
 
             <div className="media-infrastructure-actions">
-              <div className="button-row">
-                <Button href="/contact">Start a Media Conversation</Button>
-                <Button href="https://bitvoices.network" variant="secondary">
-                  Visit BitVoices
-                </Button>
-              </div>
+              <a className="text-link" href="https://bitvoices.network" rel="noopener noreferrer" target="_blank">
+                Visit BitVoices <span aria-hidden="true">→</span>
+              </a>
+              <Button href="/contact">Start a media conversation</Button>
             </div>
           </div>
         </div>
