@@ -172,7 +172,6 @@ export default function Home() {
       <section id="ecosystem" className="ecosystem-archive" aria-labelledby="ecosystem-title">
         <div className="container">
           <div className="ecosystem-intro">
-            <p className="section-label">Tracklist</p>
             <h2 className="heading-xl" id="ecosystem-title">
               One mission, four outputs.
             </h2>
@@ -203,7 +202,6 @@ export default function Home() {
       <section className="home-journey" aria-labelledby="journey-title">
         <div className="container">
           <div className="home-journey-header">
-            <p className="section-label">How the studio builds</p>
             <h2 className="heading-xl" id="journey-title">
               Helping people become better builders, <em>because generating code is not the finish line.</em>
             </h2>
@@ -237,12 +235,10 @@ export default function Home() {
       <section className="entry-archive" aria-label="Where to start">
         <div className="container">
           <ol className="entry-list">
-            {entryPoints.map((entry, index) => (
+            {entryPoints.map((entry) => (
               <li className={`entry-item entry-item-${entry.rule}`} key={entry.title}>
                 <ArchiveLink className="entry-row" item={entry}>
-                  <span className="entry-label">
-                    {String(index + 1).padStart(2, "0")} · {entry.label}
-                  </span>
+                  <span className="entry-label">{entry.label}</span>
                   <span className="entry-title">{entry.title}</span>
                   <span className="entry-desc">{entry.description}</span>
                 </ArchiveLink>
