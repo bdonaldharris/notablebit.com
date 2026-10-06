@@ -3,6 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { routes } from "@/app/_content/site";
 import { Button } from "@/app/_components/ui";
 import logoWhite from "@/assets/originals/logo-white-text.png";
@@ -83,11 +84,19 @@ const socials = [
 
 export function Header({ overHero = true }: { overHero?: boolean }) {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
   const isLight = !overHero || pathname === "/contact";
   const headerClassName = isLight ? "site-header-light" : `site-header-over-hero${pathname === "/" ? " site-header-home" : ""}`;
 
+  useEffect(() => {
+    const updateScrolled = () => setIsScrolled(window.scrollY > 8);
+    updateScrolled();
+    window.addEventListener("scroll", updateScrolled, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrolled);
+  }, [pathname]);
+
   return (
-    <header className={`site-header ${headerClassName}`}>
+    <header className={`site-header ${headerClassName}${isScrolled ? " site-header-scrolled" : ""}`}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="NotableBIT home">
           <Image className="brand-logo" src={isLight ? logoBlack : logoWhite} alt="NotableBIT" loading="eager" />
