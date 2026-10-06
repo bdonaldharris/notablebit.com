@@ -53,9 +53,8 @@ export default function ProductsPage() {
                 that happen along the way.
               </p>
               <ol className="products-workflow-rail" aria-label="HindSite workflow sequence">
-                {hindSiteWorkflow.map((step, stepIndex) => (
+                {hindSiteWorkflow.map((step) => (
                   <li key={step}>
-                    <span>{String(stepIndex + 1).padStart(2, "0")}</span>
                     <strong>{step}</strong>
                   </li>
                 ))}

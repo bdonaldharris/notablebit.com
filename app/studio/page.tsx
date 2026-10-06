@@ -54,9 +54,8 @@ export default function StudioPage() {
             <p className="body-copy">{principles.description}</p>
           </div>
           <ol className="studio-principles-notes">
-            {principles.items?.map((item, itemIndex) => (
+            {principles.items?.map((item) => (
               <li className="studio-principle-note" key={item.title}>
-                <span className="studio-principle-note-number">{String(itemIndex + 1).padStart(2, "0")}</span>
                 <h3 className="studio-principle-note-title">{item.title}</h3>
                 <p className="studio-principle-note-body">{item.description}</p>
               </li>
@@ -74,9 +73,8 @@ export default function StudioPage() {
             <p className="body-copy">{method.description}</p>
           </div>
           <ol className="studio-method-flow">
-            {method.items?.map((item, itemIndex) => (
+            {method.items?.map((item) => (
               <li className="studio-method-node" key={item.title}>
-                <span className="studio-method-node-number">{String(itemIndex + 1).padStart(2, "0")}</span>
                 <h3 className="studio-method-node-title">{item.title}</h3>
                 <p className="studio-method-node-body">{item.description}</p>
               </li>
@@ -113,9 +111,8 @@ export default function StudioPage() {
                 notablebit.focus --list
               </p>
               <ol className="studio-console-list">
-                {focusAreas.map((area, areaIndex) => (
+                {focusAreas.map((area) => (
                   <li className="studio-console-entry" key={area.label}>
-                    <span className="studio-console-number">[{String(areaIndex + 1).padStart(2, "0")}]</span>
                     <h3 className="studio-console-title">{area.label}</h3>
                     <p className="studio-console-description">{area.description}</p>
                   </li>
@@ -143,9 +140,8 @@ export default function StudioPage() {
             </p>
           </div>
           <div className="studio-model-grid">
-            {model.map((item, itemIndex) => (
+            {model.map((item) => (
               <article className="studio-model-card" key={item.title}>
-                <span className="studio-model-card-index">{String(itemIndex + 1).padStart(2, "0")}</span>
                 <h3 className="studio-model-card-title">{item.title}</h3>
                 <p className="studio-model-card-body">{item.description}</p>
               </article>

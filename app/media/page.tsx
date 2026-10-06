@@ -84,11 +84,8 @@ export default function MediaPage() {
 
           <div className="media-infrastructure-panel">
             <div className="media-infrastructure-paths">
-              {mediaPaths.map((path, index) => (
+              {mediaPaths.map((path) => (
                 <article className="media-infrastructure-path" key={path.title}>
-                  <span className="media-infrastructure-index" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                   <h3>{path.title}</h3>
                   <p>{path.description}</p>
                 </article>
