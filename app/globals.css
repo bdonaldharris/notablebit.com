@@ -106,8 +106,12 @@ button, input, select, textarea { font: inherit; }
 .button-row { align-items: center; display: flex; flex-wrap: wrap; gap: 28px; }
 
 /* Shared header */
-.site-header { left: 0; position: absolute; right: 0; top: 0; z-index: 10; }
-.site-header-light { background: var(--nb-paper); position: relative; }
+/* Sticky: fixed and transparent over dark heroes until scrolled, then solid ink; sticky paper on light pages */
+html { scroll-padding-top: 78px; }
+.site-header { border-bottom: 1px solid transparent; left: 0; position: fixed; right: 0; top: 0; transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease; z-index: 50; }
+.site-header-scrolled.site-header-over-hero { backdrop-filter: blur(10px); background: rgb(20 22 27 / .94); border-bottom-color: rgb(244 241 234 / .1); }
+.site-header-light { background: var(--nb-paper); position: sticky; }
+.site-header-scrolled.site-header-light { border-bottom-color: var(--nb-line-soft); box-shadow: 0 8px 24px rgb(20 22 27 / .06); }
 .header-inner { align-items: center; display: grid; gap: 20px; grid-template-columns: auto 1fr auto; margin-inline: auto; max-width: var(--nb-container); min-height: 78px; padding-inline: 24px; }
 .brand { display: inline-flex; }
 .brand-logo { display: block; height: 66px; width: auto; }
