@@ -223,6 +223,7 @@ html { scroll-padding-top: 78px; }
 .home-journey { background: var(--nb-paper-band); padding-block: 80px; }
 .home-journey .container { display: flex; flex-direction: column; gap: 44px; }
 .home-journey-header { align-items: end; display: grid; gap: 56px; grid-template-columns: 320px minmax(0, 1fr); }
+.home-journey-header > .heading-xl { grid-column: 2; }
 .home-journey .heading-xl { max-width: 760px; }
 .home-journey .heading-xl em { color: var(--nb-muted); font-style: italic; }
 .home-journey-rail { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
@@ -296,7 +297,7 @@ html { scroll-padding-top: 78px; }
 .studio-console-list { list-style: none; margin: 24px 0 0; padding: 0; }
 .studio-console-entry + .studio-console-entry { margin-top: 20px; }
 .studio-console-title { color: var(--nb-term-title); display: inline; font-family: inherit; font-size: 13.8px; font-weight: 600; line-height: 1.5; margin: 0; }
-.studio-console-description { color: rgb(143 220 149 / .62); font-size: 12.8px; line-height: 1.6; margin: 6px 0 0; padding-left: 5.2ch; }
+.studio-console-description { color: rgb(143 220 149 / .62); font-size: 12.8px; line-height: 1.6; margin: 6px 0 0; }
 .studio-console-prompt { align-items: center; display: flex; font-size: 12.5px; letter-spacing: .04em; margin: 24px 0 0; }
 .studio-console-cursor {
   align-self: flex-end; animation: nb-blink 1.1s step-end infinite; background: var(--nb-term-title); box-shadow: 0 0 8px rgb(143 220 149 / .18);
@@ -579,6 +580,7 @@ textarea.input { min-height: 150px; resize: vertical; }
 
   .ecosystem-archive .container, .home-journey-header, .consulting-artifacts-layout, .about-story, .about-founder-card { grid-template-columns: 1fr; }
   .home-journey-header { gap: 16px; }
+  .home-journey-header > .heading-xl { grid-column: auto; }
   .tracklist-row { grid-template-columns: 40px minmax(0, 1fr) 24px; row-gap: 10px; }
   .tracklist-role { grid-column: 2; grid-row: 2; }
   .tracklist-arrow { grid-column: 3; grid-row: 1; }
