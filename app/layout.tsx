@@ -7,20 +7,23 @@ import "./globals.css";
 const newsreader = Newsreader({
   subsets: ["latin"],
   variable: "--font-newsreader",
-  weight: ["400", "500"],
   style: ["normal", "italic"],
+  axes: ["opsz"],
+  display: "swap",
 });
 
 const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-plex-sans",
   weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-plex-mono",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Button } from "@/app/_components/ui";
 import { PageHero } from "@/app/_components/page-sections";
 import Image from "next/image";
+import Link from "next/link";
 import { products } from "@/app/_content/ecosystem";
 import { routeByHref } from "@/app/_content/site";
 import { createMetadata } from "@/app/_lib/metadata";
@@ -37,7 +38,7 @@ export default function ProductsPage() {
         title="Products and platforms built from real builder workflows."
       />
 
-      <section className="section-tight products-feature-section" aria-labelledby="featured-product">
+      <section className="products-feature-section" aria-labelledby="featured-product">
         <div className="container">
           <article className="products-feature-card">
             <div className="products-feature-copy">
@@ -60,10 +61,10 @@ export default function ProductsPage() {
                 ))}
               </ol>
               <div className="button-row products-feature-actions">
-                <Button href="https://hindsite.pro">Join Waitlist</Button>
-                <Button href="/contact" variant="secondary">
-                  Discuss builder workflows →
-                </Button>
+                <Button href="https://hindsite.pro">Join waitlist</Button>
+                <Link className="text-link" href="/contact">
+                  Discuss builder workflows <span aria-hidden="true">→</span>
+                </Link>
               </div>
             </div>
 
@@ -80,7 +81,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="section-tight products-ecosystem-section products-platforms" aria-labelledby="product-ecosystem">
+      <section className="products-ecosystem-section products-platforms" aria-labelledby="product-ecosystem">
         <div className="container">
           <h2 className="heading-xl" id="product-ecosystem">
             Built in Sequence
@@ -129,7 +130,7 @@ export default function ProductsPage() {
               </div>
             </a>
 
-            <article className="platform-card">
+            <article className="platform-card platform-card-static">
               <div className="platform-card-media">
                 <Image
                   alt="NotableBIT Labs product badge"
@@ -154,7 +155,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="section-tight products-closing" aria-labelledby="products-closing-title">
+      <section className="products-closing" aria-labelledby="products-closing-title">
         <div className="container">
           <div className="products-closing-card">
             <h2 className="products-closing-heading" id="products-closing-title">
@@ -164,10 +165,10 @@ export default function ProductsPage() {
               Start with NotableBIT when the work needs strategy, product judgment, and AI-era execution.
             </p>
             <div className="products-closing-actions">
-              <Button href="/contact">Start a Product Conversation</Button>
-              <Button href="/studio" variant="secondary">
-                Explore the studio →
-              </Button>
+              <Button href="/contact">Start a product conversation</Button>
+              <Link className="text-link" href="/studio">
+                Explore the studio <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
         </div>

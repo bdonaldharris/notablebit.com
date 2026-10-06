@@ -9,22 +9,23 @@ type PageHeroProps = {
   primary: { href: string; label: string };
   secondary?: { href: string; label: string };
   objectPosition?: string;
-  theme?: "dark" | "light";
+  /** "split" pins the lede and actions to the bottom of the hero; "stacked" keeps them under the title (Studio). */
+  layout?: "split" | "stacked";
   className?: string;
 };
 
 export function PageHero({
   className = "",
   image,
+  layout = "split",
   lede,
   objectPosition,
   primary,
   secondary,
-  theme = "dark",
   title,
 }: PageHeroProps) {
   return (
-    <section className={`page-hero page-hero-${theme} ${className}`.trim()} aria-labelledby="page-title">
+    <section className={`page-hero page-hero-${layout} ${className}`.trim()} aria-labelledby="page-title">
       <Image
         alt=""
         className="page-hero-image"
@@ -34,7 +35,7 @@ export function PageHero({
         src={image}
         style={objectPosition ? { objectPosition } : undefined}
       />
-      <div className="container page-hero-grid">
+      <div className="page-hero-grid">
         <div className="page-hero-copy">
           <h1 className="display" id="page-title">
             {title}

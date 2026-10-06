@@ -24,9 +24,9 @@ export default function ContactPage() {
             Whether you&apos;re exploring a product, evaluating an AI workflow, planning a technical initiative, or looking for strategic guidance,
             start with context. Every inquiry is reviewed personally.
           </p>
-          <div className="nb-rule" />
         </div>
       </section>
+      <div aria-hidden="true" className="nb-rule contact-rule" />
 
       <section className="contact-form-section" aria-labelledby="inquiry-form-title">
         <div className="container">

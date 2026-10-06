@@ -94,7 +94,7 @@ export function ContactForm() {
           {statusMessage}
         </p>
         <button className="button button-primary" type="submit" disabled={pending} aria-disabled={pending}>
-          {pending ? "Sending..." : "Send Inquiry"}
+          {pending ? "Sending..." : "Send inquiry"}
         </button>
       </div>
     </form>

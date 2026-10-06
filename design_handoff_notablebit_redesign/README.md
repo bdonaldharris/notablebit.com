@@ -1,5 +1,7 @@
 # Handoff: NotableBIT.com redesign (light editorial theme, dark hero)
 
+> **Read `FINALIZED_DECISIONS.md` first.** Home = option 1b. Dark hero on every image-hero page. Then `WORKTREE_GAP_DIRECTIONS.md` for what to change in the repo.
+
 ## Overview
 A restyle of notablebit.com: a warm paper (light) theme with the logo's red and blue as the only accents, serif headlines, monospace labels, and a dark full-bleed hero on every page. Seven pages: Home, Studio, Products, Consulting, Media, About, Contact. Header and footer are shared in structure; each page has its own layout below the hero.
 
@@ -10,7 +12,7 @@ Everything in `design_files/` is an **HTML design reference** (Design Component 
 **High-fidelity.** Final colors, type, spacing and interactions. Recreate pixel-accurately. The frames are 1280px wide; build fluid layouts that match at 1280 and reflow below ~1000px (the references are desktop only; mobile was not designed, so apply the same system and ask when unsure).
 
 ## Global rules
-- No eyebrow/kicker labels above section headings (Home keeps its signed-off tracklist/"how the studio builds" labels; remove if you want consistency).
+- No eyebrow/kicker labels above section headings (Home keeps its two signed-off mono labels, "Tracklist" and "How the studio builds", as designed in 1b).
 - No em dashes in copy. Section headings that are single lines use `white-space:nowrap` at desktop (Studio, Products, Consulting, Media, About); allow wrapping below 1100px.
 - Ecosystem order, wherever listed: NotableBIT | BIT Voices Podcast | BitVoices Network | HindSite. Preserve the name **NotableBIT**.
 - Retire: grid/weave overlays (`.site-shell::before/::after`), radial glows, violet/burgundy/green/amber tokens, five `home-type-*` classes, Aptos.
@@ -18,7 +20,7 @@ Everything in `design_files/` is an **HTML design reference** (Design Component 
 ## Shared components
 **Header** (all pages): grid `auto 1fr auto`, max-width 1180, padding 0 24, min-height 78. Logo `logo-white-text.png` (66px high) on dark hero, `logo-black-text.png` on light pages (Contact). Nav: IBM Plex Mono 12.5px, uppercase, letter-spacing .08em, gap 28, color #C9C5BC on dark / #3A3D45 on light; active item is #F4F1EA (dark) / #14161B (light) with a 6px red (#F9313C) dot before the label. CTA "Start a conversation": #014DF9 pill, white, Plex Sans 15px/500, padding 11px 20px, nowrap. On image-hero pages the header is `position:absolute; top:0` over the hero (hero content padding-top 170px). Contact: in flow on paper. Mobile: keep existing `<details>` menu pattern.
 
-**Hero** (Studio, Products, Consulting, Media, About, Home): full-bleed image, min-height 780 (Studio 640, Home 720), bg #14161B, image `object-fit:cover` opacity .6 filter `saturate(.9) contrast(1.05) brightness(.64)`, overlay `--nb-hero-overlay-dark`. Content max-width 1180, padding 170px 24px 96px, flex column: h1 at top (Newsreader 500, 76px/1, -0.025em, max-width ~860, color #F4F1EA, text-wrap:balance), lede pinned to the bottom (`margin-top:auto`, 20px/1.6, max-width 720, #E8E4DA), then actions 28px below: primary blue pill (15.5px/500, padding 15px 24px) + text link with 1px underline (#F4F1EA). Under every hero: a 3px bar, left half red, right half blue. Optional light variant tokens exist (`heroTheme` prop in the references: "dark" default, "light").
+**Hero** (Studio, Products, Consulting, Media, About, Home): full-bleed image, min-height 780 (Studio 640, Home 720), bg #14161B, image `object-fit:cover` opacity .6 filter `saturate(.9) contrast(1.05) brightness(.64)`, overlay `--nb-hero-overlay-dark`. Content max-width 1180, padding 170px 24px 96px, flex column: h1 at top (Newsreader 500, 76px/1, -0.025em, max-width ~860, color #F4F1EA, text-wrap:balance), lede pinned to the bottom (`margin-top:auto`, 20px/1.6, max-width 720, #E8E4DA), then actions 28px below: primary blue pill (15.5px/500, padding 15px 24px) + text link with 1px underline (#F4F1EA). Under every hero: a 3px bar, left half red, right half blue. Dark is final on every hero. The `heroTheme` prop in the references defaults to "dark"; the "light" value is a prototype toggle and is not to be built.
 
 **Footer** (all pages): bg #14161B, color #F4F1EA, padding 20px 56px 16px, flex column gap 12. Top: 4-column grid `1fr 1fr 1fr 1.2fr`, gap 32, all cells centered both ways: (1) white logo 280px wide with margin -34px 0 -38px to trim transparent padding; (2) blurb 15px/1.6 #C9C5BC centered, max-width 340: "A Black-founded technology studio building products, platforms, media, and strategic systems for builders moving with clarity, context, and ownership."; (3) site nav in a 2-column grid, gap 10px 36px, 15px #C9C5BC (Home + 6 routes); (4) ecosystem icon row, gap 14, links: B Donald Harris (bdh-logo.png, 30px high, bdonaldharris.com), BIT Voices Podcast (36px, youtube.com/@notablebit), BitVoices Network (36px, bitvoices.network), HindSite (36px, hindsite.pro); radius 3px. No heading above the icons. Bottom row: border-top 1px rgba(244,241,234,.16), padding-top 14, socials (18px icons, #C9C5BC, existing SVG paths) left, copyright "© 2026 NotableBIT. All rights reserved." mono 12px right.
 
@@ -27,7 +29,7 @@ Everything in `design_files/` is an **HTML design reference** (Design Component 
 ## Screens
 Each section lists layout then key values. Headline font Newsreader 500, -0.015em unless noted; section h2 48px/1.05; body 18px/1.65 #3A3D45; page side padding 56.
 
-### Home (`NotableBIT Redesign.dc.html`, option 1b)
+### Home (`NotableBIT Home.dc.html`, option 1b, final)
 Hero (dark, image first_podcast_set.jpeg, eyebrow "Black-founded technology studio · Tulsa, Oklahoma" with red dot; h1 92px/.98) then: centered italic mission quote (Newsreader italic 40px, max 960, borders top/bottom); "One mission, four outputs." tracklist (320px heading column + ruled 4-row list: index, name Newsreader 34px, one-line description, role label colored red for media/community and blue for product, arrow); tinted band #E9E5DA "Helping people become better builders, because generating code is not the finish line." with 9-step rail (Idea ... Deployment; last step has blue 2px rule, others rgba(20,22,27,.4)) and closing italic line + link; centered founder quote (48px); 4-column entry cards with top rules (red Listen, blue Build, blue Clarify, ink Connect). Copy for the band and tracklist is new; confirm with the founder.
 
 ### Studio (`NotableBIT Studio.dc.html`)
@@ -61,4 +63,4 @@ All in `design_files/assets/`: logos (logo-white-text, logo-black-text, bdh-logo
 Em dashes removed everywhere. Home: new tracklist and band copy. Consulting hero lede and decisions paragraph (comma instead of dash). Studio: titles keep original capitalization; hero lede kept. Button labels are sentence case in the designs ("Start a conversation"); the repo uses Title Case ("Start a Conversation"); pick one site-wide. Contact success message punctuation.
 
 ## Files
-`design_files/*.dc.html` (seven pages), `design-tokens.css`, `fonts.md`, `screenshots/*.png`, `issues/*.md` + `issues/create-issues.sh`.
+`FINALIZED_DECISIONS.md`, `WORKTREE_GAP_DIRECTIONS.md`, `design_files/*.dc.html` (seven pages: Home, Studio, Products, Consulting, Media, About, Contact), `design-tokens.css`, `fonts.md`, `screenshots/*.png`, `issues/*.md` + `issues/create-issues.sh`.

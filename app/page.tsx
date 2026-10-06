@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import heroAtmosphereImage from "@/assets/originals/first_podcast_set.jpeg";
@@ -59,21 +60,24 @@ type EntryPoint = {
   title: string;
   description: string;
   href: string;
+  rule: "red" | "blue" | "ink";
   external?: boolean;
 };
 
 const entryPoints: EntryPoint[] = [
   {
     label: "Listen",
-    title: "Start with BitVoices",
-    description: "The voice archive that started the work.",
+    title: "BIT Voices Podcast",
+    description: "The conversations that started the work.",
     href: "/media",
+    rule: "red",
   },
   {
     label: "Build",
-    title: "Explore HindSite and product work",
-    description: "Builder-memory systems from the studio.",
+    title: "HindSite",
+    description: "Workflow intelligence from the studio.",
     href: "https://hindsite.pro",
+    rule: "blue",
     external: true,
   },
   {
@@ -81,27 +85,41 @@ const entryPoints: EntryPoint[] = [
     title: "Work with the studio",
     description: "Product, AI workflow, and strategy support.",
     href: "/consulting",
+    rule: "blue",
   },
   {
     label: "Connect",
     title: "Start a conversation",
     description: "Partnerships, speaking, advisory, and ecosystem inquiries.",
     href: "/contact",
+    rule: "ink",
   },
 ];
 
-function artifactLink(item: MissionOutput | EntryPoint, className: string) {
+const journeySteps = [
+  "Idea",
+  "Problem excavation",
+  "Product definition",
+  "Requirements",
+  "Design",
+  "Architecture",
+  "Implementation",
+  "Validation",
+  "Deployment",
+];
+
+function ArchiveLink({ children, className, item }: { children: ReactNode; className: string; item: MissionOutput | EntryPoint }) {
   if (item.external) {
     return (
       <a className={className} href={item.href} rel="noopener noreferrer" target="_blank">
-        {item.title}
+        {children}
       </a>
     );
   }
 
   return (
     <Link className={className} href={item.href}>
-      {item.title}
+      {children}
     </Link>
   );
 }
@@ -109,7 +127,7 @@ function artifactLink(item: MissionOutput | EntryPoint, className: string) {
 export default function Home() {
   return (
     <main className="home-main">
-      <section className="section home-hero" aria-labelledby="page-title">
+      <section className="home-hero" aria-labelledby="page-title">
         <Image
           aria-hidden="true"
           alt=""
@@ -119,68 +137,82 @@ export default function Home() {
           sizes="100vw"
           src={heroAtmosphereImage}
         />
-        <div className="container home-hero-grid">
+        <div className="home-hero-grid">
           <div className="home-hero-copy">
-            <p className="eyebrow">Black-founded technology studio · Tulsa, Oklahoma</p>
-            <h1 className="display" id="page-title">
-              <span className="display-declaration">Black technologists are building the future.</span>
-            </h1>
-            <p className="lede">
-              What began as a podcast to amplify Black technologists has grown into a Black-founded studio building
-              media, products, platforms, and strategic systems for the AI era.
-            </p>
-            <div className="button-row">
-              <Button href="#ecosystem">Explore the ecosystem</Button>
-              <Link className="hero-text-link" href="/media">Listen to BIT Voices <span aria-hidden="true">→</span></Link>
+            <div className="home-hero-heading">
+              <p className="eyebrow">Black-founded technology studio · Tulsa, Oklahoma</p>
+              <h1 className="display" id="page-title">
+                Black technologists are building the future.
+              </h1>
+            </div>
+            <div className="home-hero-footer">
+              <p className="lede">
+                What began as a podcast to amplify Black technologists has grown into a Black-founded studio building
+                media, products, platforms, and strategic systems for the AI era.
+              </p>
+              <div className="button-row">
+                <Button href="#ecosystem">Explore the ecosystem</Button>
+                <Link className="hero-text-link" href="/media">
+                  Listen to BIT Voices <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-tight mission-archive" aria-label="Mission statement">
+      <section className="mission-archive" aria-label="Mission statement">
         <div className="container">
-          <div className="mission-card">
-            <p>
-              Black technologists should be seen, remembered, and connected to the future they are already building.
-            </p>
-          </div>
+          <p className="mission-statement">
+            Black technologists should be seen, remembered, and connected to the future they are already building.
+          </p>
         </div>
       </section>
 
-      <section id="ecosystem" className="section ecosystem-archive" aria-labelledby="ecosystem-title">
+      <section id="ecosystem" className="ecosystem-archive" aria-labelledby="ecosystem-title">
         <div className="container">
           <div className="ecosystem-intro">
             <p className="section-label">Tracklist</p>
             <h2 className="heading-xl" id="ecosystem-title">
               One mission, four outputs.
             </h2>
-            <p className="lede">
+            <p className="body-copy">
               These are not separate ventures. Each one answers a real need builders have, and all of them come from the same mission.
             </p>
           </div>
           <ol className="tracklist">
             {missionOutputs.map((output, index) => (
-              <li className="tracklist-row" key={output.title}>
-                <span className="tracklist-index">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{artifactLink(output, "tracklist-link")}</h3>
-                <p>{output.description}</p>
-                <span className={`tracklist-role tracklist-role-${output.roleTone}`}>{output.role}</span>
-                <span aria-hidden="true">→</span>
+              <li key={output.title}>
+                <ArchiveLink className="tracklist-row" item={output}>
+                  <span className="tracklist-index">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="tracklist-main">
+                    <h3>{output.title}</h3>
+                    <p>{output.description}</p>
+                  </span>
+                  <span className={`tracklist-role tracklist-role-${output.roleTone}`}>{output.role}</span>
+                  <span className="tracklist-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </ArchiveLink>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="section-tight home-journey" aria-labelledby="journey-title">
+      <section className="home-journey" aria-labelledby="journey-title">
         <div className="container">
-          <p className="section-label">How the studio builds</p>
-          <h2 className="heading-xl" id="journey-title">Helping people become better builders, <em>because generating code is not the finish line.</em></h2>
+          <div className="home-journey-header">
+            <p className="section-label">How the studio builds</p>
+            <h2 className="heading-xl" id="journey-title">
+              Helping people become better builders, <em>because generating code is not the finish line.</em>
+            </h2>
+          </div>
           <ol className="home-journey-rail">
-            {["Idea", "Problem excavation", "Product definition", "Requirements", "Design", "Architecture", "Implementation", "Validation", "Deployment"].map((step, index) => (
+            {journeySteps.map((step, index) => (
               <li key={step}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                {step}
+                <strong>{step}</strong>
               </li>
             ))}
           </ol>
@@ -191,51 +223,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-tight founder-field" aria-label="Founder note">
+      <section className="founder-field" aria-label="Founder note">
         <div className="container">
-          <figure className="founder-note-card">
+          <figure className="founder-quote">
             <blockquote>
-              This work began with conversations. It is still about people, memory, visibility, and ownership.
+              &ldquo;This work began with conversations. It is still about people, memory, visibility, and ownership.&rdquo;
             </blockquote>
             <figcaption>B Donald Harris, Founder &amp; CEO, NotableBIT</figcaption>
           </figure>
         </div>
       </section>
 
-      <section className="section-tight entry-archive" aria-labelledby="entry-title">
+      <section className="entry-archive" aria-label="Where to start">
         <div className="container">
           <ol className="entry-list">
-            {entryPoints.map((entry, index) => {
-              const rowContent = (
-                <>
-                  <span className="entry-index" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")} ·
+            {entryPoints.map((entry, index) => (
+              <li className={`entry-item entry-item-${entry.rule}`} key={entry.title}>
+                <ArchiveLink className="entry-row" item={entry}>
+                  <span className="entry-label">
+                    {String(index + 1).padStart(2, "0")} · {entry.label}
                   </span>
-                  <span className="entry-label">{entry.label}</span>
-                  <span className="entry-body">
-                    <span className="entry-title heading-md">{entry.title}</span>
-                    <span className="entry-desc body-copy">{entry.description}</span>
-                  </span>
-                  <span className="entry-cue" aria-hidden="true">
-                    Enter <span className="entry-cue-arrow">&rarr;</span>
-                  </span>
-                </>
-              );
-
-              return (
-                <li className="entry-item" key={entry.title}>
-                  {entry.external ? (
-                    <a className="entry-row" href={entry.href} rel="noopener noreferrer" target="_blank">
-                      {rowContent}
-                    </a>
-                  ) : (
-                    <Link className="entry-row" href={entry.href}>
-                      {rowContent}
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
+                  <span className="entry-title">{entry.title}</span>
+                  <span className="entry-desc">{entry.description}</span>
+                </ArchiveLink>
+              </li>
+            ))}
           </ol>
         </div>
       </section>

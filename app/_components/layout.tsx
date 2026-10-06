@@ -84,9 +84,10 @@ const socials = [
 export function Header({ overHero = true }: { overHero?: boolean }) {
   const pathname = usePathname();
   const isLight = !overHero || pathname === "/contact";
+  const headerClassName = isLight ? "site-header-light" : `site-header-over-hero${pathname === "/" ? " site-header-home" : ""}`;
 
   return (
-    <header className={`site-header ${isLight ? "site-header-light" : "site-header-over-hero"}`}>
+    <header className={`site-header ${headerClassName}`}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="NotableBIT home">
           <Image className="brand-logo" src={isLight ? logoBlack : logoWhite} alt="NotableBIT" loading="eager" />
@@ -115,11 +116,11 @@ export function Header({ overHero = true }: { overHero?: boolean }) {
           <nav aria-label="Mobile navigation">
             <Link href="/">Home</Link>
             {routes.map((route) => (
-              <Link key={route.href} href={route.href}>
+              <Link key={route.href} href={route.href} aria-current={pathname === route.href ? "page" : undefined}>
                 {route.label}
               </Link>
             ))}
-            <Link href="/contact">{HEADER_CTA}</Link>
+            <Link className="mobile-nav-cta" href="/contact">{HEADER_CTA}</Link>
           </nav>
         </details>
       </div>

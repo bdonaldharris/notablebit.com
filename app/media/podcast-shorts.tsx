@@ -37,6 +37,7 @@ const youtubeThumbnailLoader: ImageLoader = ({ src }) => src;
 export function PodcastShorts() {
   const [selectedShort, setSelectedShort] = useState<PodcastShort | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const closeModal = useCallback(() => {
@@ -53,6 +54,23 @@ export function PodcastShorts() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closeModal();
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) {
+        return;
+      }
+
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>("button, iframe, [href], [tabindex]:not([tabindex='-1'])");
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
       }
     };
 
@@ -100,9 +118,7 @@ export function PodcastShorts() {
                 src={short.thumbnailUrl}
                 unoptimized
               />
-              <span className="podcast-short-play" aria-hidden="true">
-                <Image alt="" height={30} src="/assets/icons/play.svg" width={30} />
-              </span>
+              <span className="podcast-short-play" aria-hidden="true" />
             </span>
           </button>
         ))}
@@ -114,6 +130,7 @@ export function PodcastShorts() {
             aria-labelledby={`media-video-title-${selectedShort.videoId}`}
             aria-modal="true"
             className="media-video-modal"
+            ref={dialogRef}
             role="dialog"
           >
             <div className="media-video-modal-header">

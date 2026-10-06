@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/app/_components/ui";
 import { PageHero } from "@/app/_components/page-sections";
 import { routeByHref } from "@/app/_content/site";
@@ -56,13 +57,13 @@ export default function ConsultingPage() {
     <main className="consulting-page">
       <PageHero
         className="consulting-hero"
-        image="/assets/originals/consulting-hero.png"
+        image="/assets/originals/consulting-hero.jpeg"
         lede="NotableBIT provides selective advisory for builders, founders, and organizations that need clarity before execution, from product strategy and AI workflows to platform decisions, technical leadership, and implementation-ready plans."
-        primary={{ href: "/contact", label: "Start a Consulting Conversation" }}
+        primary={{ href: "/contact", label: "Start a consulting conversation" }}
         title="Where product, AI, and technology decisions become buildable paths."
       />
 
-      <section className="section-tight page-section consulting-decisions" aria-labelledby="consulting-decisions-title">
+      <section className="consulting-decisions" aria-labelledby="consulting-decisions-title">
         <div className="container">
           <div className="consulting-section-intro">
             <h2 className="heading-xl" id="consulting-decisions-title">
@@ -74,20 +75,18 @@ export default function ConsultingPage() {
             </p>
           </div>
           <div className="consulting-lane-field">
-            <div className="consulting-decision-lanes" aria-hidden="true">
-              {decisionZones.map((zone) => (
-                <span key={`lane-${zone.title}`} />
-              ))}
-            </div>
             {decisionZones.map((zone) => (
-              <article className="consulting-zone-card" key={zone.title} tabIndex={0}>
-                <div className="consulting-zone-header">
-                  <h3 className="heading-md">{zone.title}</h3>
-                </div>
-                <div className="consulting-zone-body">
-                  <p className="body-copy">{zone.description}</p>
-                </div>
-              </article>
+              <div className="consulting-zone" key={zone.title}>
+                <article className="consulting-zone-card">
+                  <div className="consulting-zone-header">
+                    <h3>{zone.title}</h3>
+                  </div>
+                  <div className="consulting-zone-body">
+                    <p>{zone.description}</p>
+                  </div>
+                </article>
+                <span aria-hidden="true" className="consulting-zone-tail" />
+              </div>
             ))}
             <div className="consulting-lane-foundation">
               <h3>Clarity Before Execution</h3>
@@ -97,7 +96,7 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      <section className="section-tight page-section consulting-artifacts" aria-labelledby="deliverables-title">
+      <section className="consulting-artifacts" aria-labelledby="deliverables-title">
         <div className="container">
           <div className="consulting-artifacts-layout">
             <div className="consulting-artifacts-header">
@@ -123,31 +122,29 @@ export default function ConsultingPage() {
                     </article>
                   ))}
                 </div>
-                <p className="consulting-artifacts-proof-note">
-                  The point is practical clarity: a path people can understand, review, and build.
+                <div className="consulting-sticky-note">
+                  <p>The point is practical clarity: a path people can understand, review, and build.</p>
                   <span aria-hidden="true" className="consulting-sticky-fold" />
-                </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-tight page-section consulting-closing" aria-labelledby="consulting-closing-title">
+      <section className="consulting-closing" aria-labelledby="consulting-closing-title">
         <div className="container">
           <div className="consulting-closing-panel">
-            <div>
-              <h2 className="heading-lg" id="consulting-closing-title">
-                Start with the conversation, not a menu.
-              </h2>
-              <p className="lede">
-                Bring the decision, constraint, or opportunity. NotableBIT will help shape the right next move before execution gets expensive.
-              </p>
-            </div>
+            <h2 className="consulting-closing-heading" id="consulting-closing-title">
+              Start with the conversation, not a menu.
+            </h2>
+            <p className="consulting-closing-copy">
+              Bring the decision, constraint, or opportunity. NotableBIT will help shape the right next move before execution gets expensive.
+            </p>
             <div className="consulting-closing-actions">
-              <Button href="/products" variant="secondary">
-                View products →
-              </Button>
+              <Link className="text-link" href="/products">
+                View products <span aria-hidden="true">→</span>
+              </Link>
               <Button href="/contact">Start a consulting conversation</Button>
             </div>
           </div>
